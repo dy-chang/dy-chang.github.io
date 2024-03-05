@@ -1,6 +1,6 @@
 ---
 title: "Traffic Volume movement"
-excerpt: "Short description of portfolio item number 1<br/><img src='/images/Traffic_chord.png'>"
+excerpt: "Visualization with chord diagram for traffic movement. <br/><img src='/images/Traffic_chord.png'>"
 collection: portfolio
 ---
 
