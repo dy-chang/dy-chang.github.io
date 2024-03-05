@@ -25,7 +25,7 @@ author:
   name             : "Daeyeol Chang, Ph.D."
   pronouns         : # example: "she/her"  
   bio              : "Transportation Researcher/Engineer/Planner"
-  location         : "Columbia, Missouri, United States."
+  location         : #"Columbia, Missouri, United States."
   employer         : "University of Missouri-Columbia"
   uri              : # URL
   email            : "chang.daeyeol@gmail.com" 
