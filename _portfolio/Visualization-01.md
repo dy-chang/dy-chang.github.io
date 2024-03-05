@@ -2,10 +2,10 @@
 title: "Traffic Volume movement"
 excerpt: "Visualization with chord diagram for traffic movement. <br/><img src='/images/Traffic_chord.png'>"
 collection: portfolio
----
+
 
 Presented traffic movement within the study region for county level.
-```python
+
 
 import holoviews as hv
 from holoviews import opts
