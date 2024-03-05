@@ -12,8 +12,8 @@ main:
   - title: "Research"
     url: /portfolio/
         
-  - title: "Data analytics"
-    url: /posts/
+  #- title: "Data analytics"
+  # url: /posts/
     
   - title: "CV"
     url: /files/Resume.pdf
