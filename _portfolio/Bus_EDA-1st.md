@@ -1,6 +1,6 @@
 ---
 title:  "Explanatory Data Analysis Example (1)."
-excerpt: "Data processing, descriptive statics and visualizations with Python. <br/><img src='/images/ a.png'>"" 
+excerpt: "Data processing, descriptive statics and visualizations with Python. <br/><img src='/images/ header_eda.png'>"" 
 description: "Dealing with bus ridership data to understand patterns and demands."
 collection: portfolio
 ---
