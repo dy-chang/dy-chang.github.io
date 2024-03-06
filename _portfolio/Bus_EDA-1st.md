@@ -1,7 +1,6 @@
 ---
-layout: 
-title:  "Explanatory Data Analysis of Bus ridersip data."
-description: "Data processing, descriptive statics and visualizations"
+title:  "Explanatory Data Analysis of Bus ridersip data (1)."
+description: "Data processing, descriptive statics and visualizations with Python"
 headline: "Utilized folium with data set"
 ---
 
@@ -909,7 +908,7 @@ msno.matrix(train)
 
 
     
-![png](../image/output_10_1.png)
+![png](../images/output_10_1.png)
     
 
 
@@ -928,7 +927,7 @@ msno.matrix(test)
 
 
     
-![png](../image/output_11_1.png)
+![png](../images/output_11_1.png)
     
 
 
@@ -1030,7 +1029,7 @@ sns.distplot(train[target_col], rug=True)
 
 
     
-![png](../image/output_14_1.png)
+![png](../images/output_14_1.png)
     
 
 
@@ -1326,7 +1325,7 @@ sns.lineplot(x='date_disp', y='count', hue='takeoff_time', data=df_date_takeoff,
 
 
     
-![png](../image/output_21_1.png)
+![png](../images/output_21_1.png)
     
 
 
@@ -1382,7 +1381,7 @@ sns.boxplot(x='weekday', y='count', data=df_week_takeoff, ax=axes[1], palette=pa
 
 
     
-![png](../image/output_24_1.png)
+![png](../images/output_24_1.png)
     
 
 
@@ -1411,7 +1410,7 @@ sns.boxplot(x='holiweekend', y='count', data=df_holi_takeoff, ax=axes[1], palett
 
 
     
-![png](../image/output_25_1.png)
+![png](../images/output_25_1.png)
     
 
 
