@@ -57,8 +57,8 @@ from tqdm import tqdm_notebook
 ```python
 # Read data
 
-train = pd.read_csv("C:/Users/dcn75/OneDrive - University of Missouri/Research_2024/Self/train.csv")
-test = pd.read_csv("C:/Users/dcn75/OneDrive - University of Missouri/Research_2024/Self/test.csv")
+train = pd.read_csv("C:/train.csv")
+test = pd.read_csv("C:/test.csv")
 ```
 
 
@@ -909,7 +909,7 @@ msno.matrix(train)
 
 
     
-![png](../images/output_10_1.png)
+![png](/images/output_10_1.png)
     
 
 
@@ -928,7 +928,7 @@ msno.matrix(test)
 
 
     
-![png](../images/output_11_1.png)
+![png](/images/output_11_1.png)
     
 
 
@@ -1030,7 +1030,7 @@ sns.distplot(train[target_col], rug=True)
 
 
     
-![png](../images/output_14_1.png)
+![png](/images/output_14_1.png)
     
 
 
@@ -1326,7 +1326,7 @@ sns.lineplot(x='date_disp', y='count', hue='takeoff_time', data=df_date_takeoff,
 
 
     
-![png](../images/output_21_1.png)
+![png](/images/output_21_1.png)
     
 
 
@@ -1382,7 +1382,7 @@ sns.boxplot(x='weekday', y='count', data=df_week_takeoff, ax=axes[1], palette=pa
 
 
     
-![png](../images/output_24_1.png)
+![png](/images/output_24_1.png)
     
 
 
@@ -1411,7 +1411,7 @@ sns.boxplot(x='holiweekend', y='count', data=df_holi_takeoff, ax=axes[1], palett
 
 
     
-![png](../images/output_25_1.png)
+![png](/images/output_25_1.png)
     
 
 
