@@ -1,7 +1,8 @@
 ---
-title:  "Explanatory Data Analysis of Bus ridersip data (1)."
-description: "Data processing, descriptive statics and visualizations with Python"
-headline: "Utilized folium with data set"
+title:  "Explanatory Data Analysis Example (1)."
+excerpt: "Data processing, descriptive statics and visualizations with Python. <br/><img src='/images/ a.png'>"" 
+description: "Dealing with bus ridership data to understand patterns and demands."
+collection: portfolio
 ---
 
 
