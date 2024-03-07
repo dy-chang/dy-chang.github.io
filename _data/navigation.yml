@@ -3,8 +3,8 @@ main:
   - title: "Publications"
     url: /publications/
 
-  #- title: "Talks"
-  #  url: /talks/    
+  - title: "Talks"
+    url: /posts/    
 
   #- title: "Teaching"
   # url: /teaching/    
@@ -12,8 +12,8 @@ main:
   - title: "Research"
     url: /portfolio/
         
-  - title: "Data analytics"
-   url: /posts/
+  #- title: "Data analytics"
+  # url: /posts/
     
   - title: "CV"
     url: /files/Resume.pdf
