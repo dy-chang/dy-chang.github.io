@@ -1,20 +1,12 @@
 ---
 layout: page
-title: "Seaborn의 통계 차트 및 데이터 시각화 예제"
-description: "Seaborn 활용한 데이터 시각화 그래프 예제와 방법에 대하여 알아보겠습니다."
-headline: "Seaborn을 활용한 데이터 시각화 그래프 예제와 방법에 대하여 알아보겠습니다."
-categories: visualization
-tags: [pytho, colab, data_science, seaborn]
-redirect_from:
-  - data_science/seaborn-tutorial-1
+title: "Seaborn's Statistical Charts and Data Visualization Examples"
+description: "Let's learn about data visualization graph examples and methods using Seaborn."
+headline: "Let's learn about data visualization graph examples and methods using Seaborn."
 comments: true
 published: true
 ---
 
-
-`seaborn`은 `matplotlib`의 상위 호환 데이터 시각화를 위한 라이브러리입니다. `seaborn`패키지는 데이터프레임으로 다양한 통계 지표를 낼 수 있는 시각화 차트를 제공하기 때문에 데이터 분석에 **활발히 사용되고 있는 라이브러리**입니다.
-
-이번 `seaborn` 튜토리얼에서는 `matplotlib`에는 없고 `seaborn`에서만 제공되는 통계 차트 위주로 설명드리겠습니다.
 
 <body>
 <div class="border-box-sizing" id="notebook" >
@@ -57,9 +49,6 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>seaborn</code> 라이브러리가 매력적인 이유는 바로 <strong>통계 차트</strong> 입니다.</p>
-<p>이번 실습에서는 <code>seaborn</code>의 다양한 통계 차트 중 대표적인 차트 몇 개를 뽑아서 다뤄볼 예정입니다.</p>
-<p>더 많은 통계 차트를 경험해보고 싶으신 분은 <a href="https://seaborn.pydata.org/api.html">공식 도큐먼트</a>에서 확인하실 수 있습니다.</p>
 </div>
 </div>
 </div>
@@ -326,20 +315,20 @@ published: true
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>survived: 생존여부</li>
-<li>pclass: 좌석등급</li>
-<li>sex: 성별</li>
-<li>age: 나이</li>
-<li>sibsp: 형제자매 숫자</li>
-<li>parch: 부모자식 숫자</li>
-<li>fare: 요금</li>
-<li>embarked: 탑승 항구</li>
-<li>class: 좌석등급 (영문)</li>
-<li>who: 사람 구분</li>
-<li>deck: 데크</li>
-<li>embark_town: 탑승 항구 (영문)</li>
-<li>alive: 생존여부 (영문)</li>
-<li>alone: 혼자인지 여부</li>
+<li>survived: Whether survived</li>
+<li>pclass: seat class</li>
+<li>sex: gender</li>
+<li>age: age</li>
+<li>sibsp: number of siblings</li>
+<li>parch: Number of parents and children</li>
+<li>fare: fare</li>
+<li>embarked: boarding port</li>
+<li>class: Seat class (English)</li>
+<li>who: Classifies people</li>
+<li>deck: deck</li>
+<li>embark_town: Boarding port (English)</li>
+<li>alive: Whether alive (English)</li>
+<li>alone: Whether or not you are alone</li>
 </ul>
 </div>
 </div>
@@ -511,13 +500,13 @@ published: true
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>total_bill: 총 합계 요금표</li>
-<li>tip: 팁</li>
-<li>sex: 성별</li>
-<li>smoker: 흡연자 여부</li>
-<li>day: 요일</li>
-<li>time: 식사 시간</li>
-<li>size: 식사 인원</li>
+<li>total_bill: Total bill table</li>
+<li>tip: tip</li>
+<li>sex: gender</li>
+<li>smoker: Whether you are a smoker</li>
+<li>day: day of the week</li>
+<li>time: Meal time</li>
+<li>size: number of people eating</li>
 </ul>
 </div>
 </div>
@@ -532,8 +521,8 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>항목별 갯수를 세어주는 <code>countplot</code> 입니다.</p>
-<p>알아서 해당 column을 구성하고 있는 value들을 구분하여 보여줍니다.</p>
+<p><code>countplot</code> counts the number of items.</p>
+<p>It automatically displays the values composing the column separately..</p>
 </div>
 </div>
 </div>
@@ -549,7 +538,7 @@ published: true
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 배경을 darkgrid 로 설정</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Set background to darkgrid</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">'darkgrid'</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -559,7 +548,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="1-1-세로로-그리기">1-1 세로로 그리기</h3>
+<h3 id="1-1-drawing horizontally">1-1 drawing vertically</h3>
 </div>
 </div>
 </div>
@@ -589,7 +578,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="1-2.-가로로-그리기">1-2. 가로로 그리기</h3>
+<h3 id="1-2.-drawing horizontally">1-2. draing horizontally</h3>
 </div>
 </div>
 </div>
@@ -619,7 +608,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="1-3.-색상-팔레트-설정">1-3. 색상 팔레트 설정</h3>
+<h3 id="1-3.-Color-Palette-Settings">1-3. Color-Palette-Settings</h3>
 </div>
 </div>
 </div>
@@ -656,15 +645,13 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>matplotlib의 <code>hist</code> 그래프와 <code>kdeplot</code>을 통합한 그래프 입니다.</p>
-<p><strong>분포</strong>와 <strong>밀도</strong>를 확인할 수 있습니다.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://seaborn.pydata.org/generated/seaborn.distplot.html?highlight=distplot#seaborn.distplot">distplot 도큐먼트</a></p>
+<p><a href="https://seaborn.pydata.org/generated/seaborn.distplot.html?highlight=distplot#seaborn.distplot">distplot document</a></p>
 </div>
 </div>
 </div>
@@ -673,7 +660,7 @@ published: true
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 샘플데이터 생성</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># generating samples</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -683,7 +670,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="2-1.-기본-distplot">2-1. 기본 distplot</h3>
+<h3 id="2-1.-basic-distplot">2-1. basic distplot</h3>
 </div>
 </div>
 </div>
@@ -713,7 +700,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="2-2.-데이터가-Series-일-경우">2-2. 데이터가 Series 일 경우</h3>
+<h3 id="2-2.-If data is series">2-2. If data is series 일 경우</h3>
 </div>
 </div>
 </div>
@@ -751,7 +738,6 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>rug</code>는 <code>rugplot</code>이라고도 불리우며, 데이터 위치를 x축 위에 <strong>작은 선분(rug)으로 나타내어 데이터들의 위치 및 분포</strong>를 보여준다.</p>
 </div>
 </div>
 </div>
@@ -788,7 +774,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>kde</code>는 histogram보다 <strong>부드러운 형태의 분포 곡선</strong>을 보여주는 방법</p>
+<p><code>kde</code> is a method of showing a <strong>softer distribution curve</strong> than a histogram</p>
 </div>
 </div>
 </div>
@@ -818,7 +804,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="2-5.-가로로-표현하기">2-5. 가로로 표현하기</h3>
+<h3 id="2-5.-Horizontally-expressed">2-5. Expression horizontally</h3>
 </div>
 </div>
 </div>
@@ -853,7 +839,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="2-6.-컬러-바꾸기">2-6. 컬러 바꾸기</h3>
+<h3 id="2-6.-changing color">2-6. changing color</h3>
 </div>
 </div>
 </div>
@@ -890,8 +876,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>색상으로 표현할 수 있는 다양한 정보를 <strong>일정한 이미지위에 열분포 형태의 비쥬얼한 그래픽</strong>으로
-출력하는 것이 특징이다</p>
+<p>It is characterized by outputting various information that can be expressed in color as <strong>visual graphics in the form of heat distribution</strong> on a certain image</p>
 </div>
 </div>
 </div>
@@ -905,7 +890,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="3-1.-기본-heatmap">3-1. 기본 heatmap</h3>
+<h3 id="3-1.-base-heatmap">3-1. base heatmap</h3>
 </div>
 </div>
 </div>
@@ -936,7 +921,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="3-2.-pivot-table을-활용하여-그리기">3-2. pivot table을 활용하여 그리기</h3>
+<h3 id="3-2.-drawing with pivot-table">3-2. drawing with pivot table</h3>
 </div>
 </div>
 </div>
@@ -1354,8 +1339,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>pairplot은 그리도(grid) 형태로 각 <strong>집합의 조합에 대해 히스토그램과 분포도</strong>를 그립니다.</p>
-<p>또한, 숫자형 column에 대해서만 그려줍니다.</p>
+<p>pairplot draws histograms and distribution plots for each <strong>combination of sets</strong> in grid form.</p><p>또한, 숫자형 column에 대해서만 그려줍니다.</p>
 </div>
 </div>
 </div>
@@ -1463,7 +1447,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="4-1.-기본-pairplot-그리기">4-1. 기본 pairplot 그리기</h3>
+<h3 id="4-1.-base-pairplot-그리기">4-1. base pairplot 그리기</h3>
 </div>
 </div>
 </div>
@@ -1493,8 +1477,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="4-2.-hue-옵션으로-특성-구분">4-2. hue 옵션으로 특성 구분</h3>
-</div>
+<h3 id="4-2.-hue-options-characteristics-division">4-2. Differentiate characteristics with hue options</h3></div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
@@ -1523,8 +1506,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="4-3.-컬러-팔레트-적용">4-3. 컬러 팔레트 적용</h3>
-</div>
+<h3 id="4-3.-color-palette-apply">4-3. Apply color palette</h3></div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
@@ -1553,8 +1535,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="4-4.-사이즈-적용">4-4. 사이즈 적용</h3>
-</div>
+<h3 id="4-4.-size-apply">4-4. Apply size</h3></div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
@@ -1590,11 +1571,10 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>바이올린처럼 생긴 violinplot 입니다.</p>
-<p>column에 대한 <strong>데이터의 비교 분포도</strong>를 확인할 수 있습니다.</p>
+<p>This is a violinplot that looks like a violin.</p><p>column에 대한 <strong>데이터의 비교 분포도</strong>를 확인할 수 있습니다.</p>
 <ul>
-<li>곡선진 부분 (뚱뚱한 부분)은 데이터의 분포를 나타냅니다.</li>
-<li>양쪽 끝 뾰족한 부분은 데이터의 최소값과 최대값을 나타냅니다.</li>
+<li>The curved part (fat part) represents the distribution of data.</li>
+<li>The pointed parts at both ends represent the minimum and maximum values of the data.</li>
 </ul>
 </div>
 </div>
@@ -1609,7 +1589,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="5-1.-기본-violinplot-그리기">5-1. 기본 violinplot 그리기</h3>
+<h3 id="5-1.-base-violinplot-그리기">5-1. base violinplot 그리기</h3>
 </div>
 </div>
 </div>
@@ -1639,15 +1619,13 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="5-2.-비교-분포-확인">5-2. 비교 분포 확인</h3>
-</div>
+<h3 id="5-2.-Comparison-Distribution-Check">5-2. Check comparative distribution</h3></div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>x, y축을 지정해줌으로썬 바이올린을 분할하여 <strong>비교 분포</strong>를 볼 수 있습니다.</p>
-</div>
+<p>By specifying the x and y axes, you can split the violin and see the <strong>comparison distribution</strong>.</p></div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
@@ -1676,7 +1654,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="5-3.-가로로-뉘인-violinplot">5-3. 가로로 뉘인 violinplot</h3>
+<h3 id="5-3.-Skewed horizontally-violinplot">5-3. Skewed horizontally violinplot</h3>
 </div>
 </div>
 </div>
@@ -1706,15 +1684,15 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="5-4.-hue-옵션으로-분포-비교">5-4. hue 옵션으로 분포 비교</h3>
+<h3 id="5-4.-hue-options-distribution-comparison">5-4. Compare distribution with hue option</h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>사실 hue 옵션을 사용하지 않으면 바이올린이 대칭이기 때문에 비교 분포의 큰 의미는 없습니다.</p>
-<p>하지만, hue 옵션을 주면, <strong>단일 column에 대한 바이올린 모양의 비교</strong>를 할 수 있습니다.</p>
+<p>In fact, if you do not use the hue option, the comparison distribution does not have much meaning because the violin is symmetrical.</p>
+<p>However, if you give the hue option, you can <strong>compare the violin shape</strong> for a single column.</p>
 </div>
 </div>
 </div>
@@ -1744,7 +1722,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="5-5.-split-옵션으로-바이올린을-합쳐서-볼-수-있습니다.">5-5. split 옵션으로 바이올린을 합쳐서 볼 수 있습니다.</h3>
+<h3 id="5-5. You can view the violins by combining them with the split option.">5-5. You can view the violins by combining them with the split option.</h3>
 </div>
 </div>
 </div>
@@ -1781,8 +1759,8 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>lmplot</code>은 column 간의 <strong>선형관계를 확인하기에 용이한 차트</strong>입니다.</p>
-<p>또한, <strong>outlier</strong>도 같이 짐작해 볼 수 있습니다.</p>
+<p><code>lmplot</code> is a chart that is easy to check the <strong>linear relationship</strong> between columns.</p>
+<p> You can also guess the <strong>outlier</strong>.</p>
 </div>
 </div>
 </div>
@@ -1826,14 +1804,13 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="6-2.-hue-옵션으로-다중-선형관계-그리기">6-2. hue 옵션으로 다중 선형관계 그리기</h3>
-</div>
+<h3 id="6-2.-hue-options-multi-linear-relationship-drawing">6-2. Drawing multiple linear relationships with hue option</h3></div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>아래의 그래프를 통하여 비흡연자가, 흡연자 대비 좀 더 <strong>가파른 선형관계</strong>를 가지는 것을 볼 수 있습니다.</p>
+<p>Through the graph below, you can see that non-smokers have a more <strong>steep linear relationship</strong> than smokers.</p>
 </div>
 </div>
 </div>
@@ -1863,14 +1840,14 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="6-3.-col-옵션을-추가하여-그래프를-별도로-그려볼-수-있습니다">6-3. col 옵션을 추가하여 그래프를 별도로 그려볼 수 있습니다</h3>
+<h3 id="You can draw the graph separately by adding the 6-3.-col option">6-3. You can draw the graph separately by adding the col option</h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>또한, <code>col_wrap</code>으로 한 줄에 표기할 column의 갯수를 명시할 수 있습니다.</p>
+<p>Also, you can specify the number of columns to be displayed in one line with <code>col_wrap</code>.</p>
 </div>
 </div>
 </div>
@@ -1907,7 +1884,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>두 column간 상관관계를 보지만 <code>lmplot</code>처럼 선형관계를 따로 그려주지는 않습니다.</p>
+<p>It shows the correlation between two columns, but does not draw a separate linear relationship like <code>lmplot</code>.</p>
 </div>
 </div>
 </div>
@@ -1921,7 +1898,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="7-1.-기본-relplot">7-1. 기본 relplot</h3>
+<h3 id="7-1.-base-relplot">7-1. base relplot</h3>
 </div>
 </div>
 </div>
@@ -1951,7 +1928,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="7-2.-col-옵션으로-그래프-분할">7-2. col 옵션으로 그래프 분할</h3>
+<h3 id="7-2.-col-options-graph-split">7-2. Split graph with col option</h3>
 </div>
 </div>
 </div>
@@ -1981,7 +1958,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="7-3.-row와-column에-표기할-데이터-column-선택">7-3. row와 column에 표기할 데이터 column 선택</h3>
+<h3 id="7-3. Select-data-column-to-be-displayed-in-row and-column">7-3. Select data column to display in row and column</h3>
 </div>
 </div>
 </div>
@@ -2011,7 +1988,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="7-4.-컬러-팔레트-적용">7-4. 컬러 팔레트 적용</h3>
+<h3 id="7-4.-color-palette-apply">7-4. Apply color palette</h3>
 </div>
 </div>
 </div>
@@ -2048,8 +2025,8 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>scatter(산점도)와 histogram(분포)을 동시에 그려줍니다.</p>
-<p>숫자형 데이터만 표현 가능하니, 이 점 유의하세요.</p>
+<p>Draws a scatter plot and a histogram at the same time.</p>
+<p>Only numeric data can be expressed, so please keep this in mind.</p>
 </div>
 </div>
 </div>
@@ -2063,7 +2040,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="8-1.-기본-jointplot-그리기">8-1. 기본 jointplot 그리기</h3>
+<h3 id="8-1.-basic-jointplot-drawing">8-1. Drawing a basic jointplot</h3>
 </div>
 </div>
 </div>
@@ -2093,15 +2070,14 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="8-2.-선형관계를-표현하는-regression-라인-그리기">8-2. 선형관계를 표현하는 regression 라인 그리기</h3>
+<h3 id="8-2.-Drawing-regression-line-expressing-linear-relationship">8-2. Drawing a regression line to express a linear relationship</h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>옵션에 <strong>kind='reg'</strong>을 추가해 줍니다.</p>
-</div>
+<p>Add <strong>kind='reg'</strong> to the options.</p></div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
@@ -2130,14 +2106,14 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="8-3.-hex-밀도-보기">8-3. hex 밀도 보기</h3>
+<h3 id="8-3.-hex-density-view">8-3. View hex density</h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>kind='hex'</strong> 옵션을 통해 hex 모양의 밀도를 확인할 수 있습니다.</p>
+<p>You can check the density of the hex shape through the <strong>kind='hex'</strong> option.</p>
 </div>
 </div>
 </div>
@@ -2167,14 +2143,14 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="8-4.-등고선-모양으로-밀집도-확인하기">8-4. 등고선 모양으로 밀집도 확인하기</h3>
+<h3 id="8-4.-Check density-by-contour-shape">8-4. Check density with contour shape</h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>kind='kde'</strong> 옵션으로 데이터의 밀집도를 보다 부드러운 선으로 확인할 수 있습니ㅏ.</p>
+<p>With the<strong>kind='kde'</strong> option, you can check the density of the data with a smoother line.</p>
 </div>
 </div>
 </div>
