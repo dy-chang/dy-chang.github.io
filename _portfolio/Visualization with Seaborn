@@ -1,6 +1,7 @@
 ---
 layout: page
 title: "Seaborn's Statistical Charts and Data Visualization Examples"
+excerpt: "Explanatory Data Analysis for bus-ridership data with Python. <br/><img src='/images/seaborn_01.png'>"
 description: "Let's learn about data visualization graph examples and methods using Seaborn."
 headline: "Let's learn about data visualization graph examples and methods using Seaborn."
 comments: true
