@@ -30,9 +30,9 @@ published: true
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 한글 폰트 적용</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Apply font</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">'font'</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">'NanumBarunGothic'</span><span class="p">)</span> 
-<span class="c1"># 캔버스 사이즈 적용</span>
+<span class="c1"># Apply canvas size</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">"figure.figsize"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -42,7 +42,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="통계-기반의-시각화를-제공해주는-Seaborn">통계 기반의 시각화를 제공해주는 Seaborn</h2>
+<h2 id="Statistical visualization-Seaborn">Statistical visualization-Seaborn</h2>
 </div>
 </div>
 </div>
@@ -529,7 +529,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://seaborn.pydata.org/generated/seaborn.countplot.html">countplot 공식 도큐먼트</a></p>
+<p><a href="https://seaborn.pydata.org/generated/seaborn.countplot.html">countplot document/a></p>
 </div>
 </div>
 </div>
@@ -700,7 +700,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="2-2.-If data is series">2-2. If data is series 일 경우</h3>
+<h3 id="2-2.-If data is series">2-2. If data is series </h3>
 </div>
 </div>
 </div>
@@ -883,7 +883,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://seaborn.pydata.org/generated/seaborn.heatmap.html?highlight=heatmap#seaborn.heatmap">heatmap 도큐먼트</a></p>
+<p><a href="https://seaborn.pydata.org/generated/seaborn.heatmap.html?highlight=heatmap#seaborn.heatmap">heatmap document</a></p>
 </div>
 </div>
 </div>
@@ -1148,14 +1148,14 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="3-3.-correlation(상관관계)를-시각화">3-3. correlation(상관관계)를 시각화</h3>
+<h3 id="3-3.-correlation visualization">3-3. correlation visualization</h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>corr()</strong> 함수는 데이터의 상관관계를 보여줍니다.</p>
+<p><strong>corr()</strong> shows the correlation for data set.</p>
 </div>
 </div>
 </div>
@@ -1332,7 +1332,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://seaborn.pydata.org/generated/seaborn.pairplot.html?highlight=pairplot#seaborn.pairplot">pairplot 도큐먼트</a></p>
+<p><a href="https://seaborn.pydata.org/generated/seaborn.pairplot.html?highlight=pairplot#seaborn.pairplot">pairplot document</a></p>
 </div>
 </div>
 </div>
@@ -1447,7 +1447,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="4-1.-base-pairplot-그리기">4-1. base pairplot 그리기</h3>
+<h3 id="4-1.-base-pairplot-drawing">4-1. base pairplot drawing</h3>
 </div>
 </div>
 </div>
@@ -1571,7 +1571,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This is a violinplot that looks like a violin.</p><p>column에 대한 <strong>데이터의 비교 분포도</strong>를 확인할 수 있습니다.</p>
+<p>This is a violinplot that looks like a violin.</p><p>column에 대한 <strong>distribution comparison for data </strong>.</p>
 <ul>
 <li>The curved part (fat part) represents the distribution of data.</li>
 <li>The pointed parts at both ends represent the minimum and maximum values of the data.</li>
@@ -1589,7 +1589,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="5-1.-base-violinplot-그리기">5-1. base violinplot 그리기</h3>
+<h3 id="5-1.-base-violinplot-drawing">5-1. base violinplot drawing</h3>
 </div>
 </div>
 </div>
@@ -1767,14 +1767,14 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://seaborn.pydata.org/generated/seaborn.lmplot.html">lmplot 도큐먼트</a></p>
+<p><a href="https://seaborn.pydata.org/generated/seaborn.lmplot.html">lmplot document</a></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="6-1.-기본-lmplot">6-1. 기본 lmplot</h3>
+<h3 id="6-1.-base-lmplot">6-1. base lmplot</h3>
 </div>
 </div>
 </div>
@@ -1891,7 +1891,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://seaborn.pydata.org/generated/seaborn.relplot.html?highlight=relplot#seaborn.relplot">relplot 도큐먼트</a></p>
+<p><a href="https://seaborn.pydata.org/generated/seaborn.relplot.html?highlight=relplot#seaborn.relplot">relplot document</a></p>
 </div>
 </div>
 </div>
@@ -2033,7 +2033,7 @@ published: true
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://seaborn.pydata.org/generated/seaborn.jointplot.html?highlight=jointplot#seaborn.jointplot">jointplot 도큐먼트</a></p>
+<p><a href="https://seaborn.pydata.org/generated/seaborn.jointplot.html?highlight=jointplot#seaborn.jointplot">jointplot document</a></p>
 </div>
 </div>
 </div>
