@@ -1,0 +1,21 @@
+---
+title: "Earthquake Evacuation Simulation - St. Louis Region"
+excerpt: "12-scenario evacuation modeling for 7.9 million daily trips"
+collection: portfolio
+category: "simulation"
+---
+
+## Project Scale
+- **Scenarios**: 12 complex evacuation scenarios for magnitude 6.7 earthquake
+- **Data Volume**: 7.9 million daily trips processing
+- **Tools**: CUBE macroscopic/mesoscopic analysis with USGS ShakeCast integration
+
+## Technical Innovation
+- Integration of heterogeneous data sources (survey, census, geological)
+- Dynamic Traffic Assignment implementation
+- GIS heat map generation for bottleneck identification
+
+## Results
+- Validated evacuation route recommendations for mobile application
+- Quantified network degradation using delay, speed, and LOS metrics
+- Led multi-stakeholder tabletop exercise for inter-agency coordination
