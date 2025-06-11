@@ -1,0 +1,22 @@
+---
+title: "Francis Scott Key Bridge Collapse - Regional Impact Analysis"
+excerpt: "Comprehensive traffic performance evaluation using Iteris ClearGuide data"
+collection: portfolio
+category: "disaster-response"
+---
+
+## Project Overview
+Led comprehensive regional traffic performance evaluation following the Francis Scott Key Bridge collapse, utilizing advanced data analytics and GIS-based corridor mapping.
+
+## Technical Approach
+- **Data Source**: Iteris ClearGuide high-frequency transportation data
+- **Analysis Tools**: QGIS for spatial analysis, Python for statistical modeling
+- **Scope**: Regional mobility, reliability, and congestion pattern assessment
+
+## Key Achievements
+- Developed interactive visualizations supporting post-event planning
+- Provided data-driven insights for agency communication
+- Identified critical service degradation areas through accessibility analysis
+
+## Impact
+Research findings directly supported emergency response planning and infrastructure resilience decision-making processes.
