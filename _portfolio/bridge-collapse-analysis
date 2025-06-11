@@ -1,0 +1,146 @@
+# Project: Traffic Impact Analysis of the Key Bridge Collapse using INRIX ClearGuide
+
+# Folder structure to be used:
+# clear-guide-impact-analysis/
+# ├── README.md
+# ├── notebooks/
+# ├── data/
+# ├── output/
+# ├── dashboard/
+# ├── requirements.txt
+
+# 1. README.md content
+README = """
+# 🛣️ Traffic Impact Analysis of the Key Bridge Collapse using INRIX ClearGuide
+
+This project evaluates the corridor-level impact of the Francis Scott Key Bridge collapse (March 2024) on travel reliability and delay in the Baltimore metropolitan area.
+
+## 🔍 What This Analysis Covers
+- ✅ Route-level analysis using INRIX ClearGuide data
+- 📉 Panel regression and DiD modeling for causal impact evaluation
+- 🗺️ GeoJSON-based interactive maps showing spatial shifts in TTI
+- 📊 Seasonal comparison: Immediate, Fall, and Winter scenarios
+- 💻 Tools: Python, Statsmodels, GeoPandas, Plotly, Folium, Streamlit
+
+## 📎 Sample Outputs
+| Interactive Map | DiD Model Summary | Dashboard |
+|----------------|-------------------|-----------|
+| ![](output/tti_change_map.png) | ![](output/summary_table.png) | [▶️ View Dashboard](dashboard/index.html) |
+
+## 📁 Project Structure
+- `notebooks/` → Reproducible Jupyter analysis
+- `dashboard/` → Streamlit app with filters and charts
+- `output/` → Exported maps, plots, and result tables
+
+## 🧪 Try It Yourself
+```bash
+git clone https://github.com/dy-chang/clear-guide-impact-analysis
+cd clear-guide-impact-analysis
+pip install -r requirements.txt
+streamlit run dashboard/streamlit_app.py
+```
+
+📧 Contact: dy.chang@email.com | 🧑‍🔬 [LinkedIn](https://linkedin.com/in/yourname)
+"""
+
+# 2. requirements.txt
+requirements = [
+    "pandas",
+    "geopandas",
+    "statsmodels",
+    "folium",
+    "plotly",
+    "streamlit",
+    "numpy",
+    "matplotlib",
+    "jupyter"
+]
+
+# 3. notebooks/ structure
+notebooks = [
+    "01_data_overview.ipynb",
+    "02_modeling_DiD.ipynb",
+    "03_visualization_maps.ipynb",
+    "04_dashboard_summary.ipynb"
+]
+
+# 4. dashboard/streamlit_app.py placeholder
+streamlit_app = """
+import streamlit as st
+import pandas as pd
+import folium
+from streamlit_folium import folium_static
+
+st.set_page_config(layout="wide")
+st.title("Key Bridge Collapse - Traffic Impact Dashboard")
+
+# Load data
+df = pd.read_csv("../data/sample_aggregated_traffic.csv")
+
+# Display map placeholder
+m = folium.Map(location=[39.29, -76.61], zoom_start=10)
+folium.TileLayer('cartodbpositron').add_to(m)
+folium_static(m)
+
+# Add filter widgets
+st.sidebar.selectbox("Scenario", ["Immediate", "Fall", "Winter"])
+st.sidebar.radio("Peak", ["AM", "PM"])
+"""
+
+# 5. _posts Markdown for Jekyll blog
+jekyll_post = """
+---
+layout: post
+title: "Traffic Impact Analysis of the Key Bridge Collapse using INRIX ClearGuide"
+date: 2025-06-10
+categories: [Projects, Transportation Analytics]
+tags: [traffic, DiD, ClearGuide, python, visualization]
+---
+
+🚧 **Project Summary**
+
+In the aftermath of the *Francis Scott Key Bridge collapse (March 2024)*, I led a data-driven impact analysis using **INRIX ClearGuide** traffic performance data across key corridors in the Baltimore region.
+
+This analysis quantifies changes in congestion, delay, and reliability metrics through both **statistical modeling** and **interactive visualization**.
+
+---
+
+### 📊 Key Methods
+
+- **Data**: 15-min interval ClearGuide data for 50+ predefined routes  
+- **Scenarios**: Immediate (Mar–Apr), Fall, and Winter comparison, AM/PM peaks  
+- **Models**: Fixed Effects, Mixed Models, and Difference-in-Differences (DiD)  
+- **Tools**: Python (Pandas, GeoPandas, Statsmodels, Plotly, Folium), QGIS
+
+---
+
+### 🌍 Interactive Outputs
+
+🗺️ **Corridor-Level TTI Change Map**  
+<iframe src="https://dy-chang.github.io/clear-guide-impact-analysis/output/tti_change_map.html" width="100%" height="500px"></iframe>
+
+📈 **Scenario Summary Dashboard**  
+👉 [Launch Interactive Dashboard](https://dy-chang.github.io/clear-guide-impact-analysis/dashboard)
+
+---
+
+### 📁 Project Repository
+
+You can explore the full code, notebooks, and data documentation on GitHub:
+
+🔗 [GitHub: clear-guide-impact-analysis](https://github.com/dy-chang/clear-guide-impact-analysis)
+
+---
+
+### 📌 Highlights
+
+- Identified **top 20% most impacted corridors** using ΔTTI  
+- Produced **policy-usable visuals** for DOT briefings  
+- Combined **modeling and mapping** to support real-world decision making
+
+---
+
+Feel free to contact me for collaboration or questions about methodology!
+"""
+
+# Placeholder output; you can now fill in the actual files in your local repo or I can generate dummy data/visuals.
