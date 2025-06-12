@@ -6,7 +6,7 @@ headline: "Let's practice on predicting Bostong Housing prices (Gradient Descent
 categories: machine-learning
 tags: boston-housing-dataset
 comments: true
-published: true
+published: false
 
 ---
 
