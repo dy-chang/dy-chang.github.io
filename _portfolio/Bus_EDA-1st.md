@@ -3,6 +3,7 @@ title:  "Explanatory Data Analysis Example (1)"
 excerpt: "Explanatory Data Analysis for bus-ridership data with Python. <br/><img src='/images/header_eda.jpg'>"
 description: "Dealing with bus ridership data to understand patterns and demands."
 collection: portfolio
+published: false
 ---
 
 
