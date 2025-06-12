@@ -9,7 +9,7 @@ You can write a more detailed description of the project here. Explain the purpo
 
 ## Preview
 
-![Map Visualization Screenshot](../assets/images/winnipeg_transit.png)
+![Map Visualization Screenshot](../assets/winnipeg_transit.png)
 ## Live Demo
 
 Click the link below to explore the interactive map yourself.
