@@ -6,7 +6,7 @@ headline: "Let's learn about scikit-learn data preprocessing methods."
 ---
 
 
-
+published: false
 <br/>
 
 # scikit-learn data pre-processing
@@ -1124,3 +1124,4 @@ Name: day, dtype: int64</pre>
 </div>
 </div>
 </body>
+published: false
