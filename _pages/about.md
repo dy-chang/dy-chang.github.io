@@ -8,31 +8,16 @@ redirect_from:
   - /about.html
 ---
 
-# Welcome to My Portfolio
+# Transportation Data Scientist and Modeler
 
-I am a **Transportation Engineer** with expertise in traffic simulation, disaster response modeling, and VR technology applications. Currently serving as a Postdoctoral Research Associate at Morgan State University's SMARTER Center, I specialize in analyzing complex transportation systems and developing innovative solutions for real-world challenges.
+I develop quantitative models that support transportation planning, resilience analysis, and evidence-based public decision-making.
+
+My work focuses on understanding how transportation systems perform under disruption, uncertainty, and large-scale change. I specialize in evacuation modeling, dynamic traffic assignment (DTA), and data-driven system performance analysis, integrating simulation, econometrics, and interpretable machine learning.
+
+During my Ph.D. and postdoctoral research in the United States, I have examined disaster evacuation dynamics, infrastructure disruption impacts, and corridor-level heterogeneity using scenario-based simulation, panel econometric methods, and predictive modeling. My work emphasizes translating complex analytical results into clear, decision-ready insights for transportation agencies.
+
+Earlier in my career, I led the travel demand modeling and traffic assignment components of national-level feasibility studies, including O/D matrix refinement, network modification, calibration against observed traffic counts, and demand-based inputs for benefit–cost evaluation. This foundation in large-scale demand modeling informs my current resilience and systems-oriented research.
 
 ## Research Focus
 
-My research centers on three key areas:
-
-### 🚗 Traffic Simulation & Modeling
-- Advanced microsimulation using VISSIM, DynusT, and CUBE
-- Large-scale evacuation modeling with 7.9 million daily trip analysis
-- Dynamic Traffic Assignment (DTA) implementation
-
-### 🌊 Disaster Response & Resilience
-- Post-disaster transportation impact assessment
-- Regional traffic performance evaluation using real-time data
-- Emergency evacuation planning and optimization
-
-### 🥽 VR/AR Technology in Transportation
-- Immersive work zone inspection training systems
-- Unity 3D-based VR driving simulators
-- Integration of motion capture with transportation safety protocols
-
-## Current Projects
-
-**Francis Scott Key Bridge Collapse Analysis** - Leading comprehensive regional impact assessment using Iteris ClearGuide data and advanced GIS mapping to evaluate mobility and congestion patterns.
-
-**Transportation Resilience Research** - Developing methodologies to assess short and medium-term impacts of infrastructure failures on critical facility accessibility.
+Recent research examines how transportation systems respond to disruption and uncertainty, combining dynamic simulation, econometric analysis, and interpretable machine learning to support resilience-oriented planning and public-sector investment decisions.
