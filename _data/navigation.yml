@@ -1,16 +1,21 @@
 main:
-  - title: "About"
+  - title: "Home"
     url: /
-  - title: "Research"
-    url: /research/
+
+  - title: "Projects"
+    url: /projects/
+
+  - title: "Data & Methods"
+    url: /tools/
+
   - title: "Publications"
     url: /publications/
-  - title: "Projects"
-    url: /portfolio/
-  - title: "Skills"
-    url: /skills/
+
   - title: "CV"
     url: /cv/
+
+  - title: "Contact"
+    url: /contact/
 
   #- title: "Guide"
   #  url: /markdown/
