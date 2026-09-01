@@ -1,11 +1,12 @@
 /**
- * Clean Application Controller
+ * Clean Application Controller with Visual Pipeline & Interactive Matrix
  * Dr. Daeyeol (Daniel) Chang Portfolio
  */
 
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
-  renderWorkflow();
+  renderMatrix();
+  renderPipeline();
   renderProjects();
   renderRepositories();
   renderPublications();
@@ -40,7 +41,7 @@ function initTheme() {
   }
 }
 
-/* Smooth Scroll Navigation (Zero 404s) */
+/* Smooth Scroll Navigation */
 function setupSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener("click", function(e) {
@@ -74,20 +75,82 @@ function setupSmoothScroll() {
   }
 }
 
-/* Render Visual Modeling Workflow */
-function renderWorkflow() {
-  const container = document.getElementById("workflowGrid");
+/* Render Hero Interactive Matrix */
+function renderMatrix() {
+  const container = document.getElementById("heroMatrix");
+  const detailContainer = document.getElementById("matrixDetail");
   if (!container) return;
 
-  container.innerHTML = PORTFOLIO_DATA.workflowSteps.map(step => `
-    <div class="p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
-      <div class="flex items-center justify-between">
-        <span class="text-xs font-mono font-bold text-blue-700 dark:text-blue-400">Step ${step.step}</span>
-        <span class="w-2 h-2 rounded-full bg-slate-300 dark:bg-slate-700"></span>
+  container.innerHTML = PORTFOLIO_DATA.profile.pillars.map((p, idx) => `
+    <button onclick="selectPillar('${p.id}')" class="matrix-btn p-3 rounded-lg border text-left transition-all ${idx === 1 ? 'border-blue-600 bg-blue-50/50 dark:bg-blue-950/40 dark:border-blue-500' : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-slate-400'}" id="pbtn-${p.id}">
+      <div class="flex items-center justify-between mb-1">
+        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400">${p.badge}</span>
+        <span class="w-1.5 h-1.5 rounded-full ${idx === 1 ? 'bg-blue-600' : 'bg-slate-300 dark:bg-slate-700'}"></span>
       </div>
-      <h3 class="text-sm font-bold text-slate-900 dark:text-slate-100">${step.title}</h3>
-      <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">${step.desc}</p>
-      <div class="text-[11px] font-mono text-slate-500 pt-2 border-t border-slate-100 dark:border-slate-800">${step.tools}</div>
+      <div class="text-xs font-bold text-slate-900 dark:text-slate-100 leading-snug">${p.title}</div>
+      <div class="text-[11px] text-slate-500 line-clamp-1 mt-0.5">${p.tools}</div>
+    </button>
+  `).join("");
+
+  if (detailContainer) {
+    const active = PORTFOLIO_DATA.profile.pillars[1]; // default to ML & Stats
+    detailContainer.innerHTML = `
+      <div class="text-xs font-semibold text-slate-900 dark:text-slate-100">${active.title} <span class="font-normal text-slate-500">(${active.tools})</span></div>
+      <div class="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed mt-1">${active.detail}</div>
+    `;
+  }
+}
+
+window.selectPillar = function(id) {
+  const pillar = PORTFOLIO_DATA.profile.pillars.find(p => p.id === id);
+  if (!pillar) return;
+
+  document.querySelectorAll(".matrix-btn").forEach(b => {
+    b.className = "matrix-btn p-3 rounded-lg border text-left transition-all border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-slate-400";
+  });
+
+  const activeBtn = document.getElementById(`pbtn-${id}`);
+  if (activeBtn) {
+    activeBtn.className = "matrix-btn p-3 rounded-lg border text-left transition-all border-blue-600 bg-blue-50/50 dark:bg-blue-950/40 dark:border-blue-500";
+  }
+
+  const detailContainer = document.getElementById("matrixDetail");
+  if (detailContainer) {
+    detailContainer.innerHTML = `
+      <div class="text-xs font-semibold text-slate-900 dark:text-slate-100">${pillar.title} <span class="font-normal text-slate-500">(${pillar.tools})</span></div>
+      <div class="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed mt-1">${pillar.detail}</div>
+    `;
+  }
+};
+
+/* Render Connected Visual Pipeline */
+function renderPipeline() {
+  const container = document.getElementById("pipelineFlow");
+  if (!container) return;
+
+  container.innerHTML = PORTFOLIO_DATA.pipeline.map((stage, idx) => `
+    <div class="relative flex-1 p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-md bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-xs font-bold font-mono flex items-center justify-center">${stage.step}</span>
+          <span class="text-[11px] font-bold text-blue-700 dark:text-blue-400 uppercase tracking-wide">${stage.category}</span>
+        </div>
+        <i data-lucide="${stage.icon}" class="w-4 h-4 text-slate-400"></i>
+      </div>
+
+      <h3 class="text-sm font-bold text-slate-900 dark:text-slate-100">${stage.name}</h3>
+
+      <div class="space-y-1 text-xs">
+        <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Core Engines & Feeds:</div>
+        <ul class="space-y-0.5 text-[11px] text-slate-600 dark:text-slate-300">
+          ${stage.inputs.map(inp => `<li class="flex items-start gap-1"><span class="text-blue-600 dark:text-blue-400">•</span><span>${inp}</span></li>`).join("")}
+        </ul>
+      </div>
+
+      <div class="pt-2 border-t border-slate-100 dark:border-slate-800">
+        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-0.5">Primary Output:</span>
+        <span class="text-[11px] font-mono text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-950 px-1.5 py-0.5 rounded border border-slate-200/60 dark:border-slate-800 block truncate">${stage.outputs}</span>
+      </div>
     </div>
   `).join("");
 }
@@ -124,7 +187,7 @@ function renderProjects() {
 
       <!-- Key Quantitative Takeaways -->
       <div class="space-y-1.5 pt-1">
-        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Key Empirical Findings & Takeaways</h4>
+        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Key Empirical Findings & Policy Takeaways</h4>
         <ul class="space-y-1 text-xs text-slate-600 dark:text-slate-400">
           ${proj.takeaways.map(t => `<li class="flex items-start gap-2"><span class="text-blue-600 dark:text-blue-400 font-bold mt-0.5">•</span><span>${t}</span></li>`).join("")}
         </ul>

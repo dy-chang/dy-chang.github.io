@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Daeyeol (Daniel) Chang, Ph.D. | Transportation Planner & Modeler</title>
-  <meta name="description" content="Portfolio of Daeyeol (Daniel) Chang, Ph.D. - Senior Transportation Planner & Modeler at Benesch. Regional travel demand forecasting, DTA simulation, and connected vehicle big data.">
+  <meta name="description" content="Portfolio of Daeyeol (Daniel) Chang, Ph.D. - Senior Transportation Planner & Modeler at Benesch. Regional travel demand forecasting, machine learning, advanced statistics, DTA simulation, and connected vehicle big data.">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -49,7 +49,7 @@
       <!-- Desktop Nav -->
       <nav class="hidden md:flex items-center gap-6 text-xs font-medium text-slate-600 dark:text-slate-400">
         <a href="#about" class="hover:text-slate-900 dark:hover:text-white transition-colors">About</a>
-        <a href="#workflow" class="hover:text-slate-900 dark:hover:text-white transition-colors">Workflow</a>
+        <a href="#workflow" class="hover:text-slate-900 dark:hover:text-white transition-colors">Pipeline</a>
         <a href="#projects" class="hover:text-slate-900 dark:hover:text-white transition-colors">Projects</a>
         <a href="#visualizations" class="hover:text-slate-900 dark:hover:text-white transition-colors">Demos</a>
         <a href="#toolkits" class="hover:text-slate-900 dark:hover:text-white transition-colors">Open Source</a>
@@ -59,7 +59,7 @@
 
       <!-- Right Links & Theme Toggle -->
       <div class="flex items-center gap-2">
-        <a href="mailto:chang.daeyeol@gmail.com" class="p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors" title="Email">
+        <a href="mailto:chang.daeyeol@gmail.com" class="p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors" title="Email (chang.daeyeol@gmail.com)">
           <i data-lucide="mail" class="w-4 h-4"></i>
         </a>
         <a href="https://www.linkedin.com/in/chang-daeyeol/" target="_blank" rel="noopener noreferrer" class="p-2 text-slate-500 hover:text-blue-700 dark:text-slate-400 dark:hover:text-blue-400 transition-colors" title="LinkedIn">
@@ -84,7 +84,7 @@
     <!-- Mobile Dropdown -->
     <div id="mobileNav" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 space-y-2 text-xs font-medium">
       <a href="#about" class="block py-1 text-slate-700 dark:text-slate-300">About</a>
-      <a href="#workflow" class="block py-1 text-slate-700 dark:text-slate-300">Workflow</a>
+      <a href="#workflow" class="block py-1 text-slate-700 dark:text-slate-300">Pipeline</a>
       <a href="#projects" class="block py-1 text-slate-700 dark:text-slate-300">Projects</a>
       <a href="#visualizations" class="block py-1 text-slate-700 dark:text-slate-300">Demos</a>
       <a href="#toolkits" class="block py-1 text-slate-700 dark:text-slate-300">Open Source</a>
@@ -96,64 +96,76 @@
   <main class="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16">
 
     <!-- =======================================================================
-         About Section
+         About & Interactive Matrix Hero
          ======================================================================= -->
     <section id="about" class="space-y-6">
-      <div class="space-y-2">
-        <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
-          Daeyeol (Daniel) Chang, Ph.D.
-        </h1>
-        <p class="text-sm sm:text-base font-medium text-blue-700 dark:text-blue-400">
-          Senior Transportation Planner & Modeler &bull; Benesch (Baltimore, MD)
-        </p>
-      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left Hero Summary -->
+        <div class="lg:col-span-6 space-y-4">
+          <div class="space-y-1.5">
+            <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
+              Daeyeol (Daniel) Chang, Ph.D.
+            </h1>
+            <p class="text-sm sm:text-base font-semibold text-blue-700 dark:text-blue-400">
+              Senior Transportation Planner & Modeler &bull; Benesch (Baltimore, MD)
+            </p>
+          </div>
 
-      <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed max-w-3xl">
-        Senior transportation planner and quantitative modeler with 10+ years of experience in regional travel demand forecasting, dynamic traffic assignment (DTA), connected vehicle GPS probe analytics (ClearGuide, INRIX), and infrastructure resilience planning for state DOTs (MoDOT, MDOT), MPOs, and USDOT research centers.
-      </p>
+          <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+            Senior transportation planner and quantitative modeler with 10+ years of experience bridging <strong>regional travel demand forecasting</strong>, <strong>machine learning & advanced econometrics</strong>, <strong>dynamic traffic assignment (DTA)</strong>, and <strong>connected vehicle GPS probe big data</strong> for State DOTs (MoDOT, MDOT), MPOs, and USDOT research centers.
+          </p>
 
-      <!-- 3 Key Pillars -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
-        <div class="p-3.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-          <div class="text-xs font-bold text-slate-900 dark:text-slate-100 mb-1">Travel Demand Modeling</div>
-          <div class="text-[11px] text-slate-500">CUBE Voyager, PTV Visum, TransCAD, EMME/3, Select-Zone</div>
+          <div class="flex flex-wrap gap-3 text-xs font-medium pt-1">
+            <a href="mailto:chang.daeyeol@gmail.com" class="inline-flex items-center gap-1.5 text-blue-700 dark:text-blue-400 font-semibold hover:underline">
+              <i data-lucide="mail" class="w-3.5 h-3.5"></i> chang.daeyeol@gmail.com
+            </a>
+            <a href="https://www.linkedin.com/in/chang-daeyeol/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+              <i data-lucide="linkedin" class="w-3.5 h-3.5"></i> LinkedIn
+            </a>
+            <a href="https://scholar.google.com/citations?user=8bu0_WoAAAAJ&hl=ko&oi=ao" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+              <i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i> Google Scholar
+            </a>
+            <a href="https://github.com/dy-chang" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+              <i data-lucide="github" class="w-3.5 h-3.5"></i> GitHub (@dy-chang)
+            </a>
+          </div>
         </div>
-        <div class="p-3.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-          <div class="text-xs font-bold text-slate-900 dark:text-slate-100 mb-1">Traffic Simulation & DTA</div>
-          <div class="text-[11px] text-slate-500">PTV Vissim (DTA), DynusT, DTALite, UC-win/Road, LOS</div>
-        </div>
-        <div class="p-3.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-          <div class="text-xs font-bold text-slate-900 dark:text-slate-100 mb-1">Probe Big Data & Resilience</div>
-          <div class="text-[11px] text-slate-500">ClearGuide, INRIX, Mixed Logit, DiD, USGS ShakeCast</div>
-        </div>
-      </div>
 
-      <div class="flex flex-wrap gap-4 text-xs font-medium pt-1">
-        <a href="mailto:chang.daeyeol@gmail.com" class="inline-flex items-center gap-1.5 text-blue-700 dark:text-blue-400 font-semibold hover:underline">
-          <i data-lucide="mail" class="w-3.5 h-3.5"></i> chang.daeyeol@gmail.com
-        </a>
-        <a href="https://www.linkedin.com/in/chang-daeyeol/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
-          <i data-lucide="linkedin" class="w-3.5 h-3.5"></i> LinkedIn
-        </a>
-        <a href="https://scholar.google.com/citations?user=8bu0_WoAAAAJ&hl=ko&oi=ao" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
-          <i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i> Google Scholar
-        </a>
-        <a href="https://github.com/dy-chang" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
-          <i data-lucide="github" class="w-3.5 h-3.5"></i> GitHub (@dy-chang)
-        </a>
+        <!-- Right Interactive Competency Matrix Card -->
+        <div class="lg:col-span-6 p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+          <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-200 flex items-center gap-1.5">
+              <i data-lucide="layers" class="w-3.5 h-3.5 text-blue-700 dark:text-blue-400"></i> Multi-Scale Competency Matrix
+            </span>
+            <span class="text-[11px] text-slate-400 font-mono">Select quadrant</span>
+          </div>
+
+          <!-- 4 Interactive Quadrant Buttons -->
+          <div id="heroMatrix" class="grid grid-cols-2 gap-2">
+            <!-- Rendered by app.js -->
+          </div>
+
+          <!-- Dynamic Detail Box -->
+          <div id="matrixDetail" class="p-3 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-800/80">
+            <!-- Rendered by app.js -->
+          </div>
+        </div>
+
       </div>
     </section>
 
 
     <!-- =======================================================================
-         Visual Modeling & Analytics Workflow
+         Visual Modeling & Analytics Pipeline (Connected Flowchart)
          ======================================================================= -->
     <section id="workflow" class="space-y-4">
       <div class="border-b border-slate-200 dark:border-slate-800 pb-2.5 flex justify-between items-baseline">
-        <h2 class="text-base font-bold uppercase tracking-wider text-slate-900 dark:text-white">Technical Modeling Pipeline</h2>
-        <span class="text-xs text-slate-400 font-mono">End-to-End Methodology</span>
+        <h2 class="text-base font-bold uppercase tracking-wider text-slate-900 dark:text-white">Technical Modeling & Analytics Pipeline</h2>
+        <span class="text-xs text-slate-400 font-mono">End-to-End System Architecture</span>
       </div>
-      <div id="workflowGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+
+      <div id="pipelineFlow" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         <!-- Rendered by app.js -->
       </div>
     </section>

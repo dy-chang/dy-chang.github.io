@@ -13,38 +13,71 @@ const PORTFOLIO_DATA = {
     linkedin: "https://www.linkedin.com/in/chang-daeyeol/",
     scholar: "https://scholar.google.com/citations?user=8bu0_WoAAAAJ&hl=ko&oi=ao",
     github: "https://github.com/dy-chang",
-    summary: "Senior transportation planner and quantitative modeler with 10+ years of experience across regional travel demand forecasting, dynamic traffic assignment (DTA), connected vehicle GPS probe analytics, and transportation network resilience.",
+    summary: "Senior transportation planner and quantitative modeler with 10+ years of experience bridging **regional travel demand forecasting**, **machine learning & advanced econometrics**, **dynamic traffic assignment (DTA)**, and **connected vehicle GPS probe big data**.",
     pillars: [
-      { title: "Travel Demand Modeling", desc: "CUBE Voyager, PTV Visum, TransCAD, EMME/3, Select-Zone" },
-      { title: "Simulation & DTA", desc: "PTV Vissim DTA, DynusT, DTALite, UC-win/Road, LOS Analysis" },
-      { title: "Big Data & Resilience", desc: "ClearGuide & INRIX GPS Probes, TTI, Mixed Logit, DiD, ShakeCast" }
+      {
+        id: "demand",
+        title: "Travel Demand & Forecasting",
+        badge: "Macro Systems",
+        tools: "CUBE Voyager, PTV Visum, TransCAD, EMME/3",
+        detail: "Regional 4-step models, select-zone extraction, subarea network development, and long-range scenario forecasting."
+      },
+      {
+        id: "ml-stats",
+        title: "Machine Learning & Advanced Statistics",
+        badge: "Predictive & Causal",
+        tools: "XGBoost, Random Forest, Mixed Logit, Panel DiD, Count Models",
+        detail: "Discrete choice behavior modeling (200 Halton draws), causal disruption inference (DiD), crash risk modeling, and VRU injury severity prediction."
+      },
+      {
+        id: "simulation",
+        title: "Traffic Simulation & DTA",
+        badge: "Meso / Micro",
+        tools: "PTV Vissim (DTA), DynusT, DTALite, UC-win/Road",
+        detail: "Dynamic traffic assignment, corridor bottleneck diagnostics, work zone staging, and network trajectory processing."
+      },
+      {
+        id: "probe-data",
+        title: "GPS Probe Big Data & Resilience",
+        badge: "Real-Time Big Data",
+        tools: "Iteris ClearGuide, INRIX Probes, GeoPandas, ShakeCast",
+        detail: "High-frequency probe data aggregation, Travel Time Index (TTI) reliability, and earthquake/hurricane disaster evacuation."
+      }
     ]
   },
 
-  workflowSteps: [
+  pipeline: [
     {
       step: "01",
-      title: "Data Ingestion & Synthesis",
-      tools: "Iteris ClearGuide, INRIX Probes, Smart Card, Census, USGS ShakeCast",
-      desc: "Cleaning, harmonizing, and aggregating petabyte-scale GPS trajectories, O-D matrices, and structural vulnerability feeds."
+      name: "Big Data Ingestion",
+      category: "Multi-Source Feeds",
+      icon: "database",
+      inputs: ["Iteris ClearGuide GPS", "INRIX Probes", "Smart Card Transit", "USGS ShakeCast", "Census O-D"],
+      outputs: "Cleaned Trajectories & O-D Matrices"
     },
     {
       step: "02",
-      title: "Demand & Choice Modeling",
-      tools: "CUBE Voyager, PTV Visum, TransCAD, Mixed Logit, Panel DiD",
-      desc: "Estimating trip distribution, discrete route choices, and econometrically isolating causal disruption shocks."
+      name: "ML & Econometric Engines",
+      category: "Predictive & Causal",
+      icon: "cpu",
+      inputs: ["Mixed Logit (Halton Draws)", "Difference-in-Differences", "XGBoost / Random Forest", "Negative Binomial"],
+      outputs: "Behavioral Utilities & Shock Multipliers"
     },
     {
       step: "03",
-      title: "Multi-Resolution Simulation",
-      tools: "PTV Vissim (DTA), DynusT, DTALite, UC-win/Road",
-      desc: "Executing dynamic traffic assignment across regional networks (up to 48k links) under normal and disaster conditions."
+      name: "Multi-Resolution Simulation",
+      category: "Dynamic Assignment",
+      icon: "git-commit",
+      inputs: ["CUBE Voyager (48k Links)", "PTV Vissim DTA", "DynusT", "Damaged Network Overlays"],
+      outputs: "Corridor Speeds, Delays & Bottlenecks"
     },
     {
       step: "04",
-      title: "Decision & Policy Insights",
-      tools: "QGIS, Python/R Dashboards, Tabletop Exercises (TTX)",
-      desc: "Delivering actionable bottleneck mitigation, peak-hour freight rules, dynamic pricing, and evacuation routing plans."
+      name: "Decision & Policy Insights",
+      category: "Actionable Outputs",
+      icon: "bar-chart-3",
+      inputs: ["Corridor Heatmaps (QGIS)", "Dynamic Pricing Strategies", "Peak Freight Controls", "Emergency Routing Plans"],
+      outputs: "Agency-Ready Decision Frameworks"
     }
   ],
 
