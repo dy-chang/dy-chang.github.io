@@ -1,12 +1,14 @@
 /**
  * Main Application Logic
- * Dr. Daeyeol Chang Portfolio
+ * Dr. Daeyeol (Daniel) Chang Portfolio
  */
 
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
   renderProfile();
-  renderSkills();
+  renderCoreCapabilities();
+  renderFeaturedRepos();
+  renderProjects();
   renderExperience();
   renderEducation();
   renderPublications();
@@ -53,7 +55,7 @@ function renderProfile() {
   const statsContainer = document.getElementById("heroStats");
   if (statsContainer) {
     statsContainer.innerHTML = data.stats.map(stat => `
-      <div class="p-4 rounded-xl bg-white/70 dark:bg-slate-800/70 backdrop-blur-md border border-slate-200/80 dark:border-slate-700/80 shadow-sm flex items-center gap-3.5 transform hover:-translate-y-0.5 transition-all">
+      <div class="p-4 rounded-xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-700/80 shadow-sm flex items-center gap-3.5 transform hover:-translate-y-0.5 transition-all">
         <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400 flex items-center justify-center flex-shrink-0">
           <i data-lucide="${stat.icon}" class="w-5 h-5"></i>
         </div>
@@ -75,32 +77,90 @@ function renderProfile() {
 }
 
 /* =========================================================================
-   Skills Matrix Rendering
+   Core Capabilities Rendering
    ========================================================================= */
-function renderSkills() {
-  const container = document.getElementById("skillsGrid");
+function renderCoreCapabilities() {
+  const container = document.getElementById("capabilitiesGrid");
   if (!container) return;
 
-  container.innerHTML = PORTFOLIO_DATA.skills.map(group => `
-    <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shadow-sm hover:shadow-md transition-shadow">
-      <div class="flex items-center gap-3 mb-5">
+  container.innerHTML = PORTFOLIO_DATA.coreCapabilities.map(group => `
+    <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 shadow-sm hover:shadow-md transition-shadow">
+      <div class="flex items-center gap-3 mb-4">
         <div class="w-9 h-9 rounded-lg bg-primary-100 dark:bg-primary-900/50 text-primary-600 dark:text-primary-400 flex items-center justify-center">
           <i data-lucide="${group.icon}" class="w-5 h-5"></i>
         </div>
-        <h3 class="text-lg font-bold text-slate-900 dark:text-white">${group.category}</h3>
+        <h3 class="text-base font-bold text-slate-900 dark:text-white">${group.category}</h3>
       </div>
-      <div class="space-y-4">
-        ${group.items.map(item => `
-          <div>
-            <div class="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
-              <span>${item.name}</span>
-              <span class="text-primary-600 dark:text-primary-400 font-semibold">${item.level}%</span>
-            </div>
-            <div class="w-full bg-slate-100 dark:bg-slate-700 h-2 rounded-full overflow-hidden">
-              <div class="bg-gradient-to-r from-primary-500 to-indigo-600 h-full rounded-full transition-all duration-500" style="width: ${item.level}%"></div>
-            </div>
-          </div>
+      <div class="flex flex-wrap gap-2">
+        ${group.skills.map(skill => `
+          <span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-700/80 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-slate-600/60">
+            ${skill}
+          </span>
         `).join("")}
+      </div>
+    </div>
+  `).join("");
+}
+
+/* =========================================================================
+   Featured GitHub Repositories Rendering
+   ========================================================================= */
+function renderFeaturedRepos() {
+  const container = document.getElementById("featuredReposGrid");
+  if (!container) return;
+
+  container.innerHTML = PORTFOLIO_DATA.featuredRepos.map(repo => `
+    <a href="${repo.url}" target="_blank" rel="noopener noreferrer" class="group block p-6 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200/90 dark:border-slate-700/80 shadow-sm hover:shadow-lg hover:border-primary-500/50 dark:hover:border-primary-500/50 transition-all flex flex-col justify-between space-y-4">
+      <div>
+        <div class="flex items-center justify-between gap-2 mb-3">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-lg bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+              <i data-lucide="${repo.icon}" class="w-4 h-4"></i>
+            </div>
+            <span class="text-xs font-mono font-semibold text-slate-500 dark:text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">dy-chang /</span>
+          </div>
+          <i data-lucide="external-link" class="w-4 h-4 text-slate-400 group-hover:text-primary-600 transition-colors"></i>
+        </div>
+        <h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-1.5">
+          ${repo.title}
+        </h3>
+        <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+          ${repo.description}
+        </p>
+      </div>
+
+      <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-100 dark:border-slate-700/60">
+        ${repo.tags.map(t => `<span class="px-2 py-0.5 rounded-md text-[11px] font-medium bg-slate-100 dark:bg-slate-700/60 text-slate-600 dark:text-slate-300">${t}</span>`).join("")}
+      </div>
+    </a>
+  `).join("");
+}
+
+/* =========================================================================
+   Selected Projects Rendering
+   ========================================================================= */
+function renderProjects() {
+  const container = document.getElementById("selectedProjectsList");
+  if (!container) return;
+
+  container.innerHTML = PORTFOLIO_DATA.projects.map((proj, idx) => `
+    <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200/90 dark:border-slate-700/80 shadow-sm hover:shadow-md transition-all space-y-3">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-950/80 text-primary-700 dark:text-primary-300 text-xs font-bold flex items-center justify-center">${idx + 1}</span>
+          <span class="text-xs font-bold text-primary-600 dark:text-primary-400">${proj.client}</span>
+        </div>
+        <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 font-mono">${proj.period}</span>
+      </div>
+
+      <h3 class="text-lg font-bold text-slate-900 dark:text-white leading-snug">${proj.title}</h3>
+      <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">${proj.description}</p>
+
+      <div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-100 dark:border-slate-700/60">
+        <div class="flex flex-wrap gap-1.5">
+          ${proj.tools.map(t => `<span class="px-2 py-0.5 rounded-md text-[11px] font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">${t}</span>`).join("")}
+        </div>
+        ${proj.publishedIn ? `<span class="text-xs font-semibold text-indigo-600 dark:text-indigo-400 flex items-center gap-1"><i data-lucide="book-open" class="w-3.5 h-3.5"></i> ${proj.publishedIn}</span>` : ''}
       </div>
     </div>
   `).join("");
@@ -190,16 +250,14 @@ function renderPublications() {
       <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200/90 dark:border-slate-700/80 shadow-sm hover:shadow-md transition-all">
         <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
           <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold bg-primary-50 dark:bg-primary-950/70 text-primary-700 dark:text-primary-300 border border-primary-200 dark:border-primary-800/60">
-            <i data-lucide="book-bookmark" class="w-3.5 h-3.5"></i>
+            <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
             ${pub.venue} (${pub.year})
           </span>
           ${pub.selected ? `<span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800 flex items-center gap-1"><i data-lucide="star" class="w-3 h-3 fill-amber-500 text-amber-500"></i> Selected</span>` : ''}
         </div>
 
         <h3 class="text-lg font-bold text-slate-900 dark:text-white leading-snug mb-2">
-          <a href="${pub.doi}" target="_blank" rel="noopener noreferrer" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-            ${pub.title}
-          </a>
+          ${pub.doi ? `<a href="${pub.doi}" target="_blank" rel="noopener noreferrer" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">${pub.title}</a>` : pub.title}
         </h3>
 
         <p class="text-sm text-slate-600 dark:text-slate-300 mb-3">${authorsFormatted}</p>
@@ -213,9 +271,7 @@ function renderPublications() {
             ${pub.tags.map(t => `<span class="px-2 py-0.5 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-700/60 text-slate-600 dark:text-slate-300">${t}</span>`).join("")}
           </div>
           <div class="flex items-center gap-2">
-            <a href="${pub.doi}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-950/60 hover:bg-primary-100 dark:hover:bg-primary-900/60 transition-colors">
-              <i data-lucide="external-link" class="w-3.5 h-3.5"></i> DOI / Paper
-            </a>
+            ${pub.doi ? `<a href="${pub.doi}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-950/60 hover:bg-primary-100 dark:hover:bg-primary-900/60 transition-colors"><i data-lucide="external-link" class="w-3.5 h-3.5"></i> DOI / Paper</a>` : ''}
             <button onclick="openBibtexModal('${pub.id}')" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">
               <i data-lucide="code" class="w-3.5 h-3.5"></i> BibTeX
             </button>

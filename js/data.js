@@ -1,125 +1,205 @@
 /**
- * Portfolio Data for Dr. Daeyeol Chang (장대열)
- * Transportation Data Scientist & Quantitative Mobility Researcher
+ * Portfolio Data for Dr. Daeyeol (Daniel) Chang, Ph.D. (장대열)
+ * Senior Planner at Benesch | Transportation Data Scientist & Quantitative Modeler
  */
 
 const PORTFOLIO_DATA = {
   profile: {
-    name: "Daeyeol Chang, Ph.D.",
+    name: "Daeyeol (Daniel) Chang, Ph.D.",
     koreanName: "장대열",
-    title: "Transportation Data Scientist & Quantitative Mobility Researcher",
-    headline: "Bridging Econometric Rigor with Scalable Mobility & Data Solutions",
-    subheadline: "Ph.D. in Transportation Engineering | Discrete Choice & Causal Econometrics | Connected Vehicle & GPS Probe Analytics (ClearGuide/INRIX) | VR Simulation & Network Resilience",
-    email: "daeyeol.chang@gmail.com",
-    location: "United States / South Korea",
+    title: "Senior Transportation Planner & Quantitative Mobility Modeler",
+    affiliation: "Benesch • Ex-Morgan State SMARTER Center • Ex-Mizzou",
+    headline: "Bridging Advanced Econometric Rigor with Scalable Transportation Planning & Analytics",
+    subheadline: "10+ Years in Travel Demand Modeling (CUBE, PTV Visum/Vissim, TransCAD) | Discrete Choice & Causal Econometrics | Connected Vehicle & GPS Probe Analytics (ClearGuide, INRIX) | Network Resilience & Simulation",
+    email: "dchang@benesch.com",
+    personalEmail: "chang.daeyeol@gmail.com",
+    location: "Baltimore, Maryland, USA",
     bio: [
-      "I am a Transportation Data Scientist and Quantitative Researcher with deep expertise in **discrete choice econometrics**, **high-frequency GPS probe data analytics (ClearGuide)**, and **transportation network resilience** under disruptive events.",
-      "Having built a strong academic foundation through Ph.D. and Postdoctoral appointments at the **University of Missouri-Columbia** and **National Transportation Center (Morgan State University)**, I transitioned to the industry to translate advanced econometric modeling, machine learning, and big data systems into scalable, real-world transportation solutions.",
-      "My portfolio spans evaluating catastrophic infrastructure shocks (such as the 2024 Francis Scott Key Bridge collapse), modeling hurricane evacuation route choice behaviors with mixed logit models, and developing immersive Virtual Reality (VR) simulation platforms for highway work zone safety."
+      "I am a **Senior Transportation Planner and Modeler** at **Benesch** with over a decade of experience bridging **regional travel demand modeling**, **dynamic traffic assignment (DTA)**, **econometric discrete choice modeling**, and **high-frequency GPS probe data analytics**.",
+      "With a strong academic background through Ph.D. and Postdoctoral appointments at the **University of Missouri-Columbia** and **Morgan State University SMARTER Center**, I specialize in transforming complex transportation big data (Iteris ClearGuide, INRIX, HERE, Smart Card, Census) into actionable insights for infrastructure resilience, disaster evacuation, and regional mobility planning.",
+      "My track record includes analyzing the 2024 **Francis Scott Key Bridge collapse traffic shockwave** across 30 corridors (published in MDPI *Sustainability*), managing the **St. Louis 48k-link/3k-zone regional evacuation model** (CUBE/Vissim/USGS ShakeCast), developing **NSF-funded hurricane evacuation mixed logit models**, and building the first **VR work-zone inspection training simulator** for MoDOT."
     ],
     stats: [
+      { label: "Experience", value: "10+ Yrs", icon: "briefcase" },
       { label: "Citations", value: "250+", icon: "quote" },
-      { label: "Publications", value: "15+", icon: "book-open" },
-      { label: "R&D Experience", value: "10+ Yrs", icon: "award" },
+      { label: "Publications & TRB", value: "15+", icon: "book-open" },
       { label: "Major Grants", value: "USDOT & NSF", icon: "shield-check" }
     ],
     socials: {
       scholar: "https://scholar.google.com/citations?user=8bu0_WoAAAAJ&hl=ko&oi=ao",
       github: "https://github.com/dy-chang",
-      linkedin: "https://www.linkedin.com/in/daeyeol-chang",
-      email: "mailto:daeyeol.chang@gmail.com"
+      linkedin: "https://www.linkedin.com/in/chang-daeyeol/",
+      email: "mailto:dchang@benesch.com"
     }
   },
 
-  skills: [
+  coreCapabilities: [
     {
-      category: "Econometric & Choice Modeling",
-      icon: "trending-up",
-      items: [
-        { name: "Discrete Choice Models (Binary, Multinomial, Mixed Logit / Random Parameters)", level: 95 },
-        { name: "Causal Inference & Panel Econometrics (Fixed Effects, Mixed Effects, DiD)", level: 95 },
-        { name: "Latent Variable Modeling & Structural Equation Models (SEM / PCA)", level: 90 },
-        { name: "Travel Demand & Route Choice Behavior Modeling", level: 95 }
-      ]
+      category: "Travel Demand Modeling & DTA",
+      icon: "git-merge",
+      skills: ["CUBE Voyager / Avenue", "PTV Visum", "TransCAD", "EMME/3", "Select-Zone Analysis", "O-D Matrix Calibration", "Scenario Forecasting"]
     },
     {
-      category: "Big Data & Traffic Analytics",
-      icon: "activity",
-      items: [
-        { name: "Connected Vehicle & GPS Probe Data (Iteris ClearGuide, INRIX, HERE)", level: 92 },
-        { name: "Travel Time Reliability & Congestion Bottlenecks (TTI, PTI, Buffer Index)", level: 95 },
-        { name: "Network Resilience & Spatiotemporal Shockwave Analysis", level: 90 },
-        { name: "Spatial Network Modeling & GIS (QGIS, ArcGIS, OpenStreetMap)", level: 88 }
-      ]
+      category: "Micro / Meso Traffic Simulation",
+      icon: "sliders",
+      skills: ["PTV Vissim (DTA)", "DynusT & DTALite", "UC-win/Road", "Network Development", "Demand Preparation", "Trajectory Post-Processing"]
     },
     {
-      category: "Programming & Data Science Stack",
-      icon: "code",
-      items: [
-        { name: "Python (Pandas, NumPy, Scikit-learn, Statsmodels, GeoPandas, PyTorch)", level: 92 },
-        { name: "R (mlogit, mclogit, plm, lme4, survival, ggplot2)", level: 95 },
-        { name: "SQL & Relational Databases (PostgreSQL, PostGIS, BigQuery)", level: 88 },
-        { name: "Interactive Visualization & Dashboards (Chart.js, Plotly, D3.js, Tableau)", level: 90 }
-      ]
+      category: "Operations, Safety & Resilience",
+      icon: "shield-alert",
+      skills: ["ClearGuide & INRIX GPS Probes", "Travel Time Index (TTI) & Reliability", "Bridge Collapse / Network Disruption", "Earthquake & Hurricane Evacuation", "MUTCD & MoDOT Work Zone Safety"]
     },
     {
-      category: "Simulation & Emerging Technologies",
-      icon: "cpu",
-      items: [
-        { name: "Virtual Reality (VR) Simulation (Unity 3D, C#, Oculus Rift, HTC Vive)", level: 85 },
-        { name: "Motion Capture & Human Behavior Tracking (Motive)", level: 82 },
-        { name: "Traffic Flow Simulation & Intelligent Transportation Systems (ITS)", level: 88 },
-        { name: "Work Zone Safety & Compliance Protocols (MUTCD, MoDOT EPG)", level: 90 }
-      ]
+      category: "Data Science, GIS & Automation",
+      icon: "terminal",
+      skills: ["Python (Pandas, GeoPandas, Scikit-learn)", "R (mlogit, plm, lme4, ggplot2)", "QGIS & ArcGIS", "SQL / MySQL", "MATLAB & C#", "Git / GitHub CI/CD"]
+    }
+  ],
+
+  featuredRepos: [
+    {
+      name: "urban-transport-intelligence",
+      title: "Urban Transport Intelligence Platform",
+      description: "Comprehensive analytical framework for smart mobility, multimodal transit optimization, and spatiotemporal traffic intelligence.",
+      url: "https://github.com/dy-chang/urban-transport-intelligence",
+      tags: ["Python", "GeoPandas", "Network Analytics", "Mobility Intelligence"],
+      icon: "map-pin"
+    },
+    {
+      name: "Traffic_Incident_Analysis",
+      title: "Traffic Incident & Congestion Analysis",
+      description: "Spatiotemporal bottleneck detection, incident clearance duration estimation, and network shockwave propagation modeling.",
+      url: "https://github.com/dy-chang/Traffic_Incident_Analysis",
+      tags: ["Traffic Analytics", "Bottleneck Identification", "Probe Data", "R / Python"],
+      icon: "activity"
+    },
+    {
+      name: "Crash_Data_Modeling",
+      title: "Highway Crash Data Modeling",
+      description: "Statistical and econometric modeling of crash frequencies, safety hotspots, and risk factor identification for roadway improvements.",
+      url: "https://github.com/dy-chang/Crash_Data_Modeling",
+      tags: ["Safety Engineering", "Econometrics", "Count Models", "Vision Zero"],
+      icon: "alert-triangle"
+    },
+    {
+      name: "Vulnerable-Road-User-Injury-Prediction",
+      title: "VRU Injury Severity Prediction",
+      description: "Machine learning and discrete choice framework to predict injury severity and crash outcomes for pedestrians and cyclists.",
+      url: "https://github.com/dy-chang/Vulnerable-Road-User-Injury-Prediction",
+      tags: ["Machine Learning", "Pedestrian & Bike Safety", "XGBoost", "Logit"],
+      icon: "user-check"
+    }
+  ],
+
+  projects: [
+    {
+      title: "Francis Scott Key Bridge Collapse Traffic Impact & Resilience Analysis",
+      client: "Morgan State University SMARTER Center / USDOT",
+      period: "2024 – 2026",
+      tools: ["Iteris ClearGuide", "INRIX", "Python", "R", "QGIS", "DiD / Panel Models"],
+      description: "Conducted spatiotemporal performance evaluation across 30 regional corridors in Baltimore following the catastrophic FSK bridge collapse. Implemented Fixed Effects, Mixed Effects, Difference-in-Differences (DiD), and stratified econometric models to isolate causal congestion shocks and support agency detour planning.",
+      publishedIn: "MDPI Sustainability (2025)"
+    },
+    {
+      title: "St. Louis Earthquake Response & Rescue Network",
+      client: "Missouri DOT (MoDOT)",
+      period: "2022 – 2024",
+      tools: ["CUBE Voyager/Avenue", "QGIS", "USGS ShakeCast", "Household Survey"],
+      description: "Directly managed the 48,151-link, 3,003-zone CUBE model and 7.9 million-trip matrices for a simulated M6.7 earthquake. Evaluated 12 evacuation scenarios, mapped network speed ratios and bottlenecks in QGIS, and co-led multi-stakeholder tabletop exercises (TTX).",
+      publishedIn: "MoDOT Technical Report & TRB 2025"
+    },
+    {
+      title: "New Madrid Regional Earthquake Evacuation Model",
+      client: "Missouri DOT (MoDOT)",
+      period: "2021 – 2022",
+      tools: ["PTV Vissim DTA", "GIS", "Python", "MATLAB"],
+      description: "Built and validated an 8-county Vissim network to implement Dynamic Traffic Assignment (DTA). Analyzed network delay, speed, Level of Service (LOS), and critical bottlenecks under damaged infrastructure scenarios.",
+      publishedIn: "MoDOT Research Project"
+    },
+    {
+      title: "Hampton Roads Hurricane Evacuation Route Choice Modeling",
+      client: "National Science Foundation (Award #1537762)",
+      period: "2016 – 2021",
+      tools: ["DynusT DTA", "Mixed Logit", "R (mlogit)", "MATLAB", "GIS"],
+      description: "Estimated random parameter (mixed) logit models with 200 Halton draws on household survey data to model evacuee preference between freeways and arterials under a Category 4 hurricane.",
+      publishedIn: "Elsevier TRIP (2021) & TRB 2020"
+    },
+    {
+      title: "Immersive Virtual Reality Work Zone Inspection Platform",
+      client: "Missouri DOT (MoDOT)",
+      period: "2018 – 2021",
+      tools: ["Unity 3D", "C#", "Motive Motion Capture", "Oculus Rift"],
+      description: "Pioneered a 3D VR simulation platform to train state DOT inspectors on temporary traffic control and human flagger safety, boosting inspection proficiency from 44% to 79% (97% DOT endorsement).",
+      publishedIn: "Transportation Research Record (2020) & IEEE AIVR (2020)"
     }
   ],
 
   experience: [
     {
-      role: "Senior Transportation Data Scientist / Applied Researcher",
-      organization: "Industry Mobility & Analytics",
-      location: "United States",
-      period: "Recent – Present",
+      role: "Senior Planner",
+      organization: "Benesch",
+      location: "Baltimore, MD, USA",
+      period: "June 2026 – Present",
       type: "industry",
       highlights: [
-        "Developing scalable data pipelines and econometric/ML algorithms for real-time traffic flow prediction and network bottleneck mitigation.",
-        "Leveraging massive connected vehicle probe datasets to extract actionable mobility intelligence for private operators and public transportation agencies.",
-        "Leading end-to-end analytics initiatives translating complex transportation models into business-ready dashboards and decision support tools."
+        "Leading regional travel demand modeling, select-zone analysis, and network scenario forecasting using PTV Visum, CUBE, and TransCAD.",
+        "Developing automated Python/R post-processing workflows for O-D matrices, corridor volume balancing, and project-specific travel pattern inquiries.",
+        "Delivering quantitative transportation analytics and resilience strategies for municipal and state agency clients."
       ]
     },
     {
-      role: "Postdoctoral Research Associate / Research Scientist",
-      organization: "National Transportation Center, Morgan State University",
+      role: "Postdoctoral Research Associate",
+      organization: "Morgan State University (SMARTER Center)",
       location: "Baltimore, MD, USA",
-      period: "2023 – 2025",
+      period: "October 2024 – 2026",
       type: "academia",
       highlights: [
-        "Led high-impact research investigating the Francis Scott Key Bridge collapse using high-resolution ClearGuide GPS probe data across 30 major corridors.",
-        "Implemented multi-pronged econometric frameworks (Fixed Effects, Mixed Effects, Difference-in-Differences, Stratified Models) published in MDPI Sustainability.",
-        "Authored USDOT grant reports and collaborated with state and regional transportation stakeholders (MDOT, Baltimore Metropolitan Council)."
+        "Spearheaded regional traffic performance evaluation and econometric modeling of the Francis Scott Key Bridge collapse using ClearGuide GPS probe data.",
+        "Assessed transportation network resilience, corridor accessibility changes, and service degradation using QGIS and panel econometric models (DiD, FE, ME)."
+      ]
+    },
+    {
+      role: "Postdoctoral Fellow",
+      organization: "University of Missouri-Columbia (Dept. of Civil & Env. Engineering)",
+      location: "Columbia, MO, USA",
+      period: "July 2021 – September 2024",
+      type: "academia",
+      highlights: [
+        "Investigated nationwide DOT practices for operational traffic simulation models across macro, meso, and microscopic resolutions for the TRB Research Council.",
+        "Led the MoDOT St. Louis 48,151-link CUBE evacuation model and New Madrid PTV Vissim DTA simulation projects."
       ]
     },
     {
       role: "Graduate Research Assistant / Ph.D. Candidate",
-      organization: "University of Missouri-Columbia (Dept. of Civil & Environmental Engineering)",
+      organization: "University of Missouri-Columbia",
       location: "Columbia, MO, USA",
-      period: "2016 – 2021",
+      period: "August 2016 – May 2021",
       type: "academia",
       highlights: [
-        "Conducted NSF-funded research (#1537762) on hurricane evacuation travel behavior and mixed logit route choice modeling for the Hampton Roads region.",
-        "Developed first-of-its-kind immersive Virtual Reality (VR) inspection training platforms for MoDOT work zones using Unity 3D and Motion Capture technology.",
-        "Published multiple peer-reviewed papers in Transportation Research Record (TRR), TRIP (Elsevier), and IEEE AIVR."
+        "Completed Ph.D. dissertation: 'Modeling Transportation Impacts of Natural Disasters'.",
+        "Conducted NSF hurricane evacuation modeling and developed MoDOT VR work zone inspection platforms."
       ]
     },
     {
-      role: "Graduate Researcher",
+      role: "Researcher",
+      organization: "The Korea Transport Institute (KOTI)",
+      location: "Sejong, South Korea",
+      period: "April 2015 – July 2016",
+      type: "industry",
+      highlights: [
+        "Vision Zero Traffic Safety Project: Analyzed and predicted crash patterns from national databases to support safety legislation.",
+        "Village Zone Project: Identified crash hotspots in targeted cities and evaluated safety intervention effectiveness."
+      ]
+    },
+    {
+      role: "Graduate Research Assistant",
       organization: "Chung-Ang University (Dept. of Urban Engineering)",
       location: "Seoul, South Korea",
-      period: "2011 – 2014",
+      period: "March 2012 – February 2015",
       type: "academia",
       highlights: [
-        "Investigated commuter expressway dependence and latent psychological factors in the Seoul Metropolitan Area using binary logit and PCA.",
-        "Published in Proceedings of the ICE - Transport (UK) and received the Chung-Ang University Excellent Student Research Scholarship."
+        "Public Transit Route Reorganization (Seoul Metro Council): Analyzed Smart Card and KTDB ridership data to optimize fleet allocation.",
+        "Jangsu-Gyeyang Expressway Feasibility Study (KDI): Forecasted expressway travel demand using TransCAD and EMME/3."
       ]
     }
   ],
@@ -129,15 +209,22 @@ const PORTFOLIO_DATA = {
       degree: "Ph.D. in Civil and Environmental Engineering",
       institution: "University of Missouri-Columbia",
       location: "Columbia, MO, USA",
-      focus: "Transportation Engineering, Econometric Route Choice Modeling, VR Simulation",
+      focus: "Transportation Engineering (Dissertation: Modeling Transportation Impacts of Natural Disasters)",
       year: "2021"
     },
     {
-      degree: "B.Eng. in Urban Engineering",
+      degree: "M.S. in Urban Engineering",
       institution: "Chung-Ang University",
       location: "Seoul, South Korea",
-      focus: "Urban & Transportation Planning, Commuter Travel Behavior Analysis",
-      year: "2013"
+      focus: "Transportation Focus (Thesis: Driving Commuters' Dependence on Expressways in Seoul)",
+      year: "2014"
+    },
+    {
+      degree: "B.S. in Urban Engineering",
+      institution: "Chung-Ang University",
+      location: "Seoul, South Korea",
+      focus: "Urban & Transportation Planning",
+      year: "2011"
     }
   ],
 
@@ -165,6 +252,40 @@ const PORTFOLIO_DATA = {
   year={2025},
   publisher={MDPI},
   doi={10.3390/su17156916}
+}`
+    },
+    {
+      id: "chang2025trb_seismic",
+      title: "Resilience in Motion: Analyzing Evacuation Decisions During Seismic Emergencies",
+      authors: ["Daeyeol Chang"],
+      venue: "Transportation Research Board 104th Annual Meeting (TRB 2025)",
+      year: 2025,
+      tags: ["TRB 2025", "Seismic Evacuation", "Travel Demand", "CUBE Avenue", "Resilience"],
+      category: "evacuation",
+      selected: true,
+      tldr: "Presented regional evacuation decision models and traffic simulation findings under severe seismic network disruptions.",
+      bibtex: `@inproceedings{chang2025trb_seismic,
+  title={Resilience in Motion: Analyzing Evacuation Decisions During Seismic Emergencies},
+  author={Chang, Daeyeol},
+  booktitle={Transportation Research Board 104th Annual Meeting},
+  year={2025}
+}`
+    },
+    {
+      id: "chang2024trb_covid",
+      title: "The Rise of Private Vehicles: Investigating Factors for Mode Shift after COVID-19",
+      authors: ["Daeyeol Chang"],
+      venue: "Transportation Research Board 103rd Annual Meeting (TRB 2024)",
+      year: 2024,
+      tags: ["TRB 2024", "Mode Choice", "COVID-19 Shift", "Discrete Choice", "Travel Behavior"],
+      category: "behavior",
+      selected: false,
+      tldr: "Investigated post-pandemic mode choice behavior shifts towards private vehicle reliance using discrete choice modeling.",
+      bibtex: `@inproceedings{chang2024trb_covid,
+  title={The Rise of Private Vehicles: Investigating Factors for Mode Shift after COVID-19},
+  author={Chang, Daeyeol},
+  booktitle={Transportation Research Board 103rd Annual Meeting},
+  year={2024}
 }`
     },
     {
