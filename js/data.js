@@ -1,150 +1,202 @@
 /**
- * Portfolio Data for Dr. Daeyeol (Daniel) Chang, Ph.D. (장대열)
- * Senior Planner at Benesch | Transportation Data Scientist & Quantitative Modeler
+ * Industry & Government-Focused Portfolio Data
+ * Dr. Daeyeol (Daniel) Chang, Ph.D. (장대열)
+ * Senior Transportation Planner & Modeler | Benesch
  */
 
 const PORTFOLIO_DATA = {
   profile: {
     name: "Daeyeol (Daniel) Chang, Ph.D.",
     koreanName: "장대열",
-    title: "Senior Transportation Planner & Quantitative Mobility Modeler",
-    affiliation: "Benesch • Ex-Morgan State SMARTER Center • Ex-Mizzou",
-    headline: "Bridging Advanced Econometric Rigor with Scalable Transportation Planning & Analytics",
-    subheadline: "10+ Years in Travel Demand Modeling (CUBE, PTV Visum/Vissim, TransCAD) | Discrete Choice & Causal Econometrics | Connected Vehicle & GPS Probe Analytics (ClearGuide, INRIX) | Network Resilience & Simulation",
+    role: "Senior Transportation Planner & Quantitative Modeler",
+    company: "Benesch",
+    affiliation: "Baltimore, MD | Ex-Morgan State SMARTER Center | Ex-Mizzou",
+    headline: "Transportation Modeling, Infrastructure Resilience & Big Data Analytics for Public Agencies & Industry",
+    subheadline: "10+ Years Delivering Decision-Ready Travel Demand Models (CUBE, PTV Visum, TransCAD), Multi-Resolution DTA Traffic Simulations (PTV Vissim, DynusT), and Connected Vehicle Probe Analytics (ClearGuide, INRIX) for State DOTs, MPOs, and Municipalities.",
     email: "dchang@benesch.com",
     personalEmail: "chang.daeyeol@gmail.com",
     location: "Baltimore, Maryland, USA",
     bio: [
-      "I am a **Senior Transportation Planner and Modeler** at **Benesch** with over a decade of experience bridging **regional travel demand modeling**, **dynamic traffic assignment (DTA)**, **econometric discrete choice modeling**, and **high-frequency GPS probe data analytics**.",
-      "With a strong academic background through Ph.D. and Postdoctoral appointments at the **University of Missouri-Columbia** and **Morgan State University SMARTER Center**, I specialize in transforming complex transportation big data (Iteris ClearGuide, INRIX, HERE, Smart Card, Census) into actionable insights for infrastructure resilience, disaster evacuation, and regional mobility planning.",
-      "My track record includes analyzing the 2024 **Francis Scott Key Bridge collapse traffic shockwave** across 30 corridors (published in MDPI *Sustainability*), managing the **St. Louis 48k-link/3k-zone regional evacuation model** (CUBE/Vissim/USGS ShakeCast), developing **NSF-funded hurricane evacuation mixed logit models**, and building the first **VR work-zone inspection training simulator** for MoDOT."
+      "I am a **Senior Transportation Planner and Modeler** at **Benesch** specializing in delivering high-fidelity modeling, data analytics, and policy-driven solutions for **State DOTs, Metropolitan Planning Organizations (MPOs), and regional transit agencies**.",
+      "With over a decade of technical leadership spanning Ph.D. and Postdoctoral appointments at **University of Missouri-Columbia** and **Morgan State University (SMARTER Center)**, I translate petabyte-scale mobility data (Iteris ClearGuide, INRIX GPS probes, Smart Card transit, Census) into actionable infrastructure resilience, bottleneck mitigation, and disaster evacuation strategies.",
+      "My work directly supports public decision-makers through advanced econometrics, dynamic traffic assignment (DTA), and automated GIS workflows—proven on critical projects like the **Francis Scott Key Bridge Collapse Traffic Impact Study**, the **St. Louis 48k-link M6.7 Earthquake Evacuation Model (MoDOT)**, and **MoDOT VR Work Zone Safety Training Platforms**."
     ],
     stats: [
-      { label: "Experience", value: "10+ Yrs", icon: "briefcase" },
-      { label: "Citations", value: "250+", icon: "quote" },
-      { label: "Publications & TRB", value: "15+", icon: "book-open" },
-      { label: "Major Grants", value: "USDOT & NSF", icon: "shield-check" }
+      { label: "Industry & R&D Experience", value: "10+ Yrs", icon: "briefcase" },
+      { label: "Regional Models & Networks", value: "50k+ Links", icon: "git-merge" },
+      { label: "Agency & NSF Projects", value: "USDOT / MoDOT", icon: "shield-check" },
+      { label: "Citations & Research Impact", value: "250+ Cites", icon: "award" }
     ],
     socials: {
+      linkedin: "https://www.linkedin.com/in/chang-daeyeol/",
       scholar: "https://scholar.google.com/citations?user=8bu0_WoAAAAJ&hl=ko&oi=ao",
       github: "https://github.com/dy-chang",
-      linkedin: "https://www.linkedin.com/in/chang-daeyeol/",
       email: "mailto:dchang@benesch.com"
     }
   },
 
-  coreCapabilities: [
+  // Industry & Agency Focused Capabilities
+  capabilities: [
     {
-      category: "Travel Demand Modeling & DTA",
+      title: "Travel Demand Modeling & Forecasting",
       icon: "git-merge",
-      skills: ["CUBE Voyager / Avenue", "PTV Visum", "TransCAD", "EMME/3", "Select-Zone Analysis", "O-D Matrix Calibration", "Scenario Forecasting"]
+      desc: "Developing regional travel forecasting models, zone systems, O-D matrices, and scenario-based network alternatives for MPO/DOT long-range planning.",
+      tools: ["CUBE Voyager / Avenue", "PTV Visum", "TransCAD", "EMME/3", "Select-Zone Analysis", "Subarea Extraction", "O-D Matrix Calibration"]
     },
     {
-      category: "Micro / Meso Traffic Simulation",
+      title: "Traffic Simulation & DTA Operations",
       icon: "sliders",
-      skills: ["PTV Vissim (DTA)", "DynusT & DTALite", "UC-win/Road", "Network Development", "Demand Preparation", "Trajectory Post-Processing"]
+      desc: "Microscopic and mesoscopic Dynamic Traffic Assignment (DTA) to evaluate freeway corridors, arterial signal coordination, and interchange alternatives.",
+      tools: ["PTV Vissim (DTA)", "DynusT", "DTALite", "UC-win/Road", "Level of Service (LOS)", "Bottleneck Diagnostics", "Trajectory Analysis"]
     },
     {
-      category: "Operations, Safety & Resilience",
+      title: "Disruption, Resilience & Evacuation Planning",
       icon: "shield-alert",
-      skills: ["ClearGuide & INRIX GPS Probes", "Travel Time Index (TTI) & Reliability", "Bridge Collapse / Network Disruption", "Earthquake & Hurricane Evacuation", "MUTCD & MoDOT Work Zone Safety"]
+      desc: "Quantitative risk assessment and emergency traffic management for major bridge closures, hurricanes, and seismic events with USGS ShakeCast integration.",
+      tools: ["Iteris ClearGuide", "INRIX Probes", "Travel Time Index (TTI)", "Difference-in-Differences (DiD)", "Mixed Logit", "Evacuation Clearance Time"]
     },
     {
-      category: "Data Science, GIS & Automation",
+      title: "Big Data, GIS & Policy Automation",
       icon: "terminal",
-      skills: ["Python (Pandas, GeoPandas, Scikit-learn)", "R (mlogit, plm, lme4, ggplot2)", "QGIS & ArcGIS", "SQL / MySQL", "MATLAB & C#", "Git / GitHub CI/CD"]
+      desc: "High-performance Python/R pipelines, spatial analysis, automated corridor dashboards, and machine learning models for safety and transit optimization.",
+      tools: ["Python (GeoPandas, Statsmodels)", "R (mlogit, plm, lme4)", "QGIS & ArcGIS Pro", "SQL / PostGIS", "Interactive Web Dashboards", "Vision Zero Analytics"]
     }
   ],
 
+  // Major Projects with Visual Highlights & Policy Impacts
+  projects: [
+    {
+      id: "proj-fsk",
+      title: "Francis Scott Key Bridge Collapse: Regional Traffic Shockwave & Resiliency Analysis",
+      client: "Morgan State University SMARTER Center / USDOT / MDOT",
+      period: "2024 – 2026",
+      category: "Resilience & Operations",
+      badge: "Featured Study • MDPI Sustainability 2025",
+      badgeColor: "rose",
+      metrics: [
+        { label: "Corridors Analyzed", value: "30 Major Arteries" },
+        { label: "PM Peak Shock", value: "+126% TTI Surge" },
+        { label: "Critical Bottlenecks", value: "Harbor Tunnel & MD-295" }
+      ],
+      description: "Conducted high-frequency GPS probe data analytics (Iteris ClearGuide) across 30 corridors in the Baltimore metropolitan area following the catastrophic collapse of the I-695 Key Bridge. Applied Fixed Effects, Mixed Effects, Difference-in-Differences (DiD), and stratified econometrics to isolate causal impacts across Immediate, Fall, and Winter periods.",
+      policyTakeaways: [
+        "Identified asymmetric vulnerability: PM peak congestion was up to 4x worse than AM peaks (+0.847 TTI vs +0.223 TTI).",
+        "Formulated actionable agency recommendations: Peak-hour freight routing restrictions, dynamic corridor pricing, and adaptive ramp metering on I-95 & I-895.",
+        "Demonstrated that network averages mask acute localized bottlenecks where top 20% corridors experienced +3.81 TTI surge."
+      ],
+      tools: ["Iteris ClearGuide", "INRIX Probe Data", "Difference-in-Differences", "Panel Fixed/Mixed Effects", "QGIS", "Python/R"]
+    },
+    {
+      id: "proj-stlouis",
+      title: "St. Louis Regional Earthquake Emergency Response & Rescue Network",
+      client: "Missouri Department of Transportation (MoDOT)",
+      period: "2022 – 2024",
+      category: "Emergency Planning & Simulation",
+      badge: "MoDOT Statewide Project • TRB 2025",
+      badgeColor: "blue",
+      metrics: [
+        { label: "Network Scope", value: "48,151 Links / 3,003 Zones" },
+        { label: "Trip Demand", value: "7.9 Million Trips" },
+        { label: "Disaster Scenarios", value: "12 Evacuation Sets" }
+      ],
+      description: "Directly managed the regional CUBE Voyager/Avenue travel demand model and 7.9M trip matrices for a simulated M6.7 earthquake in the New Madrid Seismic Zone. Integrated USGS ShakeCast bridge vulnerability data to identify structural failures and simulate post-disaster route choices.",
+      policyTakeaways: [
+        "Identified critical emergency lifeline corridors across eastern Missouri requiring seismic hardening.",
+        "Mapped speed ratios and Level of Service (LOS E/F) bottlenecks across 12 disaster scenarios in QGIS.",
+        "Facilitated multi-agency Tabletop Exercises (TTX) connecting MoDOT, SEMA, and local emergency responders."
+      ],
+      tools: ["CUBE Voyager / Avenue", "QGIS", "USGS ShakeCast", "Household Survey Analysis", "Tabletop Exercise (TTX)"]
+    },
+    {
+      id: "proj-newmadrid",
+      title: "New Madrid Multi-County Regional Evacuation DTA Simulation",
+      client: "Missouri Department of Transportation (MoDOT)",
+      period: "2021 – 2022",
+      category: "DTA & Simulation",
+      badge: "8-County Network Simulation",
+      badgeColor: "amber",
+      metrics: [
+        { label: "Study Area", value: "8 Missouri Counties" },
+        { label: "Simulation Platform", value: "PTV Vissim DTA" },
+        { label: "Survey Sample", value: "891 Households" },
+      ],
+      description: "Constructed and validated an 8-county regional highway simulation model using PTV Vissim Dynamic Traffic Assignment (DTA). Scaled household survey data with US Census to generate realistic background and evacuation demand under M7.8 earthquake damage scenarios.",
+      policyTakeaways: [
+        "Uncovered acute bottlenecks on MO 34 WB, US 60 EB, and MO 25 during compressed 6-hour vs 12-hour evacuation departure windows.",
+        "Delivered data-driven evacuation routing and staged departure strategies to prevent severe gridlock at Mississippi River crossings."
+      ],
+      tools: ["PTV Vissim DTA", "GIS Mapping", "Python", "MATLAB", "Origin-Destination Matrix Estimation"]
+    },
+    {
+      id: "proj-vr-safety",
+      title: "Immersive VR Digital Twin Platform for Highway Work Zone Inspection Training",
+      client: "Missouri DOT (MoDOT) & TRB",
+      period: "2018 – 2021",
+      category: "Safety & Emerging Tech",
+      badge: "Award-Winning • TRR 2020 & IEEE AIVR",
+      badgeColor: "emerald",
+      metrics: [
+        { label: "Inspection Accuracy", value: "44% → 79% (+35%)" },
+        { label: "Agency Endorsement", value: "97% Positive" },
+        { label: "Technology Stack", value: "Unity 3D + Motion Capture" }
+      ],
+      description: "Pioneered a 3D Virtual Reality training simulator replicating real-world highway construction and flagger operations using Unity 3D, Oculus Rift, and Motive motion capture. Directly addressed MUTCD and MoDOT Engineering Policy Guide (EPG) compliance.",
+      policyTakeaways: [
+        "Dramatically reduced agency training costs and field inspection hazards while boosting safety deficiency recognition from 44% to 79%.",
+        "Adopted by MoDOT engineers with a 97% rating for realistic training utility and procedural compliance."
+      ],
+      tools: ["Unity 3D Engine", "C#", "Motive Motion Capture", "Oculus Rift", "MUTCD & MoDOT EPG Standards"]
+    }
+  ],
+
+  // 4 Featured Open-Source Repositories
   featuredRepos: [
     {
       name: "urban-transport-intelligence",
       title: "Urban Transport Intelligence Platform",
-      description: "Comprehensive analytical framework for smart mobility, multimodal transit optimization, and spatiotemporal traffic intelligence.",
+      description: "End-to-end framework for smart mobility analytics, transit route optimization, and spatiotemporal traffic intelligence for municipal transportation departments.",
       url: "https://github.com/dy-chang/urban-transport-intelligence",
-      tags: ["Python", "GeoPandas", "Network Analytics", "Mobility Intelligence"],
+      tags: ["Python", "GeoPandas", "Network Analytics", "Mobility Intelligence", "GIS"],
       icon: "map-pin"
     },
     {
       name: "Traffic_Incident_Analysis",
-      title: "Traffic Incident & Congestion Analysis",
-      description: "Spatiotemporal bottleneck detection, incident clearance duration estimation, and network shockwave propagation modeling.",
+      title: "Traffic Incident & Bottleneck Diagnostics",
+      description: "Spatiotemporal algorithms for incident detection, clearance duration modeling, and network shockwave propagation tracking using connected probe data.",
       url: "https://github.com/dy-chang/Traffic_Incident_Analysis",
-      tags: ["Traffic Analytics", "Bottleneck Identification", "Probe Data", "R / Python"],
+      tags: ["Traffic Analytics", "Bottleneck Detection", "Probe Data", "R / Python"],
       icon: "activity"
     },
     {
       name: "Crash_Data_Modeling",
-      title: "Highway Crash Data Modeling",
-      description: "Statistical and econometric modeling of crash frequencies, safety hotspots, and risk factor identification for roadway improvements.",
+      title: "Highway Safety & Crash Risk Modeling",
+      description: "Econometric count data modeling (Negative Binomial, Poisson, Random Parameters) for identifying roadway safety hotspots and Vision Zero countermeasures.",
       url: "https://github.com/dy-chang/Crash_Data_Modeling",
-      tags: ["Safety Engineering", "Econometrics", "Count Models", "Vision Zero"],
+      tags: ["Vision Zero", "Safety Engineering", "Econometrics", "Risk Factors"],
       icon: "alert-triangle"
     },
     {
       name: "Vulnerable-Road-User-Injury-Prediction",
-      title: "VRU Injury Severity Prediction",
-      description: "Machine learning and discrete choice framework to predict injury severity and crash outcomes for pedestrians and cyclists.",
+      title: "VRU Injury Severity Prediction System",
+      description: "Machine learning and discrete choice modeling suite to predict injury severity and crash outcomes for pedestrians, bicyclists, and micromobility users.",
       url: "https://github.com/dy-chang/Vulnerable-Road-User-Injury-Prediction",
-      tags: ["Machine Learning", "Pedestrian & Bike Safety", "XGBoost", "Logit"],
+      tags: ["Machine Learning", "Pedestrian Safety", "XGBoost", "Logit Modeling"],
       icon: "user-check"
     }
   ],
 
-  projects: [
-    {
-      title: "Francis Scott Key Bridge Collapse Traffic Impact & Resilience Analysis",
-      client: "Morgan State University SMARTER Center / USDOT",
-      period: "2024 – 2026",
-      tools: ["Iteris ClearGuide", "INRIX", "Python", "R", "QGIS", "DiD / Panel Models"],
-      description: "Conducted spatiotemporal performance evaluation across 30 regional corridors in Baltimore following the catastrophic FSK bridge collapse. Implemented Fixed Effects, Mixed Effects, Difference-in-Differences (DiD), and stratified econometric models to isolate causal congestion shocks and support agency detour planning.",
-      publishedIn: "MDPI Sustainability (2025)"
-    },
-    {
-      title: "St. Louis Earthquake Response & Rescue Network",
-      client: "Missouri DOT (MoDOT)",
-      period: "2022 – 2024",
-      tools: ["CUBE Voyager/Avenue", "QGIS", "USGS ShakeCast", "Household Survey"],
-      description: "Directly managed the 48,151-link, 3,003-zone CUBE model and 7.9 million-trip matrices for a simulated M6.7 earthquake. Evaluated 12 evacuation scenarios, mapped network speed ratios and bottlenecks in QGIS, and co-led multi-stakeholder tabletop exercises (TTX).",
-      publishedIn: "MoDOT Technical Report & TRB 2025"
-    },
-    {
-      title: "New Madrid Regional Earthquake Evacuation Model",
-      client: "Missouri DOT (MoDOT)",
-      period: "2021 – 2022",
-      tools: ["PTV Vissim DTA", "GIS", "Python", "MATLAB"],
-      description: "Built and validated an 8-county Vissim network to implement Dynamic Traffic Assignment (DTA). Analyzed network delay, speed, Level of Service (LOS), and critical bottlenecks under damaged infrastructure scenarios.",
-      publishedIn: "MoDOT Research Project"
-    },
-    {
-      title: "Hampton Roads Hurricane Evacuation Route Choice Modeling",
-      client: "National Science Foundation (Award #1537762)",
-      period: "2016 – 2021",
-      tools: ["DynusT DTA", "Mixed Logit", "R (mlogit)", "MATLAB", "GIS"],
-      description: "Estimated random parameter (mixed) logit models with 200 Halton draws on household survey data to model evacuee preference between freeways and arterials under a Category 4 hurricane.",
-      publishedIn: "Elsevier TRIP (2021) & TRB 2020"
-    },
-    {
-      title: "Immersive Virtual Reality Work Zone Inspection Platform",
-      client: "Missouri DOT (MoDOT)",
-      period: "2018 – 2021",
-      tools: ["Unity 3D", "C#", "Motive Motion Capture", "Oculus Rift"],
-      description: "Pioneered a 3D VR simulation platform to train state DOT inspectors on temporary traffic control and human flagger safety, boosting inspection proficiency from 44% to 79% (97% DOT endorsement).",
-      publishedIn: "Transportation Research Record (2020) & IEEE AIVR (2020)"
-    }
-  ],
-
+  // Career Timeline
   experience: [
     {
-      role: "Senior Planner",
+      role: "Senior Transportation Planner",
       organization: "Benesch",
       location: "Baltimore, MD, USA",
       period: "June 2026 – Present",
       type: "industry",
       highlights: [
-        "Leading regional travel demand modeling, select-zone analysis, and network scenario forecasting using PTV Visum, CUBE, and TransCAD.",
-        "Developing automated Python/R post-processing workflows for O-D matrices, corridor volume balancing, and project-specific travel pattern inquiries.",
-        "Delivering quantitative transportation analytics and resilience strategies for municipal and state agency clients."
+        "Leading travel demand modeling, select-zone analysis, and network scenario evaluation using PTV Visum, CUBE, and TransCAD.",
+        "Developing automated Python/R workflows for O-D matrix post-processing, corridor traffic balancing, and project-specific travel pattern assessments.",
+        "Delivering quantitative transportation analytics, traffic operations evaluations, and resilience strategies for municipal and state clients."
       ]
     },
     {
@@ -228,6 +280,7 @@ const PORTFOLIO_DATA = {
     }
   ],
 
+  // Curated Publications & Policy Papers
   publications: [
     {
       id: "chang2025beyond",
