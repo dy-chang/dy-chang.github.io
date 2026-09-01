@@ -1,257 +1,212 @@
 /**
- * Industry & Government-Focused Portfolio Data
- * Dr. Daeyeol (Daniel) Chang, Ph.D. (장대열)
+ * Portfolio Data: Daeyeol (Daniel) Chang, Ph.D.
  * Senior Transportation Planner & Modeler | Benesch
  */
 
 const PORTFOLIO_DATA = {
   profile: {
-    name: "Daeyeol (Daniel) Chang, Ph.D.",
-    koreanName: "장대열",
-    role: "Senior Transportation Planner & Quantitative Modeler",
-    company: "Benesch",
-    affiliation: "Baltimore, MD | Ex-Morgan State SMARTER Center | Ex-Mizzou",
-    headline: "Transportation Modeling, Infrastructure Resilience & Big Data Analytics for Public Agencies & Industry",
-    subheadline: "10+ Years Delivering Decision-Ready Travel Demand Models (CUBE, PTV Visum, TransCAD), Multi-Resolution DTA Traffic Simulations (PTV Vissim, DynusT), and Connected Vehicle Probe Analytics (ClearGuide, INRIX) for State DOTs, MPOs, and Municipalities.",
-    email: "dchang@benesch.com",
-    personalEmail: "chang.daeyeol@gmail.com",
-    location: "Baltimore, Maryland, USA",
-    bio: [
-      "I am a **Senior Transportation Planner and Modeler** at **Benesch** specializing in delivering high-fidelity modeling, data analytics, and policy-driven solutions for **State DOTs, Metropolitan Planning Organizations (MPOs), and regional transit agencies**.",
-      "With over a decade of technical leadership spanning Ph.D. and Postdoctoral appointments at **University of Missouri-Columbia** and **Morgan State University (SMARTER Center)**, I translate petabyte-scale mobility data (Iteris ClearGuide, INRIX GPS probes, Smart Card transit, Census) into actionable infrastructure resilience, bottleneck mitigation, and disaster evacuation strategies.",
-      "My work directly supports public decision-makers through advanced econometrics, dynamic traffic assignment (DTA), and automated GIS workflows—proven on critical projects like the **Francis Scott Key Bridge Collapse Traffic Impact Study**, the **St. Louis 48k-link M6.7 Earthquake Evacuation Model (MoDOT)**, and **MoDOT VR Work Zone Safety Training Platforms**."
-    ],
-    stats: [
-      { label: "Industry & R&D Experience", value: "10+ Yrs", icon: "briefcase" },
-      { label: "Regional Models & Networks", value: "50k+ Links", icon: "git-merge" },
-      { label: "Agency & NSF Projects", value: "USDOT / MoDOT", icon: "shield-check" },
-      { label: "Citations & Research Impact", value: "250+ Cites", icon: "award" }
-    ],
-    socials: {
-      linkedin: "https://www.linkedin.com/in/chang-daeyeol/",
-      scholar: "https://scholar.google.com/citations?user=8bu0_WoAAAAJ&hl=ko&oi=ao",
-      github: "https://github.com/dy-chang",
-      email: "mailto:dchang@benesch.com"
-    }
+    name: "Daeyeol (Daniel) Chang",
+    title: "Senior Transportation Planner & Modeler",
+    affiliation: "Benesch | Baltimore, MD",
+    email: "chang.daeyeol@gmail.com",
+    linkedin: "https://www.linkedin.com/in/chang-daeyeol/",
+    scholar: "https://scholar.google.com/citations?user=8bu0_WoAAAAJ&hl=ko&oi=ao",
+    github: "https://github.com/dy-chang",
+    summary: "Senior transportation planner and quantitative modeler with 10+ years of experience across regional travel demand forecasting, dynamic traffic assignment (DTA), connected vehicle data analytics, and transportation network resilience. Ph.D. in Civil Engineering from the University of Missouri-Columbia, with extensive project leadership for state DOTs (MoDOT, MDOT), metropolitan planning organizations (MPOs), and research centers (Morgan State SMARTER Center, NSF).",
+    researchInterests: [
+      "Travel Demand Modeling (CUBE, PTV Visum, TransCAD)",
+      "Dynamic Traffic Assignment & Simulation (PTV Vissim, DynusT)",
+      "Connected Vehicle & GPS Probe Analytics (Iteris ClearGuide, INRIX)",
+      "Disaster Evacuation & Network Resilience (Earthquake, Hurricane, Bridge Failure)",
+      "Econometric Discrete Choice & Causal Modeling (Mixed Logit, DiD)"
+    ]
   },
 
-  // Industry & Agency Focused Capabilities
   capabilities: [
     {
-      title: "Travel Demand Modeling & Forecasting",
-      icon: "git-merge",
-      desc: "Developing regional travel forecasting models, zone systems, O-D matrices, and scenario-based network alternatives for MPO/DOT long-range planning.",
-      tools: ["CUBE Voyager / Avenue", "PTV Visum", "TransCAD", "EMME/3", "Select-Zone Analysis", "Subarea Extraction", "O-D Matrix Calibration"]
+      title: "Travel Demand Modeling",
+      description: "Macro-level travel forecasting, highway network assignment, origin-destination matrix calibration, select-zone analysis, and scenario forecasting for regional long-range transportation plans.",
+      tools: ["CUBE Voyager / Avenue", "PTV Visum", "TransCAD", "EMME/3", "Select-Zone Analysis", "Subarea Modeling"]
     },
     {
-      title: "Traffic Simulation & DTA Operations",
-      icon: "sliders",
-      desc: "Microscopic and mesoscopic Dynamic Traffic Assignment (DTA) to evaluate freeway corridors, arterial signal coordination, and interchange alternatives.",
-      tools: ["PTV Vissim (DTA)", "DynusT", "DTALite", "UC-win/Road", "Level of Service (LOS)", "Bottleneck Diagnostics", "Trajectory Analysis"]
+      title: "Traffic Simulation & DTA",
+      description: "Microscopic and mesoscopic simulation modeling for freeway corridor management, work zone operations, interchange alternatives, and dynamic traffic assignment under network disruptions.",
+      tools: ["PTV Vissim (DTA)", "DynusT", "DTALite", "UC-win/Road", "Level of Service (LOS)", "Trajectory Processing"]
     },
     {
-      title: "Disruption, Resilience & Evacuation Planning",
-      icon: "shield-alert",
-      desc: "Quantitative risk assessment and emergency traffic management for major bridge closures, hurricanes, and seismic events with USGS ShakeCast integration.",
-      tools: ["Iteris ClearGuide", "INRIX Probes", "Travel Time Index (TTI)", "Difference-in-Differences (DiD)", "Mixed Logit", "Evacuation Clearance Time"]
+      title: "Resilience & Evacuation Operations",
+      description: "Quantitative disruption modeling, post-disaster network clearance estimation, and emergency route choice modeling combining survey data with structural damage forecasts (USGS ShakeCast).",
+      tools: ["ClearGuide GPS Probes", "INRIX", "Travel Time Index (TTI)", "Mixed Logit Models", "Difference-in-Differences"]
     },
     {
-      title: "Big Data, GIS & Policy Automation",
-      icon: "terminal",
-      desc: "High-performance Python/R pipelines, spatial analysis, automated corridor dashboards, and machine learning models for safety and transit optimization.",
-      tools: ["Python (GeoPandas, Statsmodels)", "R (mlogit, plm, lme4)", "QGIS & ArcGIS Pro", "SQL / PostGIS", "Interactive Web Dashboards", "Vision Zero Analytics"]
+      title: "Data Science, GIS & Model Automation",
+      description: "Custom computational workflows in Python and R for automated O-D matrix processing, spatiotemporal bottleneck detection, highway crash risk modeling, and spatial network analysis.",
+      tools: ["Python (GeoPandas, Statsmodels)", "R (mlogit, plm, lme4)", "QGIS & ArcGIS Pro", "SQL / PostgreSQL", "Git / GitHub"]
     }
   ],
 
-  // Major Projects with Visual Highlights & Policy Impacts
   projects: [
     {
-      id: "proj-fsk",
-      title: "Francis Scott Key Bridge Collapse: Regional Traffic Shockwave & Resiliency Analysis",
-      client: "Morgan State University SMARTER Center / USDOT / MDOT",
+      id: "fsk-bridge",
+      title: "Francis Scott Key Bridge Collapse Traffic System Shock & Resilience Analysis",
+      client: "Morgan State University SMARTER Center / USDOT",
       period: "2024 – 2026",
-      category: "Resilience & Operations",
-      badge: "Featured Study • MDPI Sustainability 2025",
-      badgeColor: "rose",
-      metrics: [
-        { label: "Corridors Analyzed", value: "30 Major Arteries" },
-        { label: "PM Peak Shock", value: "+126% TTI Surge" },
-        { label: "Critical Bottlenecks", value: "Harbor Tunnel & MD-295" }
+      tags: ["ClearGuide Probe Data", "Difference-in-Differences", "Fixed/Mixed Effects", "QGIS", "MDPI Sustainability 2025"],
+      overview: "Evaluated system-wide traffic disruptions and corridor recovery patterns across 30 major highway corridors in the Baltimore metropolitan area following the catastrophic collapse of the I-695 Francis Scott Key Bridge.",
+      methodology: "Processed high-frequency GPS probe data from Iteris ClearGuide from September 2023 to February 2025. Applied a multi-pronged econometric framework—including Fixed Effects, Mixed Effects, Difference-in-Differences (DiD), and stratified regression models—to isolate causal congestion impacts across Immediate, Fall, and Winter post-collapse phases.",
+      findings: [
+        "Observed severe PM peak vulnerability: PM peak Travel Time Index (TTI) increased by 0.847 units immediately following the collapse—nearly 4x greater than the AM peak increase (0.223 units).",
+        "Initial shock was most acute on Friday PM peaks (+77% TTI surge), transitioning over months to mid-week (Wednesday) recurring congestion as network equilibrium adapted.",
+        "Identified persistent local hotspots on the Harbor Tunnel Thruway (NB) and MD-295 (NB) with TTI values exceeding 2.0, providing data-backed rationale for corridor-specific ramp metering and peak-hour commercial freight management."
       ],
-      description: "Conducted high-frequency GPS probe data analytics (Iteris ClearGuide) across 30 corridors in the Baltimore metropolitan area following the catastrophic collapse of the I-695 Key Bridge. Applied Fixed Effects, Mixed Effects, Difference-in-Differences (DiD), and stratified econometrics to isolate causal impacts across Immediate, Fall, and Winter periods.",
-      policyTakeaways: [
-        "Identified asymmetric vulnerability: PM peak congestion was up to 4x worse than AM peaks (+0.847 TTI vs +0.223 TTI).",
-        "Formulated actionable agency recommendations: Peak-hour freight routing restrictions, dynamic corridor pricing, and adaptive ramp metering on I-95 & I-895.",
-        "Demonstrated that network averages mask acute localized bottlenecks where top 20% corridors experienced +3.81 TTI surge."
-      ],
-      tools: ["Iteris ClearGuide", "INRIX Probe Data", "Difference-in-Differences", "Panel Fixed/Mixed Effects", "QGIS", "Python/R"]
+      publication: "Published in MDPI Sustainability, Vol. 17(15), 6916 (2025)."
     },
     {
-      id: "proj-stlouis",
+      id: "st-louis-eq",
       title: "St. Louis Regional Earthquake Emergency Response & Rescue Network",
       client: "Missouri Department of Transportation (MoDOT)",
       period: "2022 – 2024",
-      category: "Emergency Planning & Simulation",
-      badge: "MoDOT Statewide Project • TRB 2025",
-      badgeColor: "blue",
-      metrics: [
-        { label: "Network Scope", value: "48,151 Links / 3,003 Zones" },
-        { label: "Trip Demand", value: "7.9 Million Trips" },
-        { label: "Disaster Scenarios", value: "12 Evacuation Sets" }
+      tags: ["CUBE Voyager/Avenue", "USGS ShakeCast", "QGIS", "Tabletop Exercise", "TRB 2025"],
+      overview: "Managed the regional travel demand modeling and disaster simulation to identify critical emergency response and rescue corridors in the St. Louis metropolitan area under a simulated M6.7 earthquake.",
+      methodology: "Managed the 48,151-link, 3,003-zone regional CUBE model representing 7.9 million daily trips. Integrated structural damage predictions from USGS ShakeCast to model physical bridge failures and roadway closures across 12 distinct evacuation and emergency response scenarios.",
+      findings: [
+        "Mapped speed ratios, vehicle delays, and Level of Service (LOS E/F) bottlenecks across eastern Missouri highway networks in QGIS.",
+        "Identified key lifeline corridors requiring seismic hardening and strategic contraflow deployment during multi-agency emergency operations.",
+        "Facilitated multi-stakeholder tabletop exercises (TTX) connecting MoDOT, state emergency management (SEMA), and regional public safety agencies."
       ],
-      description: "Directly managed the regional CUBE Voyager/Avenue travel demand model and 7.9M trip matrices for a simulated M6.7 earthquake in the New Madrid Seismic Zone. Integrated USGS ShakeCast bridge vulnerability data to identify structural failures and simulate post-disaster route choices.",
-      policyTakeaways: [
-        "Identified critical emergency lifeline corridors across eastern Missouri requiring seismic hardening.",
-        "Mapped speed ratios and Level of Service (LOS E/F) bottlenecks across 12 disaster scenarios in QGIS.",
-        "Facilitated multi-agency Tabletop Exercises (TTX) connecting MoDOT, SEMA, and local emergency responders."
-      ],
-      tools: ["CUBE Voyager / Avenue", "QGIS", "USGS ShakeCast", "Household Survey Analysis", "Tabletop Exercise (TTX)"]
+      publication: "Presented at TRB 104th Annual Meeting (2025) & MoDOT Research Report."
     },
     {
-      id: "proj-newmadrid",
+      id: "new-madrid-vissim",
       title: "New Madrid Multi-County Regional Evacuation DTA Simulation",
       client: "Missouri Department of Transportation (MoDOT)",
       period: "2021 – 2022",
-      category: "DTA & Simulation",
-      badge: "8-County Network Simulation",
-      badgeColor: "amber",
-      metrics: [
-        { label: "Study Area", value: "8 Missouri Counties" },
-        { label: "Simulation Platform", value: "PTV Vissim DTA" },
-        { label: "Survey Sample", value: "891 Households" },
+      tags: ["PTV Vissim DTA", "Dynamic Traffic Assignment", "Household Survey", "GIS"],
+      overview: "Constructed a regional highway simulation model across eight southeast Missouri counties to evaluate regional evacuation performance under severe seismic infrastructure damage.",
+      methodology: "Built and validated an 8-county roadway network in PTV Vissim to perform Dynamic Traffic Assignment (DTA). Synthesized 891 household survey responses with US Census data to generate realistic background and evacuation O-D trip matrices across 6-hour and 12-hour departure windows.",
+      findings: [
+        "Demonstrated that compressed 6-hour evacuation windows dropped average network speeds to 43 mph and produced extreme bottlenecks on MO 34 WB, US 60 EB, and MO 25.",
+        "Provided empirical guidelines for staged evacuation timing to avoid severe gridlock at critical river crossings and interchange bottlenecks."
       ],
-      description: "Constructed and validated an 8-county regional highway simulation model using PTV Vissim Dynamic Traffic Assignment (DTA). Scaled household survey data with US Census to generate realistic background and evacuation demand under M7.8 earthquake damage scenarios.",
-      policyTakeaways: [
-        "Uncovered acute bottlenecks on MO 34 WB, US 60 EB, and MO 25 during compressed 6-hour vs 12-hour evacuation departure windows.",
-        "Delivered data-driven evacuation routing and staged departure strategies to prevent severe gridlock at Mississippi River crossings."
-      ],
-      tools: ["PTV Vissim DTA", "GIS Mapping", "Python", "MATLAB", "Origin-Destination Matrix Estimation"]
+      publication: "MoDOT Technical Project Report."
     },
     {
-      id: "proj-vr-safety",
-      title: "Immersive VR Digital Twin Platform for Highway Work Zone Inspection Training",
-      client: "Missouri DOT (MoDOT) & TRB",
+      id: "vr-workzone",
+      title: "Immersive Virtual Reality Platform for Highway Work Zone Inspection Training",
+      client: "Missouri Department of Transportation (MoDOT)",
       period: "2018 – 2021",
-      category: "Safety & Emerging Tech",
-      badge: "Award-Winning • TRR 2020 & IEEE AIVR",
-      badgeColor: "emerald",
-      metrics: [
-        { label: "Inspection Accuracy", value: "44% → 79% (+35%)" },
-        { label: "Agency Endorsement", value: "97% Positive" },
-        { label: "Technology Stack", value: "Unity 3D + Motion Capture" }
+      tags: ["Unity 3D", "Oculus Rift", "Motion Capture", "MUTCD", "TRR 2020", "IEEE AIVR"],
+      overview: "Developed a 3D Virtual Reality simulation platform to train state DOT inspection personnel on temporary traffic control, signage compliance, and human flagger safety protocols.",
+      methodology: "Reconstructed 3D roadway geometrics in Unity and used motion-capture technology (Motive) to replicate real human flagger behavior on two-lane highway work zones based on the MUTCD and MoDOT Engineering Policy Guide (EPG).",
+      findings: [
+        "Tested with 34 MoDOT field personnel: Trainee deficiency identification scores increased from 44% (traditional slide quiz) to 79% in the immersive VR module.",
+        "97% of participating DOT inspectors agreed that VR offered an effective, realistic, and risk-free platform for work zone compliance training."
       ],
-      description: "Pioneered a 3D Virtual Reality training simulator replicating real-world highway construction and flagger operations using Unity 3D, Oculus Rift, and Motive motion capture. Directly addressed MUTCD and MoDOT Engineering Policy Guide (EPG) compliance.",
-      policyTakeaways: [
-        "Dramatically reduced agency training costs and field inspection hazards while boosting safety deficiency recognition from 44% to 79%.",
-        "Adopted by MoDOT engineers with a 97% rating for realistic training utility and procedural compliance."
-      ],
-      tools: ["Unity 3D Engine", "C#", "Motive Motion Capture", "Oculus Rift", "MUTCD & MoDOT EPG Standards"]
+      publication: "Published in Transportation Research Record (2020) & IEEE AIVR (2020)."
     }
   ],
 
-  // 4 Featured Open-Source Repositories
-  featuredRepos: [
+  repositories: [
     {
       name: "urban-transport-intelligence",
-      title: "Urban Transport Intelligence Platform",
-      description: "End-to-end framework for smart mobility analytics, transit route optimization, and spatiotemporal traffic intelligence for municipal transportation departments.",
+      title: "Urban Transport Intelligence",
+      description: "Python and GeoPandas framework for multimodal transit optimization, origin-destination matrix processing, and spatiotemporal mobility pattern extraction.",
       url: "https://github.com/dy-chang/urban-transport-intelligence",
-      tags: ["Python", "GeoPandas", "Network Analytics", "Mobility Intelligence", "GIS"],
-      icon: "map-pin"
+      language: "Python",
+      topics: ["Transportation Modeling", "GeoPandas", "Network Analytics"]
     },
     {
       name: "Traffic_Incident_Analysis",
-      title: "Traffic Incident & Bottleneck Diagnostics",
-      description: "Spatiotemporal algorithms for incident detection, clearance duration modeling, and network shockwave propagation tracking using connected probe data.",
+      title: "Traffic Incident Analysis",
+      description: "Statistical and spatiotemporal algorithms for detecting recurrent and non-recurrent congestion bottlenecks, estimating clearance durations, and tracking shockwave propagation.",
       url: "https://github.com/dy-chang/Traffic_Incident_Analysis",
-      tags: ["Traffic Analytics", "Bottleneck Detection", "Probe Data", "R / Python"],
-      icon: "activity"
+      language: "R / Python",
+      topics: ["Traffic Analytics", "Bottleneck Detection", "Probe Data"]
     },
     {
       name: "Crash_Data_Modeling",
-      title: "Highway Safety & Crash Risk Modeling",
-      description: "Econometric count data modeling (Negative Binomial, Poisson, Random Parameters) for identifying roadway safety hotspots and Vision Zero countermeasures.",
+      title: "Highway Crash Data Modeling",
+      description: "Econometric count modeling scripts (Poisson, Negative Binomial, Random Parameters) for roadway safety evaluation, high-risk corridor identification, and Vision Zero analysis.",
       url: "https://github.com/dy-chang/Crash_Data_Modeling",
-      tags: ["Vision Zero", "Safety Engineering", "Econometrics", "Risk Factors"],
-      icon: "alert-triangle"
+      language: "R / Python",
+      topics: ["Safety Engineering", "Econometrics", "Risk Factors"]
     },
     {
       name: "Vulnerable-Road-User-Injury-Prediction",
-      title: "VRU Injury Severity Prediction System",
-      description: "Machine learning and discrete choice modeling suite to predict injury severity and crash outcomes for pedestrians, bicyclists, and micromobility users.",
+      title: "VRU Injury Severity Prediction",
+      description: "Machine learning and discrete choice framework for predicting pedestrian and cyclist injury severity in roadway collisions using police crash records.",
       url: "https://github.com/dy-chang/Vulnerable-Road-User-Injury-Prediction",
-      tags: ["Machine Learning", "Pedestrian Safety", "XGBoost", "Logit Modeling"],
-      icon: "user-check"
+      language: "Python",
+      topics: ["Machine Learning", "Pedestrian Safety", "XGBoost"]
     }
   ],
 
-  // Career Timeline
   experience: [
     {
       role: "Senior Transportation Planner",
       organization: "Benesch",
-      location: "Baltimore, MD, USA",
+      location: "Baltimore, MD",
       period: "June 2026 – Present",
-      type: "industry",
-      highlights: [
-        "Leading travel demand modeling, select-zone analysis, and network scenario evaluation using PTV Visum, CUBE, and TransCAD.",
-        "Developing automated Python/R workflows for O-D matrix post-processing, corridor traffic balancing, and project-specific travel pattern assessments.",
-        "Delivering quantitative transportation analytics, traffic operations evaluations, and resilience strategies for municipal and state clients."
+      type: "Industry",
+      details: [
+        "Lead regional travel demand modeling, select-zone analysis, and highway network scenario forecasting using PTV Visum, CUBE, and TransCAD.",
+        "Develop automated Python/R workflows for O-D matrix balancing, corridor volume post-processing, and project-specific travel pattern assessments.",
+        "Deliver data-driven transportation planning studies, corridor operations evaluations, and resilience strategies for municipal and state clients."
       ]
     },
     {
       role: "Postdoctoral Research Associate",
       organization: "Morgan State University (SMARTER Center)",
-      location: "Baltimore, MD, USA",
-      period: "October 2024 – 2026",
-      type: "academia",
-      highlights: [
-        "Spearheaded regional traffic performance evaluation and econometric modeling of the Francis Scott Key Bridge collapse using ClearGuide GPS probe data.",
-        "Assessed transportation network resilience, corridor accessibility changes, and service degradation using QGIS and panel econometric models (DiD, FE, ME)."
+      location: "Baltimore, MD",
+      period: "Oct 2024 – 2026",
+      type: "Research",
+      details: [
+        "Led regional traffic performance evaluation and econometric modeling of the Francis Scott Key Bridge collapse using high-resolution ClearGuide GPS probe data.",
+        "Applied panel econometric models (Fixed Effects, Mixed Effects, DiD) to isolate causal traffic shocks and assess corridor accessibility degradation."
       ]
     },
     {
       role: "Postdoctoral Fellow",
-      organization: "University of Missouri-Columbia (Dept. of Civil & Env. Engineering)",
-      location: "Columbia, MO, USA",
-      period: "July 2021 – September 2024",
-      type: "academia",
-      highlights: [
-        "Investigated nationwide DOT practices for operational traffic simulation models across macro, meso, and microscopic resolutions for the TRB Research Council.",
-        "Led the MoDOT St. Louis 48,151-link CUBE evacuation model and New Madrid PTV Vissim DTA simulation projects."
+      organization: "University of Missouri-Columbia",
+      location: "Columbia, MO",
+      period: "Jul 2021 – Sep 2024",
+      type: "Research",
+      details: [
+        "Investigated nationwide DOT operational traffic simulation practices across macro, meso, and microscopic tools for the TRB Research Council.",
+        "Directed the 48k-link St. Louis regional CUBE evacuation model and New Madrid PTV Vissim DTA simulation projects for MoDOT."
       ]
     },
     {
       role: "Graduate Research Assistant / Ph.D. Candidate",
       organization: "University of Missouri-Columbia",
-      location: "Columbia, MO, USA",
-      period: "August 2016 – May 2021",
-      type: "academia",
-      highlights: [
+      location: "Columbia, MO",
+      period: "Aug 2016 – May 2021",
+      type: "Research",
+      details: [
         "Completed Ph.D. dissertation: 'Modeling Transportation Impacts of Natural Disasters'.",
-        "Conducted NSF hurricane evacuation modeling and developed MoDOT VR work zone inspection platforms."
+        "Conducted NSF-funded hurricane evacuation route choice modeling and built MoDOT VR work zone inspection platforms."
       ]
     },
     {
       role: "Researcher",
       organization: "The Korea Transport Institute (KOTI)",
       location: "Sejong, South Korea",
-      period: "April 2015 – July 2016",
-      type: "industry",
-      highlights: [
-        "Vision Zero Traffic Safety Project: Analyzed and predicted crash patterns from national databases to support safety legislation.",
-        "Village Zone Project: Identified crash hotspots in targeted cities and evaluated safety intervention effectiveness."
+      period: "Apr 2015 – Jul 2016",
+      type: "Research",
+      details: [
+        "Vision Zero Traffic Safety Project: Analyzed national crash databases to identify risk factors and support safety legislation.",
+        "Village Zone Project: Analyzed crash hotspots in pilot cities and evaluated speed management countermeasure effectiveness."
       ]
     },
     {
       role: "Graduate Research Assistant",
-      organization: "Chung-Ang University (Dept. of Urban Engineering)",
+      organization: "Chung-Ang University",
       location: "Seoul, South Korea",
-      period: "March 2012 – February 2015",
-      type: "academia",
-      highlights: [
-        "Public Transit Route Reorganization (Seoul Metro Council): Analyzed Smart Card and KTDB ridership data to optimize fleet allocation.",
-        "Jangsu-Gyeyang Expressway Feasibility Study (KDI): Forecasted expressway travel demand using TransCAD and EMME/3."
+      period: "Mar 2012 – Feb 2015",
+      type: "Research",
+      details: [
+        "Analyzed Smart Card ridership and Korea Transport Database (KTDB) for Seoul Metropolitan Council bus route reorganization.",
+        "Conducted travel demand forecasting for the Jangsu-Gyeyang Expressway feasibility study using TransCAD and EMME/3."
       ]
     }
   ],
@@ -260,41 +215,33 @@ const PORTFOLIO_DATA = {
     {
       degree: "Ph.D. in Civil and Environmental Engineering",
       institution: "University of Missouri-Columbia",
-      location: "Columbia, MO, USA",
-      focus: "Transportation Engineering (Dissertation: Modeling Transportation Impacts of Natural Disasters)",
-      year: "2021"
+      year: "2021",
+      detail: "Dissertation: Modeling Transportation Impacts of Natural Disasters (Advisor: Praveen Edara)"
     },
     {
-      degree: "M.S. in Urban Engineering",
+      degree: "M.S. in Urban Engineering (Transportation Focus)",
       institution: "Chung-Ang University",
-      location: "Seoul, South Korea",
-      focus: "Transportation Focus (Thesis: Driving Commuters' Dependence on Expressways in Seoul)",
-      year: "2014"
+      year: "2014",
+      detail: "Thesis: A Study on Driving Commuters' Dependence on Expressways in Seoul Metropolitan Area"
     },
     {
       degree: "B.S. in Urban Engineering",
       institution: "Chung-Ang University",
-      location: "Seoul, South Korea",
-      focus: "Urban & Transportation Planning",
-      year: "2011"
+      year: "2011",
+      detail: "Urban & Transportation Planning Focus"
     }
   ],
 
-  // Curated Publications & Policy Papers
   publications: [
     {
       id: "chang2025beyond",
       title: "Beyond the Detour: Modeling Traffic System Shocks After the Francis Scott Key Bridge Failure",
-      authors: ["Daeyeol Chang", "Niyeyesh Meimandi Nejad", "Mansoureh Jeihani", "Mansha Swami"],
-      venue: "Sustainability",
-      year: 2025,
-      volume: "17(15)",
-      pages: "6916",
+      authors: "D. Chang, N. Meimandi Nejad, M. Jeihani, M. Swami",
+      journal: "Sustainability",
+      year: "2025",
+      volume: "17(15), 6916",
       doi: "https://doi.org/10.3390/su17156916",
-      tags: ["Bridge Collapse", "Causal Inference", "Difference-in-Differences", "ClearGuide GPS Probe", "Fixed Effects", "Network Resilience"],
       category: "resilience",
-      selected: true,
-      tldr: "Quantified spatiotemporal network disruption following the Francis Scott Key Bridge collapse using 30-corridor high-frequency ClearGuide probe data. Revealed severe PM peak shocks (up to 4x AM) and validated causal impacts using Difference-in-Differences (DiD) and stratified models.",
       bibtex: `@article{chang2025beyond,
   title={Beyond the Detour: Modeling Traffic System Shocks After the Francis Scott Key Bridge Failure},
   author={Chang, Daeyeol and Nejad, Niyeyesh Meimandi and Jeihani, Mansoureh and Swami, Mansha},
@@ -303,20 +250,16 @@ const PORTFOLIO_DATA = {
   number={15},
   pages={6916},
   year={2025},
-  publisher={MDPI},
   doi={10.3390/su17156916}
 }`
     },
     {
       id: "chang2025trb_seismic",
       title: "Resilience in Motion: Analyzing Evacuation Decisions During Seismic Emergencies",
-      authors: ["Daeyeol Chang"],
-      venue: "Transportation Research Board 104th Annual Meeting (TRB 2025)",
-      year: 2025,
-      tags: ["TRB 2025", "Seismic Evacuation", "Travel Demand", "CUBE Avenue", "Resilience"],
+      authors: "D. Chang",
+      journal: "Transportation Research Board 104th Annual Meeting (TRB)",
+      year: "2025",
       category: "evacuation",
-      selected: true,
-      tldr: "Presented regional evacuation decision models and traffic simulation findings under severe seismic network disruptions.",
       bibtex: `@inproceedings{chang2025trb_seismic,
   title={Resilience in Motion: Analyzing Evacuation Decisions During Seismic Emergencies},
   author={Chang, Daeyeol},
@@ -327,13 +270,10 @@ const PORTFOLIO_DATA = {
     {
       id: "chang2024trb_covid",
       title: "The Rise of Private Vehicles: Investigating Factors for Mode Shift after COVID-19",
-      authors: ["Daeyeol Chang"],
-      venue: "Transportation Research Board 103rd Annual Meeting (TRB 2024)",
-      year: 2024,
-      tags: ["TRB 2024", "Mode Choice", "COVID-19 Shift", "Discrete Choice", "Travel Behavior"],
+      authors: "D. Chang",
+      journal: "Transportation Research Board 103rd Annual Meeting (TRB)",
+      year: "2024",
       category: "behavior",
-      selected: false,
-      tldr: "Investigated post-pandemic mode choice behavior shifts towards private vehicle reliance using discrete choice modeling.",
       bibtex: `@inproceedings{chang2024trb_covid,
   title={The Rise of Private Vehicles: Investigating Factors for Mode Shift after COVID-19},
   author={Chang, Daeyeol},
@@ -344,16 +284,12 @@ const PORTFOLIO_DATA = {
     {
       id: "chang2021taking",
       title: "Taking the freeway: Inferring evacuee route selection from survey data",
-      authors: ["Daeyeol Chang", "Praveen Edara", "Pamela Murray-Tuite", "Joseph Trainor", "Kostas Triantis"],
-      venue: "Transportation Research Interdisciplinary Perspectives (TRIP)",
-      year: 2021,
-      volume: "11",
-      pages: "100421",
+      authors: "D. Chang, P. Edara, P. Murray-Tuite, J. Trainor, K. Triantis",
+      journal: "Transportation Research Interdisciplinary Perspectives",
+      year: "2021",
+      volume: "11, 100421",
       doi: "https://doi.org/10.1016/j.trip.2021.100421",
-      tags: ["Hurricane Evacuation", "Route Choice", "Mixed Logit", "Random Parameter Logit", "Travel Behavior", "NSF Grant"],
       category: "evacuation",
-      selected: true,
-      tldr: "Developed a random parameter (mixed) logit model with 200 Halton draws to analyze household evacuation route choice (freeway vs. non-freeway) under a Category 4 hurricane scenario in Hampton Roads, VA.",
       bibtex: `@article{chang2021taking,
   title={Taking the freeway: Inferring evacuee route selection from survey data},
   author={Chang, Daeyeol and Edara, Praveen and Murray-Tuite, Pamela and Trainor, Joseph and Triantis, Kostas},
@@ -361,70 +297,56 @@ const PORTFOLIO_DATA = {
   volume={11},
   pages={100421},
   year={2021},
-  publisher={Elsevier},
   doi={10.1016/j.trip.2021.100421}
 }`
     },
     {
       id: "aati2020immersive",
       title: "Immersive Work Zone Inspection Training using Virtual Reality",
-      authors: ["Khaled Aati", "Daeyeol Chang", "Praveen Edara", "Carlos Sun"],
-      venue: "Transportation Research Record (TRR)",
-      year: 2020,
-      volume: "2674",
-      pages: "1–9",
+      authors: "K. Aati, D. Chang, P. Edara, C. Sun",
+      journal: "Transportation Research Record (TRR)",
+      year: "2020",
+      volume: "2674(12), 224–232",
       doi: "https://doi.org/10.1177/0361198120953146",
-      tags: ["Virtual Reality (VR)", "Work Zone Safety", "Inspection Training", "Unity 3D", "MoDOT", "Traffic Control"],
-      category: "vr-safety",
-      selected: true,
-      tldr: "Built an interactive 3D VR inspection training platform in Unity 3D with Oculus Rift for Missouri DOT staff, achieving a 79% deficiency identification score and 97% training utility rating.",
+      category: "safety",
       bibtex: `@article{aati2020immersive,
   title={Immersive Work Zone Inspection Training using Virtual Reality},
   author={Aati, Khaled and Chang, Daeyeol and Edara, Praveen and Sun, Carlos},
   journal={Transportation Research Record},
   volume={2674},
-  number={10},
-  pages={1--9},
+  number={12},
+  pages={224--232},
   year={2020},
-  publisher={SAGE Publications},
   doi={10.1177/0361198120953146}
 }`
     },
     {
       id: "chang2020vrflagger",
       title: "Immersive Virtual Reality Training for Inspecting Flagger Work zones",
-      authors: ["Daeyeol Chang", "James Hopfenblatt", "Praveen Edara", "Bimal Balakrishnan"],
-      venue: "2020 IEEE International Conference on Artificial Intelligence and Virtual Reality (AIVR)",
-      year: 2020,
-      pages: "327–330",
+      authors: "D. Chang, J. Hopfenblatt, P. Edara, B. Balakrishnan",
+      journal: "IEEE International Conference on Artificial Intelligence and Virtual Reality (AIVR)",
+      year: "2020",
+      volume: "pp. 327–330",
       doi: "https://doi.org/10.1109/AIVR50618.2020.00066",
-      tags: ["IEEE AIVR", "Motion Capture", "Flagger Safety", "Virtual Reality", "Human Avatar", "Two-lane Highway"],
-      category: "vr-safety",
-      selected: true,
-      tldr: "Integrated motion capture technology (Motive) and 3D terrain reconstruction in Unity to replicate real-world human flagger behavior on two-lane highway work zones for inspector compliance training.",
+      category: "safety",
       bibtex: `@inproceedings{chang2020vrflagger,
   title={Immersive Virtual Reality Training for Inspecting Flagger Work zones},
   author={Chang, Daeyeol and Hopfenblatt, James and Edara, Praveen and Balakrishnan, Bimal},
   booktitle={2020 IEEE International Conference on Artificial Intelligence and Virtual Reality (AIVR)},
   pages={327--330},
   year={2020},
-  organization={IEEE},
   doi={10.1109/AIVR50618.2020.00066}
 }`
     },
     {
       id: "chang2015commuter",
       title: "Commuter dependence on expressways when travelling to work",
-      authors: ["Daeyeol Chang", "Keemin Sohn"],
-      venue: "Proceedings of the Institution of Civil Engineers - Transport",
-      year: 2015,
-      volume: "168(1)",
-      pages: "23–33",
+      authors: "D. Chang, K. Sohn",
+      journal: "Proceedings of the Institution of Civil Engineers - Transport",
+      year: "2015",
+      volume: "168(1), 23–33",
       doi: "https://doi.org/10.1680/tran.13.00008",
-      tags: ["Commuter Choice", "Expressway Dependence", "Binary Logit", "Latent Variables", "PCA", "Seoul Metro"],
       category: "behavior",
-      selected: true,
-      tldr: "Investigated irrational commuter dependence on expressways in Seoul despite travel time/toll disadvantages, extracting 14 latent behavioral propensities via PCA and integrating into a binary logit choice model.",
       bibtex: `@article{chang2015commuter,
   title={Commuter dependence on expressways when travelling to work},
   author={Chang, Daeyeol and Sohn, Keemin},
@@ -433,7 +355,6 @@ const PORTFOLIO_DATA = {
   number={1},
   pages={23--33},
   year={2015},
-  publisher={Thomas Telford Ltd},
   doi={10.1680/tran.13.00008}
 }`
     }

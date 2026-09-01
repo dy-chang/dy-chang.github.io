@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
 
 :root {
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -19,60 +19,41 @@ code, pre {
   font-family: var(--font-mono);
 }
 
-/* Glassmorphism Classes */
-.glass-nav {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+/* Refined Minimalist Header */
+.nav-backdrop {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
 }
-.dark .glass-nav {
-  background: rgba(15, 23, 42, 0.85);
-}
-
-.glass-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-.dark .glass-card {
-  background: rgba(30, 41, 59, 0.7);
+.dark .nav-backdrop {
+  background: rgba(15, 23, 42, 0.92);
 }
 
-/* Custom Scrollbar */
+/* Subtle Card Borders */
+.clean-card {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.clean-card:hover {
+  border-color: #cbd5e1;
+}
+.dark .clean-card:hover {
+  border-color: #475569;
+}
+
+/* Minimal Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.5);
-  border-radius: 4px;
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(100, 116, 139, 0.8);
-}
-
-/* Pulse Glow & Gradient Accents */
-.gradient-text {
-  background: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #7c3aed 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.dark .gradient-text {
-  background: linear-gradient(135deg, #60a5fa 0%, #818cf8 50%, #a78bfa 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Print Style for CV / Resume */
-@media print {
-  header, footer, #visualizations, #themeToggle, .no-print {
-    display: none !important;
-  }
-  body {
-    background: white !important;
-    color: black !important;
-  }
+  background: #94a3b8;
 }

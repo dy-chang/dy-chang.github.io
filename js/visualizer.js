@@ -1,48 +1,39 @@
 /**
- * Interactive Visualizations and Research Simulators
- * Dr. Daeyeol Chang Portfolio
+ * Data Visualizations & Econometric Simulators
+ * Styled for professional publication and agency reporting
  */
 
 let fskChartInstance = null;
-let vrChartInstance = null;
 
-// Initialize Visualizations when DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
-  initFskShockwaveChart("pm");
-  initEvacuationSimulator();
-  initVrChart();
+  initFskChart("pm");
+  initLogitSimulator();
 });
 
 /* =========================================================================
-   1. FSK Bridge Traffic Shockwave Chart (ClearGuide TTI Data)
+   1. FSK Bridge Traffic Disruption Chart (ClearGuide GPS Probe TTI)
    ========================================================================= */
 const FSK_DATA = {
   pm: {
     labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
     datasets: [
       {
-        label: "Immediate Post-Collapse (Mar-Apr 2024)",
+        label: "Immediate Post-Collapse (Mar–Apr 2024)",
         data: [56, 48, 61, 62, 77],
-        backgroundColor: "rgba(239, 68, 68, 0.85)", // Red
-        borderColor: "rgb(239, 68, 68)",
-        borderWidth: 1,
-        borderRadius: 6
+        backgroundColor: "#dc2626", // Clean Crimson
+        borderRadius: 4
       },
       {
-        label: "Fall Adaptation (Sep-Nov 2024)",
+        label: "Fall Adaptation (Sep–Nov 2024)",
         data: [32, 34, 46, 50, 38],
-        backgroundColor: "rgba(245, 158, 11, 0.85)", // Amber
-        borderColor: "rgb(245, 158, 11)",
-        borderWidth: 1,
-        borderRadius: 6
+        backgroundColor: "#d97706", // Amber
+        borderRadius: 4
       },
       {
-        label: "Winter Equilibrium (Dec 2024-Feb 2025)",
+        label: "Winter Equilibrium (Dec 2024–Feb 2025)",
         data: [26, 30, 39, 24, 38],
-        backgroundColor: "rgba(59, 130, 246, 0.85)", // Blue
-        borderColor: "rgb(59, 130, 246)",
-        borderWidth: 1,
-        borderRadius: 6
+        backgroundColor: "#2563eb", // Royal Blue
+        borderRadius: 4
       }
     ]
   },
@@ -52,32 +43,26 @@ const FSK_DATA = {
       {
         label: "Immediate Post-Collapse",
         data: [28, 34, 18, 13, 9],
-        backgroundColor: "rgba(239, 68, 68, 0.85)",
-        borderColor: "rgb(239, 68, 68)",
-        borderWidth: 1,
-        borderRadius: 6
+        backgroundColor: "#dc2626",
+        borderRadius: 4
       },
       {
         label: "Fall Adaptation",
         data: [11, 20, 15, 15, 1],
-        backgroundColor: "rgba(245, 158, 11, 0.85)",
-        borderColor: "rgb(245, 158, 11)",
-        borderWidth: 1,
-        borderRadius: 6
+        backgroundColor: "#d97706",
+        borderRadius: 4
       },
       {
         label: "Winter Equilibrium",
         data: [14, 8, 14, 9, -4],
-        backgroundColor: "rgba(59, 130, 246, 0.85)",
-        borderColor: "rgb(59, 130, 246)",
-        borderWidth: 1,
-        borderRadius: 6
+        backgroundColor: "#2563eb",
+        borderRadius: 4
       }
     ]
   }
 };
 
-function initFskShockwaveChart(period = "pm") {
+function initFskChart(period = "pm") {
   const ctx = document.getElementById("fskChart");
   if (!ctx) return;
 
@@ -86,8 +71,8 @@ function initFskShockwaveChart(period = "pm") {
   }
 
   const isDark = document.documentElement.classList.contains("dark");
-  const textColor = isDark ? "#e2e8f0" : "#334155";
-  const gridColor = isDark ? "rgba(255, 255, 255, 0.08)" : "rgba(0, 0, 0, 0.06)";
+  const textColor = isDark ? "#94a3b8" : "#475569";
+  const gridColor = isDark ? "rgba(255, 255, 255, 0.06)" : "rgba(0, 0, 0, 0.06)";
 
   fskChartInstance = new Chart(ctx, {
     type: "bar",
@@ -111,20 +96,20 @@ function initFskShockwaveChart(period = "pm") {
         },
         tooltip: {
           backgroundColor: isDark ? "#0f172a" : "#1e293b",
-          titleFont: { size: 13, weight: "bold" },
+          titleFont: { size: 12, weight: "600" },
           bodyFont: { size: 12 },
-          padding: 12,
-          cornerRadius: 8,
+          padding: 10,
+          cornerRadius: 6,
           callbacks: {
             label: function(context) {
-              return ` ${context.dataset.label}: +${context.raw}% TTI increase`;
+              return ` ${context.dataset.label}: +${context.raw}% TTI`;
             }
           }
         }
       },
       scales: {
         x: {
-          ticks: { color: textColor, font: { family: "'Inter', sans-serif", weight: "500" } },
+          ticks: { color: textColor, font: { family: "'Inter', sans-serif", size: 11 } },
           grid: { display: false }
         },
         y: {
@@ -132,7 +117,7 @@ function initFskShockwaveChart(period = "pm") {
             display: true,
             text: "% Change in Travel Time Index (TTI)",
             color: textColor,
-            font: { size: 12, weight: "600" }
+            font: { size: 11, weight: "600" }
           },
           ticks: {
             color: textColor,
@@ -152,31 +137,31 @@ window.toggleFskPeriod = function(period) {
   const amBtn = document.getElementById("btnFskAm");
 
   if (period === "pm") {
-    pmBtn.className = "px-4 py-1.5 rounded-lg text-sm font-semibold bg-primary-600 text-white shadow-sm transition-all";
-    amBtn.className = "px-4 py-1.5 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all";
+    pmBtn.className = "px-3 py-1 rounded text-xs font-semibold bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900";
+    amBtn.className = "px-3 py-1 rounded text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white";
   } else {
-    amBtn.className = "px-4 py-1.5 rounded-lg text-sm font-semibold bg-primary-600 text-white shadow-sm transition-all";
-    pmBtn.className = "px-4 py-1.5 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all";
+    amBtn.className = "px-3 py-1 rounded text-xs font-semibold bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900";
+    pmBtn.className = "px-3 py-1 rounded text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white";
   }
-  initFskShockwaveChart(period);
+  initFskChart(period);
 };
 
 
 /* =========================================================================
-   2. Evacuation Route Choice Simulator (Mixed Logit Model)
+   2. Hurricane Evacuation Route Choice Simulator (Mixed Logit)
    ========================================================================= */
 const LOGIT_PARAMS = {
   constant: 3.096,
-  recommendedRoute: 1.360,     // willingness to use official route
-  dwellingType: 1.078,         // single-family / duplex = 1
-  travelTimeHour: 0.167,       // per hour of normal travel time
-  employment: 0.698,           // employed = 1
-  pastExperience: 0.858,       // evacuated before = 1
-  earlyDeparture2Days: -0.648, // 2 days before landfall = 1
-  shelterAccommodation: -1.944 // shelter or second home = 1
+  recommendedRoute: 1.360,
+  dwellingType: 1.078,
+  travelTimeHour: 0.167,
+  employment: 0.698,
+  pastExperience: 0.858,
+  earlyDeparture2Days: -0.648,
+  shelterAccommodation: -1.944
 };
 
-function initEvacuationSimulator() {
+function initLogitSimulator() {
   const inputs = [
     "simTravelTime",
     "simRecRoute",
@@ -190,15 +175,15 @@ function initEvacuationSimulator() {
   inputs.forEach(id => {
     const el = document.getElementById(id);
     if (el) {
-      el.addEventListener("input", calculateLogitChoice);
-      el.addEventListener("change", calculateLogitChoice);
+      el.addEventListener("input", calculateLogit);
+      el.addEventListener("change", calculateLogit);
     }
   });
 
-  calculateLogitChoice();
+  calculateLogit();
 }
 
-function calculateLogitChoice() {
+function calculateLogit() {
   const travelTimeEl = document.getElementById("simTravelTime");
   const travelTimeValEl = document.getElementById("simTravelTimeVal");
   const recRouteEl = document.getElementById("simRecRoute");
@@ -213,14 +198,13 @@ function calculateLogitChoice() {
   const travelTime = parseFloat(travelTimeEl.value);
   if (travelTimeValEl) travelTimeValEl.innerText = `${travelTime.toFixed(1)} hrs`;
 
-  const recRoute = recRouteEl.checked ? 1 : 0;
-  const dwelling = dwellingEl.checked ? 1 : 0;
-  const exp = expEl.checked ? 1 : 0;
-  const emp = empEl.checked ? 1 : 0;
-  const early = earlyEl.checked ? 1 : 0;
-  const shelter = shelterEl.checked ? 1 : 0;
+  const recRoute = recRouteEl?.checked ? 1 : 0;
+  const dwelling = dwellingEl?.checked ? 1 : 0;
+  const exp = expEl?.checked ? 1 : 0;
+  const emp = empEl?.checked ? 1 : 0;
+  const early = earlyEl?.checked ? 1 : 0;
+  const shelter = shelterEl?.checked ? 1 : 0;
 
-  // Utility function: V = Beta * X
   const utility = 
     LOGIT_PARAMS.constant +
     (LOGIT_PARAMS.travelTimeHour * travelTime) +
@@ -231,7 +215,6 @@ function calculateLogitChoice() {
     (LOGIT_PARAMS.earlyDeparture2Days * early) +
     (LOGIT_PARAMS.shelterAccommodation * shelter);
 
-  // Binary Logit Probability P(Freeway) = 1 / (1 + exp(-V))
   const probFreeway = (1 / (1 + Math.exp(-utility))) * 100;
   const probNonFreeway = 100 - probFreeway;
 
@@ -239,114 +222,14 @@ function calculateLogitChoice() {
   const probNonFreewayEl = document.getElementById("probNonFreeway");
   const probBarFreeway = document.getElementById("probBarFreeway");
   const probBarNonFreeway = document.getElementById("probBarNonFreeway");
-  const logitSummaryEl = document.getElementById("logitSummary");
 
   if (probFreewayEl) probFreewayEl.innerText = `${probFreeway.toFixed(1)}%`;
   if (probNonFreewayEl) probNonFreewayEl.innerText = `${probNonFreeway.toFixed(1)}%`;
   if (probBarFreeway) probBarFreeway.style.width = `${probFreeway.toFixed(1)}%`;
   if (probBarNonFreeway) probBarNonFreeway.style.width = `${probNonFreeway.toFixed(1)}%`;
-
-  if (logitSummaryEl) {
-    if (probFreeway >= 75) {
-      logitSummaryEl.innerHTML = `<span class="text-emerald-600 dark:text-emerald-400 font-semibold">High Freeway Propensity:</span> Evacuees with longer trip distances and willingness to follow official routes heavily concentrate on freeways, requiring aggressive traffic management & contraflow lanes.`;
-    } else if (probFreeway >= 50) {
-      logitSummaryEl.innerHTML = `<span class="text-blue-600 dark:text-blue-400 font-semibold">Moderate Freeway Preference:</span> Balanced distribution across freeway and parallel arterial networks.`;
-    } else {
-      logitSummaryEl.innerHTML = `<span class="text-amber-600 dark:text-amber-400 font-semibold">Arterial / Local Preference:</span> Factors like 2-day early departure or short trips to public shelters divert traffic to local non-freeway routes.`;
-    }
-  }
 }
 
-
-/* =========================================================================
-   3. VR Work Zone Inspection Training Performance Chart
-   ========================================================================= */
-function initVrChart() {
-  const ctx = document.getElementById("vrChart");
-  if (!ctx) return;
-
-  if (vrChartInstance) {
-    vrChartInstance.destroy();
-  }
-
-  const isDark = document.documentElement.classList.contains("dark");
-  const textColor = isDark ? "#e2e8f0" : "#334155";
-  const gridColor = isDark ? "rgba(255, 255, 255, 0.08)" : "rgba(0, 0, 0, 0.06)";
-
-  vrChartInstance = new Chart(ctx, {
-    type: "radar",
-    data: {
-      labels: [
-        "Deficiency Accuracy",
-        "Signage Evaluation",
-        "Trainee Satisfaction",
-        "Spatial Immersion",
-        "Flagger Protocol",
-        "Practical Utility"
-      ],
-      datasets: [
-        {
-          label: "Traditional Slide/Photo Training",
-          data: [44, 52, 48, 25, 40, 50],
-          backgroundColor: "rgba(148, 163, 184, 0.25)",
-          borderColor: "rgb(148, 163, 184)",
-          borderWidth: 2,
-          pointBackgroundColor: "rgb(148, 163, 184)"
-        },
-        {
-          label: "Immersive VR Simulation Platform",
-          data: [79, 88, 97, 92, 85, 95],
-          backgroundColor: "rgba(14, 165, 233, 0.35)", // Sky blue
-          borderColor: "rgb(14, 165, 233)",
-          borderWidth: 2.5,
-          pointBackgroundColor: "rgb(14, 165, 233)",
-          pointHoverRadius: 6
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          position: "top",
-          labels: {
-            color: textColor,
-            font: { family: "'Inter', sans-serif", size: 12, weight: "500" },
-            usePointStyle: true,
-            boxWidth: 8
-          }
-        },
-        tooltip: {
-          backgroundColor: isDark ? "#0f172a" : "#1e293b",
-          padding: 10,
-          cornerRadius: 8
-        }
-      },
-      scales: {
-        r: {
-          angleLines: { color: gridColor },
-          grid: { color: gridColor },
-          pointLabels: {
-            color: textColor,
-            font: { family: "'Inter', sans-serif", size: 11, weight: "600" }
-          },
-          ticks: {
-            color: textColor,
-            backdropColor: "transparent",
-            stepSize: 20
-          },
-          min: 0,
-          max: 100
-        }
-      }
-    }
-  });
-}
-
-// Re-render charts on theme change
 window.refreshChartsTheme = function() {
-  const currentFskPeriod = document.getElementById("btnFskPm")?.classList.contains("bg-primary-600") ? "pm" : "am";
-  initFskShockwaveChart(currentFskPeriod);
-  initVrChart();
+  const currentFskPeriod = document.getElementById("btnFskPm")?.classList.contains("bg-slate-900") ? "pm" : "am";
+  initFskChart(currentFskPeriod);
 };
