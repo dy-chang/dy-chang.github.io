@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daeyeol Chang, Ph.D. | Transportation Data Scientist & Researcher</title>
+  <meta name="description" content="Personal portfolio of Dr. Daeyeol Chang - Transportation Data Scientist, Econometric Modeling, Big Data & Connected Vehicle Analytics, VR Simulation.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+              950: '#172554',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 antialiased selection:bg-primary-500 selection:text-white">
+
+  <!-- =========================================================================
+       Navigation Bar
+       ========================================================================= -->
+  <header class="sticky top-0 z-50 glass-nav border-b border-slate-200/80 dark:border-slate-800/80">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <!-- Logo / Name -->
+      <a href="#" class="flex items-center gap-2.5 font-bold text-slate-900 dark:text-white text-lg tracking-tight hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-primary-600 to-indigo-600 text-white flex items-center justify-center font-extrabold text-sm shadow-sm">
+          DC
+        </div>
+        <span>Daeyeol Chang<span class="text-xs font-semibold text-primary-600 dark:text-primary-400 ml-1.5 px-2 py-0.5 rounded-full bg-primary-100 dark:bg-primary-950/70">Ph.D.</span></span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
+        <a href="#about" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">About</a>
+        <a href="#publications" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Publications</a>
+        <a href="#visualizations" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Interactive Demos</a>
+        <a href="#experience" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Experience</a>
+        <a href="#skills" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Skills</a>
+        <a href="#contact" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contact</a>
+      </nav>
+
+      <!-- Right Action & Theme Toggle -->
+      <div class="flex items-center gap-2.5">
+        <a href="https://scholar.google.com/citations?user=8bu0_WoAAAAJ&hl=ko&oi=ao" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg text-slate-500 hover:text-primary-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-primary-400 dark:hover:bg-slate-800 transition-all" title="Google Scholar">
+          <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+        </a>
+        <a href="https://github.com/dy-chang" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-white dark:hover:bg-slate-800 transition-all" title="GitHub">
+          <i data-lucide="github" class="w-5 h-5"></i>
+        </a>
+        <button id="themeToggle" class="p-2 rounded-lg text-slate-500 hover:text-amber-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-amber-400 dark:hover:bg-slate-800 transition-all" title="Toggle Theme">
+          <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+          <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+        </button>
+        <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav Dropdown -->
+    <div id="mobileNav" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg px-4 py-4 space-y-2">
+      <a href="#about" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-primary-600">About</a>
+      <a href="#publications" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-primary-600">Publications</a>
+      <a href="#visualizations" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-primary-600">Interactive Demos</a>
+      <a href="#experience" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-primary-600">Experience</a>
+      <a href="#skills" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-primary-600">Skills</a>
+      <a href="#contact" class="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-primary-600">Contact</a>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-24">
+
+    <!-- =======================================================================
+         Hero Section
+         ======================================================================= -->
+    <section class="pt-6 sm:pt-12 pb-6">
+      <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
+        
+        <!-- Left Hero Content -->
+        <div class="flex-1 space-y-6 text-center lg:text-left">
+          
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-primary-100/80 dark:bg-primary-950/70 text-primary-800 dark:text-primary-300 border border-primary-200/80 dark:border-primary-800/80 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            Academia (Ph.D. & Postdoc) &rarr; Industry Applied Data Science
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+            Daeyeol Chang, <span class="gradient-text">Ph.D.</span>
+          </h1>
+
+          <p class="text-lg sm:text-xl font-medium text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+            Transportation Data Scientist & Quantitative Mobility Researcher bridging <strong class="text-slate-900 dark:text-white font-semibold">discrete choice econometrics</strong>, <strong class="text-slate-900 dark:text-white font-semibold">high-frequency GPS probe big data</strong>, and <strong class="text-slate-900 dark:text-white font-semibold">transportation network resilience</strong>.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
+            <a href="https://scholar.google.com/citations?user=8bu0_WoAAAAJ&hl=ko&oi=ao" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm bg-primary-600 hover:bg-primary-700 text-white shadow-sm hover:shadow-md transition-all">
+              <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+              Google Scholar
+            </a>
+            <a href="https://github.com/dy-chang" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 dark:hover:bg-slate-700 text-white shadow-sm transition-all">
+              <i data-lucide="github" class="w-4 h-4"></i>
+              GitHub (@dy-chang)
+            </a>
+            <a href="mailto:daeyeol.chang@gmail.com" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700/60 shadow-sm transition-all">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+              Contact Me
+            </a>
+          </div>
+
+          <!-- Quick Stats Grid -->
+          <div id="heroStats" class="grid grid-cols-2 sm:grid-cols-4 gap-3.5 pt-4">
+            <!-- Rendered by app.js -->
+          </div>
+
+        </div>
+
+        <!-- Right Visual Badge Card -->
+        <div class="w-full max-w-sm lg:max-w-md">
+          <div class="relative p-7 rounded-3xl bg-gradient-to-br from-white via-slate-50 to-primary-50 dark:from-slate-800 dark:via-slate-800/90 dark:to-slate-900 border border-slate-200/90 dark:border-slate-700/80 shadow-xl space-y-6">
+            
+            <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700/80 pb-4">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-primary-600 text-white flex items-center justify-center font-bold text-xl shadow-md">
+                  DC
+                </div>
+                <div>
+                  <h2 class="font-bold text-slate-900 dark:text-white">Daeyeol Chang</h2>
+                  <p class="text-xs text-primary-600 dark:text-primary-400 font-medium">장대열 • Transportation Ph.D.</p>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                Industry Active
+              </span>
+            </div>
+
+            <div class="space-y-3 text-xs">
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="sparkles" class="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5"></i>
+                <span class="text-slate-600 dark:text-slate-300"><strong class="text-slate-900 dark:text-white">Core Expertise:</strong> Discrete Choice Models (Mixed Logit), Causal Econometrics (DiD, Panel FE/ME)</span>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="database" class="w-4 h-4 text-indigo-500 flex-shrink-0 mt-0.5"></i>
+                <span class="text-slate-600 dark:text-slate-300"><strong class="text-slate-900 dark:text-white">Big Data Analytics:</strong> Connected Vehicle & High-Frequency GPS Probes (ClearGuide, TTI)</span>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="glasses" class="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5"></i>
+                <span class="text-slate-600 dark:text-slate-300"><strong class="text-slate-900 dark:text-white">Simulation & Safety:</strong> Immersive VR Work Zone Training (Unity 3D, MoDOT)</span>
+              </div>
+            </div>
+
+            <div class="pt-2 border-t border-slate-100 dark:border-slate-700/80 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+              <span>📍 US / South Korea</span>
+              <a href="#publications" class="text-primary-600 dark:text-primary-400 font-semibold hover:underline flex items-center gap-1">
+                Explore Research <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =======================================================================
+         About & Story Section
+         ======================================================================= -->
+    <section id="about" class="space-y-6">
+      <div class="flex items-center gap-3">
+        <div class="w-1.5 h-6 rounded-full bg-primary-600"></div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">About & Academic-to-Industry Journey</h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 p-7 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-4">
+          <div id="aboutBio" class="space-y-4">
+            <!-- Rendered by app.js -->
+          </div>
+        </div>
+
+        <div class="p-7 rounded-2xl bg-gradient-to-br from-primary-900 to-indigo-950 text-white shadow-md flex flex-col justify-between space-y-6">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-primary-300">Guiding Philosophy</span>
+            <h3 class="text-xl font-bold mt-1 mb-3">Academic Rigor &times; Scalable Engineering</h3>
+            <p class="text-sm text-slate-200 leading-relaxed">
+              "Complex econometric modeling uncovers the true behavioral mechanisms; high-performance data engineering and machine learning deliver them at scale to solve real-world mobility challenges."
+            </p>
+          </div>
+          <div class="pt-4 border-t border-primary-800 flex items-center justify-between text-xs text-primary-300">
+            <span>Research &bull; Data &bull; Innovation</span>
+            <i data-lucide="compass" class="w-5 h-5 text-primary-400"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =======================================================================
+         Interactive Research Visualizations & Demos
+         ======================================================================= -->
+    <section id="visualizations" class="space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <div class="w-1.5 h-6 rounded-full bg-primary-600"></div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">Interactive Research Visualizations</h2>
+        </div>
+        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
+          Live Data & Econometric Models
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+        <!-- Visualization Card 1: FSK Bridge Shockwave -->
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 shadow-sm flex flex-col justify-between space-y-5">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <span class="px-2.5 py-0.5 rounded-md text-xs font-bold bg-rose-100 dark:bg-rose-950/70 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800">
+                Sustainability 2025 Study
+              </span>
+              <!-- Toggle Buttons for AM / PM -->
+              <div class="flex items-center bg-slate-100 dark:bg-slate-700 p-1 rounded-lg">
+                <button id="btnFskPm" onclick="toggleFskPeriod('pm')" class="px-3 py-1 rounded-md text-xs font-semibold bg-primary-600 text-white shadow-sm">PM Peak</button>
+                <button id="btnFskAm" onclick="toggleFskPeriod('am')" class="px-3 py-1 rounded-md text-xs font-medium text-slate-600 dark:text-slate-300">AM Peak</button>
+              </div>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">FSK Bridge Collapse Traffic Shockwave</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Empirical Travel Time Index (TTI) percent increase across weekday peak hours (ClearGuide probe data).</p>
+          </div>
+
+          <!-- Chart Canvas Container -->
+          <div class="relative h-64 w-full">
+            <canvas id="fskChart"></canvas>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-300 space-y-1">
+            <p><strong class="text-slate-900 dark:text-white font-semibold">Key Finding:</strong> Immediate PM peak traffic surged up to <strong class="text-rose-600 dark:text-rose-400 font-bold">+77%</strong> on Fridays, transitioning to mid-week bottlenecks by Fall/Winter.</p>
+          </div>
+        </div>
+
+
+        <!-- Visualization Card 2: Evacuation Mixed Logit Interactive Simulator -->
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 shadow-sm flex flex-col justify-between space-y-5">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <span class="px-2.5 py-0.5 rounded-md text-xs font-bold bg-blue-100 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+                TRIP 2021 Mixed Logit Model
+              </span>
+              <span class="text-xs text-slate-500 font-mono">200 Halton Draws</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Hurricane Evacuation Route Choice Simulator</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Live calculation of Freeway vs. Non-Freeway choice probability under Category 4 hurricane conditions.</p>
+          </div>
+
+          <!-- Interactive Simulator Controls -->
+          <div class="space-y-3.5 text-xs">
+            <!-- Slider: Travel Time -->
+            <div>
+              <div class="flex justify-between font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                <span>Normal Travel Time to Destination:</span>
+                <span id="simTravelTimeVal" class="text-primary-600 dark:text-primary-400 font-bold font-mono">4.0 hrs</span>
+              </div>
+              <input id="simTravelTime" type="range" min="0.5" max="15" step="0.5" value="4.0" class="w-full accent-primary-600 cursor-pointer">
+            </div>
+
+            <!-- Checkboxes Grid -->
+            <div class="grid grid-cols-2 gap-2.5 pt-1">
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-700/80 cursor-pointer">
+                <input id="simRecRoute" type="checkbox" checked class="rounded text-primary-600 focus:ring-primary-500">
+                <span class="text-slate-700 dark:text-slate-300 font-medium">Follows Official Route</span>
+              </label>
+
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-700/80 cursor-pointer">
+                <input id="simDwelling" type="checkbox" checked class="rounded text-primary-600 focus:ring-primary-500">
+                <span class="text-slate-700 dark:text-slate-300 font-medium">Single Family / Duplex</span>
+              </label>
+
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-700/80 cursor-pointer">
+                <input id="simExperience" type="checkbox" checked class="rounded text-primary-600 focus:ring-primary-500">
+                <span class="text-slate-700 dark:text-slate-300 font-medium">Prior Storm Evacuee</span>
+              </label>
+
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-700/80 cursor-pointer">
+                <input id="simEarlyDep" type="checkbox" class="rounded text-primary-600 focus:ring-primary-500">
+                <span class="text-slate-700 dark:text-slate-300 font-medium">Leaves 2 Days Early</span>
+              </label>
+
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-700/80 cursor-pointer">
+                <input id="simEmployed" type="checkbox" checked class="rounded text-primary-600 focus:ring-primary-500">
+                <span class="text-slate-700 dark:text-slate-300 font-medium">Employed</span>
+              </label>
+
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-700/80 cursor-pointer">
+                <input id="simShelter" type="checkbox" class="rounded text-primary-600 focus:ring-primary-500">
+                <span class="text-slate-700 dark:text-slate-300 font-medium">Evacuating to Shelter</span>
+              </label>
+            </div>
+
+            <!-- Predicted Probability Output Bar -->
+            <div class="pt-2">
+              <div class="flex justify-between items-center text-xs font-bold mb-1.5">
+                <span class="text-blue-600 dark:text-blue-400">Freeway Choice: <span id="probFreeway" class="text-sm">94.2%</span></span>
+                <span class="text-slate-500 dark:text-slate-400">Non-Freeway: <span id="probNonFreeway" class="text-sm">5.8%</span></span>
+              </div>
+              <div class="w-full bg-slate-200 dark:bg-slate-700 h-3 rounded-full overflow-hidden flex">
+                <div id="probBarFreeway" class="bg-gradient-to-r from-blue-600 to-indigo-600 h-full transition-all duration-300" style="width: 94.2%;"></div>
+                <div id="probBarNonFreeway" class="bg-slate-400 dark:bg-slate-500 h-full transition-all duration-300" style="width: 5.8%;"></div>
+              </div>
+            </div>
+
+          </div>
+
+          <div id="logitSummary" class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-300">
+            <!-- Dynamic commentary updated by visualizer.js -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Visualization Card 3: VR Work Zone Inspection Performance -->
+      <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 shadow-sm">
+        <div class="flex flex-col md:flex-row items-center gap-6">
+          <div class="flex-1 space-y-3">
+            <span class="px-2.5 py-0.5 rounded-md text-xs font-bold bg-cyan-100 dark:bg-cyan-950/70 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800">
+              TRR 2020 & IEEE AIVR
+            </span>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Immersive Virtual Reality Work Zone Inspection Platform</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Developed a 3D simulation platform using Unity and Motion Capture to evaluate DOT inspectors' ability to spot temporary traffic control defects. The results demonstrated a dramatic jump from a <strong>44% baseline quiz score</strong> to a <strong>79% accuracy score in immersive VR</strong>, with <strong>97% of inspectors endorsing VR's practical training utility</strong>.
+            </p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Unity 3D Engine</span>
+              <span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Oculus Rift HMD</span>
+              <span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Motion Capture (Motive)</span>
+              <span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">MoDOT EPG Standards</span>
+            </div>
+          </div>
+
+          <div class="w-full md:w-80 h-64 relative flex-shrink-0">
+            <canvas id="vrChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =======================================================================
+         Publications Section (Filterable & Searchable)
+         ======================================================================= -->
+    <section id="publications" class="space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-1.5 h-6 rounded-full bg-primary-600"></div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">Publications & Research</h2>
+        </div>
+
+        <a href="https://scholar.google.com/citations?user=8bu0_WoAAAAJ&hl=ko&oi=ao" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-semibold text-primary-600 dark:text-primary-400 hover:underline">
+          <i data-lucide="graduation-cap" class="w-4 h-4"></i> View Complete Google Scholar Profile &rarr;
+        </a>
+      </div>
+
+      <!-- Search & Filter Controls -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 p-4 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shadow-sm">
+        
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap items-center gap-1.5 w-full sm:w-auto">
+          <button class="pub-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-primary-600 text-white shadow-sm transition-all" data-category="all">All</button>
+          <button class="pub-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all" data-category="selected">Selected</button>
+          <button class="pub-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all" data-category="resilience">Resilience & Shocks</button>
+          <button class="pub-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all" data-category="evacuation">Evacuation & Logit</button>
+          <button class="pub-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all" data-category="vr-safety">VR & Safety</button>
+        </div>
+
+        <!-- Live Search Input -->
+        <div class="relative w-full sm:w-64">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <input id="pubSearchInput" type="text" placeholder="Search title, venue, tag..." class="w-full pl-9 pr-4 py-1.5 text-xs rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-primary-500">
+        </div>
+
+      </div>
+
+      <!-- Dynamic Publication Cards List -->
+      <div id="publicationsList" class="space-y-4">
+        <!-- Rendered by app.js -->
+      </div>
+    </section>
+
+
+    <!-- =======================================================================
+         Experience & Education Section
+         ======================================================================= -->
+    <section id="experience" class="space-y-6">
+      <div class="flex items-center gap-3">
+        <div class="w-1.5 h-6 rounded-full bg-primary-600"></div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">Experience & Education</h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Experience Timeline (2 cols) -->
+        <div class="lg:col-span-2 space-y-4">
+          <h3 class="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <i data-lucide="briefcase" class="w-4 h-4 text-primary-500"></i> Career Timeline
+          </h3>
+          <div id="experienceTimeline" class="p-6 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shadow-sm">
+            <!-- Rendered by app.js -->
+          </div>
+        </div>
+
+        <!-- Education (1 col) -->
+        <div class="space-y-4">
+          <h3 class="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <i data-lucide="graduation-cap" class="w-4 h-4 text-indigo-500"></i> Education
+          </h3>
+          <div id="educationList" class="space-y-3">
+            <!-- Rendered by app.js -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =======================================================================
+         Skills & Technical Expertise
+         ======================================================================= -->
+    <section id="skills" class="space-y-6">
+      <div class="flex items-center gap-3">
+        <div class="w-1.5 h-6 rounded-full bg-primary-600"></div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">Skills & Methodological Competencies</h2>
+      </div>
+
+      <div id="skillsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Rendered by app.js -->
+      </div>
+    </section>
+
+
+    <!-- =======================================================================
+         Contact & Connect Section
+         ======================================================================= -->
+    <section id="contact" class="space-y-6">
+      <div class="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-slate-900 via-primary-950 to-slate-900 text-white shadow-xl text-center space-y-6">
+        
+        <div class="w-14 h-14 rounded-2xl bg-primary-600/30 border border-primary-500/40 text-primary-400 mx-auto flex items-center justify-center">
+          <i data-lucide="send" class="w-6 h-6"></i>
+        </div>
+
+        <div class="space-y-2 max-w-xl mx-auto">
+          <h2 class="text-3xl font-extrabold tracking-tight">Let's Connect & Collaborate</h2>
+          <p class="text-sm text-slate-300">
+            Open to discussions on quantitative mobility research, transportation data science collaborations, econometric modeling, and industry applications.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+          <a href="mailto:daeyeol.chang@gmail.com" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm bg-primary-600 hover:bg-primary-500 text-white shadow-md transition-all">
+            <i data-lucide="mail" class="w-4 h-4"></i>
+            daeyeol.chang@gmail.com
+          </a>
+          <a href="https://scholar.google.com/citations?user=8bu0_WoAAAAJ&hl=ko&oi=ao" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-md transition-all">
+            <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+            Google Scholar
+          </a>
+          <a href="https://github.com/dy-chang" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-md transition-all">
+            <i data-lucide="github" class="w-4 h-4"></i>
+            GitHub (@dy-chang)
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- =========================================================================
+       Footer
+       ========================================================================= -->
+  <footer class="border-t border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/60 py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+    <div class="max-w-6xl mx-auto px-4 space-y-2">
+      <p>&copy; 2026 Dr. Daeyeol Chang (장대열). Hosted on GitHub Pages.</p>
+      <p class="font-mono text-[11px] text-slate-400">Built with Semantic HTML5, Tailwind CSS, Lucide Icons & Chart.js</p>
+    </div>
+  </footer>
+
+
+  <!-- =========================================================================
+       BibTeX Modal
+       ========================================================================= -->
+  <div id="bibtexModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm">
+    <div class="w-full max-w-xl p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+          <i data-lucide="code" class="w-4 h-4 text-primary-500"></i> BibTeX Citation
+        </h3>
+        <button id="closeBibtexBtn" class="p-1 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <p id="bibtexTitle" class="text-xs font-semibold text-primary-600 dark:text-primary-400 line-clamp-1"></p>
+
+      <pre class="p-4 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs font-mono text-slate-800 dark:text-slate-200 overflow-x-auto select-all max-h-64"><code id="bibtexContent"></code></pre>
+
+      <div class="flex justify-end gap-2 pt-2">
+        <button id="copyBibtexBtn" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold text-white bg-primary-600 hover:bg-primary-700 transition-all shadow-sm">
+          <i data-lucide="copy" class="w-3.5 h-3.5"></i> Copy to Clipboard
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Application Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/visualizer.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
