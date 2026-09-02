@@ -501,13 +501,13 @@ const PORTFOLIO_DATA = {
       doi: "https://doi.org/10.1680/jmuen.26.00021",
       category: "resilience",
       selected: true,
-      bibtex: @article{chang2026jmuen,
+      bibtex: `@article{chang2026jmuen,
   title={Transportation simulation and stakeholder exercises for urban seismic resilience},
   author={Chang, Daeyeol},
   journal={Proceedings of the Institution of Civil Engineers - Municipal Engineer},
   year={2026},
   doi={10.1680/jmuen.26.00021}
-}
+}`
     },
     {
       id: "chang2025beyond",
@@ -519,7 +519,7 @@ const PORTFOLIO_DATA = {
       doi: "https://doi.org/10.3390/su17156916",
       category: "resilience",
       selected: true,
-      bibtex: @article{chang2025beyond,
+      bibtex: `@article{chang2025beyond,
   title={Beyond the Detour: Modeling Traffic System Shocks After the Francis Scott Key Bridge Failure},
   author={Chang, Daeyeol and Nejad, Niyeyesh Meimandi and Jeihani, Mansoureh and Swami, Mansha},
   journal={Sustainability},
@@ -528,7 +528,7 @@ const PORTFOLIO_DATA = {
   pages={6916},
   year={2025},
   doi={10.3390/su17156916}
-}
+}`
     },
     {
       id: "chang2025trb_seismic",
@@ -538,12 +538,12 @@ const PORTFOLIO_DATA = {
       year: "2025",
       category: "evacuation",
       selected: true,
-      bibtex: @inproceedings{chang2025trb_seismic,
+      bibtex: `@inproceedings{chang2025trb_seismic,
   title={Resilience in Motion: Analyzing Evacuation Decisions During Seismic Emergencies},
   author={Chang, Daeyeol},
   booktitle={Transportation Research Board 104th Annual Meeting},
   year={2025}
-}
+}`
     },
     {
       id: "chang2024trb_covid",
@@ -553,12 +553,12 @@ const PORTFOLIO_DATA = {
       year: "2024",
       category: "behavior",
       selected: false,
-      bibtex: @inproceedings{chang2024trb_covid,
+      bibtex: `@inproceedings{chang2024trb_covid,
   title={The Rise of Private Vehicles: Investigating Factors for Mode Shift after COVID-19},
   author={Chang, Daeyeol},
   booktitle={Transportation Research Board 103rd Annual Meeting},
   year={2024}
-}
+}`
     },
     {
       id: "chang2021taking",
@@ -570,7 +570,7 @@ const PORTFOLIO_DATA = {
       doi: "https://doi.org/10.1016/j.trip.2021.100421",
       category: "evacuation",
       selected: true,
-      bibtex: @article{chang2021taking,
+      bibtex: `@article{chang2021taking,
   title={Taking the freeway: Inferring evacuee route selection from survey data},
   author={Chang, Daeyeol and Edara, Praveen and Murray-Tuite, Pamela and Trainor, Joseph and Triantis, Kostas},
   journal={Transportation Research Interdisciplinary Perspectives},
@@ -578,7 +578,7 @@ const PORTFOLIO_DATA = {
   pages={100421},
   year={2021},
   doi={10.1016/j.trip.2021.100421}
-}
+}`
     },
     {
       id: "aati2020immersive",
@@ -590,7 +590,7 @@ const PORTFOLIO_DATA = {
       doi: "https://doi.org/10.1177/0361198120953146",
       category: "safety",
       selected: true,
-      bibtex: @article{aati2020immersive,
+      bibtex: `@article{aati2020immersive,
   title={Immersive Work Zone Inspection Training using Virtual Reality},
   author={Aati, Khaled and Chang, Daeyeol and Edara, Praveen and Sun, Carlos},
   journal={Transportation Research Record},
@@ -599,7 +599,7 @@ const PORTFOLIO_DATA = {
   pages={224--232},
   year={2020},
   doi={10.1177/0361198120953146}
-}
+}`
     },
     {
       id: "chang2020vrflagger",
@@ -611,14 +611,14 @@ const PORTFOLIO_DATA = {
       doi: "https://doi.org/10.1109/AIVR50618.2020.00066",
       category: "safety",
       selected: false,
-      bibtex: @inproceedings{chang2020vrflagger,
+      bibtex: `@inproceedings{chang2020vrflagger,
   title={Immersive Virtual Reality Training for Inspecting Flagger Work zones},
   author={Chang, Daeyeol and Hopfenblatt, James and Edara, Praveen and Balakrishnan, Bimal},
   booktitle={2020 IEEE International Conference on Artificial Intelligence and Virtual Reality (AIVR)},
   pages={327--330},
   year={2020},
   doi={10.1109/AIVR50618.2020.00066}
-}
+}`
     },
     {
       id: "chang2015commuter",
@@ -630,7 +630,7 @@ const PORTFOLIO_DATA = {
       doi: "https://doi.org/10.1680/tran.13.00008",
       category: "behavior",
       selected: true,
-      bibtex: @article{chang2015commuter,
+      bibtex: `@article{chang2015commuter,
   title={Commuter dependence on expressways when travelling to work},
   author={Chang, Daeyeol and Sohn, Keemin},
   journal={Proceedings of the Institution of Civil Engineers-Transport},
@@ -639,7 +639,7 @@ const PORTFOLIO_DATA = {
   pages={23--33},
   year={2015},
   doi={10.1680/tran.13.00008}
-}
+}`
     }
   ],
 
