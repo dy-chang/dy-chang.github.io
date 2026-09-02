@@ -83,17 +83,13 @@ function renderMatrix() {
   const detailContainer = document.getElementById("matrixDetail");
   if (!container) return;
 
-  // Render the 2x2 grid inside the border-wrapped #heroMatrix
   container.innerHTML = PORTFOLIO_DATA.profile.pillars.map((p, idx) => {
-      
-      // Determine border classes based on position to create a clean inner grid without double borders
       let borderClasses = "";
       if (idx === 0) borderClasses = "border-b border-r border-slate-100 dark:border-slate-800"; // Top-Left
       if (idx === 1) borderClasses = "border-b border-slate-100 dark:border-slate-800"; // Top-Right
       if (idx === 2) borderClasses = "border-r border-slate-100 dark:border-slate-800"; // Bottom-Left
       if (idx === 3) borderClasses = ""; // Bottom-Right
 
-      // Default active is ML (idx 1)
       const isActive = idx === 1;
       const activeBg = isActive ? "bg-blue-50/80 dark:bg-blue-900/20" : "bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800/50";
       const activeText = isActive ? "text-blue-700 dark:text-blue-400" : "text-slate-900 dark:text-slate-200";
@@ -180,7 +176,6 @@ function renderPipeline() {
   const stages = PORTFOLIO_DATA.pipeline;
 
   stages.forEach((stage, idx) => {
-    // 1. Render the Stage Card
     html += `
       <div class="relative flex-1 p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3 z-10 shadow-sm hover:shadow-md hover:border-blue-400 dark:hover:border-blue-600 transition-all group">
         <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2 mb-2">
@@ -207,7 +202,6 @@ function renderPipeline() {
       </div>
     `;
 
-    // 2. Render the SVG Connector Arrow (if not the last step)
     if (idx < stages.length - 1) {
       html += `
         <!-- Desktop Horizontal Arrow -->
@@ -319,13 +313,10 @@ function renderEducation() {
   if (!container) return;
 
   container.innerHTML = PORTFOLIO_DATA.education.map(edu => `
-    <div class="p-3 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg text-xs shadow-sm">
-      <div class="flex justify-between items-start mb-1">
-        <h4 class="font-bold text-slate-900 dark:text-slate-100 text-sm">${edu.degree}</h4>
-        <span class="font-mono text-[10px] bg-slate-50 dark:bg-slate-950 px-2 py-1 rounded border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">${edu.year}</span>
-      </div>
-      <div class="text-blue-700 dark:text-blue-400 font-medium mb-1.5">${edu.institution}</div>
-      <div class="text-[11px] text-slate-500 bg-slate-50 dark:bg-slate-950 p-2 rounded-md border border-slate-100 dark:border-slate-800">${edu.detail}</div>
+    <div class="p-3.5 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg text-xs shadow-sm space-y-1">
+      <h4 class="font-bold text-slate-900 dark:text-slate-100 text-sm">${edu.degree}</h4>
+      <div class="text-blue-700 dark:text-blue-400 font-semibold">${edu.institution}</div>
+      <div class="text-[11px] text-slate-500 bg-slate-50 dark:bg-slate-950 p-2 rounded-md border border-slate-100 dark:border-slate-800 leading-relaxed">${edu.detail}</div>
     </div>
   `).join("");
 }
@@ -441,7 +432,6 @@ window.openBibtexModal = function(id) {
     title.innerText = pub.title;
     code.innerText = pub.bibtex;
     modal.classList.remove("hidden");
-    // Trigger reflow for fade in
     void modal.offsetWidth;
     modal.classList.add("opacity-100");
   }

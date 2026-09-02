@@ -82,7 +82,7 @@ const PORTFOLIO_DATA = {
   ],
 
   /* =========================================================================
-     4 Real Project Study Areas & GIS Geometries
+     4 Real Project Study Areas with High-Precision Geographic Highway Alignments
      ========================================================================= */
   studyRegions: {
     baltimore: {
@@ -101,16 +101,20 @@ const PORTFOLIO_DATA = {
         metric4: { label: "Friday Spillback", value: "+77%" }
       },
       chokePoints: [
-        { name: "FSK Key Bridge (I-695 Outer Loop)", lat: 39.218, lng: -76.525, status: "collapsed", desc: "Main span severed March 26, 2024; 31,000 daily vehicles diverted to tunnels & beltway." },
-        { name: "I-895 Baltimore Harbor Tunnel", lat: 39.262, lng: -76.582, status: "bottleneck", desc: "Severe bottle-necking; Hazardous cargo prohibited; peak delays exceeded +140%." },
-        { name: "I-95 Fort McHenry Tunnel", lat: 39.268, lng: -76.580, status: "congested", desc: "Primary detour spine; 8 lanes handling diverted interstate freight and commuter traffic." },
-        { name: "MD-295 Baltimore-Washington Pkwy", lat: 39.270, lng: -76.625, status: "arterial_spill", desc: "Arterial spillover route experiencing severe Friday afternoon queue propagation." }
+        { name: "FSK Key Bridge (I-695 Outer Loop)", lat: 39.2185, lng: -76.5255, status: "collapsed", desc: "Main span severed March 26, 2024; 31,000 daily vehicles diverted to tunnels & beltway." },
+        { name: "I-895 Baltimore Harbor Tunnel", lat: 39.2620, lng: -76.5820, status: "bottleneck", desc: "Severe bottle-necking; Hazardous cargo prohibited; peak delays exceeded +140%." },
+        { name: "I-95 Fort McHenry Tunnel", lat: 39.2680, lng: -76.5800, status: "congested", desc: "Primary detour spine; 8 lanes handling diverted interstate freight and commuter traffic." },
+        { name: "MD-295 Baltimore-Washington Pkwy", lat: 39.2740, lng: -76.6240, status: "arterial_spill", desc: "Arterial spillover route experiencing severe Friday afternoon queue propagation." }
       ],
       corridors: [
         {
           id: "balt-keybridge",
           name: "I-695 Key Bridge Segment",
-          coords: [[39.235, -76.550], [39.227, -76.540], [39.218, -76.525], [39.213, -76.517], [39.200, -76.505]],
+          coords: [
+            [39.2450, -76.5680], [39.2370, -76.5520], [39.2270, -76.5385],
+            [39.2185, -76.5255], [39.2130, -76.5170], [39.2040, -76.5080],
+            [39.1920, -76.5050], [39.1820, -76.5120]
+          ],
           type: "bridge_severed",
           baseSpeed: 55,
           shockSpeed: 0,
@@ -120,7 +124,11 @@ const PORTFOLIO_DATA = {
         {
           id: "balt-i895",
           name: "I-895 Harbor Tunnel Thruway",
-          coords: [[39.230, -76.615], [39.245, -76.595], [39.262, -76.582], [39.280, -76.565], [39.300, -76.545]],
+          coords: [
+            [39.2280, -76.6200], [39.2380, -76.6080], [39.2480, -76.5960],
+            [39.2560, -76.5870], [39.2620, -76.5820], [39.2700, -76.5740],
+            [39.2820, -76.5620], [39.2940, -76.5500], [39.3080, -76.5380]
+          ],
           type: "tunnel_bottleneck",
           baseSpeed: 50,
           shockSpeed: 18,
@@ -130,7 +138,11 @@ const PORTFOLIO_DATA = {
         {
           id: "balt-i95",
           name: "I-95 Fort McHenry Tunnel",
-          coords: [[39.240, -76.625], [39.255, -76.605], [39.268, -76.580], [39.285, -76.550], [39.310, -76.525]],
+          coords: [
+            [39.2420, -76.6320], [39.2520, -76.6180], [39.2600, -76.6040],
+            [39.2650, -76.5920], [39.2680, -76.5800], [39.2740, -76.5640],
+            [39.2840, -76.5480], [39.2980, -76.5320], [39.3120, -76.5200]
+          ],
           type: "interstate_spine",
           baseSpeed: 55,
           shockSpeed: 24,
@@ -140,7 +152,11 @@ const PORTFOLIO_DATA = {
         {
           id: "balt-md295",
           name: "MD-295 Baltimore-Washington Pkwy",
-          coords: [[39.220, -76.645], [39.240, -76.635], [39.270, -76.625], [39.285, -76.620]],
+          coords: [
+            [39.2200, -76.6480], [39.2350, -76.6400], [39.2500, -76.6340],
+            [39.2620, -76.6300], [39.2740, -76.6240], [39.2820, -76.6200],
+            [39.2870, -76.6190]
+          ],
           type: "arterial",
           baseSpeed: 45,
           shockSpeed: 19,
@@ -150,7 +166,12 @@ const PORTFOLIO_DATA = {
         {
           id: "balt-i695west",
           name: "I-695 West / North Beltway Arc",
-          coords: [[39.230, -76.680], [39.275, -76.720], [39.330, -76.735], [39.400, -76.620], [39.370, -76.500]],
+          coords: [
+            [39.2300, -76.6850], [39.2550, -76.7100], [39.2850, -76.7320],
+            [39.3200, -76.7380], [39.3550, -76.7250], [39.3850, -76.6900],
+            [39.4020, -76.6400], [39.3980, -76.5800], [39.3750, -76.5200],
+            [39.3400, -76.4750], [39.3000, -76.4550]
+          ],
           type: "beltway_bypass",
           baseSpeed: 60,
           shockSpeed: 38,
@@ -160,7 +181,11 @@ const PORTFOLIO_DATA = {
         {
           id: "balt-us40",
           name: "US-40 Pulaski Highway",
-          coords: [[39.295, -76.620], [39.310, -76.570], [39.325, -76.510], [39.340, -76.450]],
+          coords: [
+            [39.2920, -76.6700], [39.2940, -76.6350], [39.2960, -76.6050],
+            [39.3020, -76.5750], [39.3140, -76.5400], [39.3280, -76.5050],
+            [39.3420, -76.4650]
+          ],
           type: "arterial",
           baseSpeed: 40,
           shockSpeed: 22,
@@ -186,16 +211,21 @@ const PORTFOLIO_DATA = {
         metric4: { label: "Evacuation Scenarios", value: "12 Disaster Runs" }
       },
       chokePoints: [
-        { name: "Poplar Street Bridge (I-64 / I-55)", lat: 38.618, lng: -90.184, status: "fragility_high", desc: "USGS ShakeCast Collapse Probability: 0.68; Primary Mississippi River crossing failure point." },
-        { name: "Stan Musial Veterans Bridge (I-70)", lat: 38.635, lng: -90.175, status: "fragility_moderate", desc: "USGS ShakeCast Damage Probability: 0.32; Key reinforced lifeline corridor for northern rescue teams." },
-        { name: "I-270 Chain of Rocks Bridge", lat: 38.760, lng: -90.170, status: "fragility_high", desc: "USGS ShakeCast Damage Probability: 0.81; Critical outer loop crossing severance." },
-        { name: "I-64 / US-40 Daniel Boone Spine", lat: 38.640, lng: -90.450, status: "contraflow_active", desc: "Designated westbound primary evacuation spine under dynamic contraflow operation." }
+        { name: "Poplar Street Bridge (I-64 / I-55)", lat: 38.6184, lng: -90.1840, status: "fragility_high", desc: "USGS ShakeCast Collapse Probability: 0.68; Primary Mississippi River crossing failure point." },
+        { name: "Stan Musial Veterans Bridge (I-70)", lat: 38.6355, lng: -90.1750, status: "fragility_moderate", desc: "USGS ShakeCast Damage Probability: 0.32; Key reinforced lifeline corridor for northern rescue teams." },
+        { name: "I-270 Chain of Rocks Bridge", lat: 38.7620, lng: -90.1700, status: "fragility_high", desc: "USGS ShakeCast Damage Probability: 0.81; Critical outer loop crossing severance." },
+        { name: "I-64 / US-40 Daniel Boone Spine", lat: 38.6430, lng: -90.4600, status: "contraflow_active", desc: "Designated westbound primary evacuation spine under dynamic contraflow operation." }
       ],
       corridors: [
         {
           id: "stl-i64",
           name: "I-64 / US-40 Westbound Lifeline",
-          coords: [[38.618, -90.184], [38.627, -90.240], [38.632, -90.350], [38.640, -90.450], [38.660, -90.580]],
+          coords: [
+            [38.6720, -90.6100], [38.6580, -90.5400], [38.6430, -90.4600],
+            [38.6340, -90.3800], [38.6300, -90.3100], [38.6320, -90.2500],
+            [38.6280, -90.2100], [38.6220, -90.1900], [38.6184, -90.1840],
+            [38.6160, -90.1700]
+          ],
           type: "evac_spine",
           baseSpeed: 60,
           shockSpeed: 28,
@@ -205,7 +235,11 @@ const PORTFOLIO_DATA = {
         {
           id: "stl-i70",
           name: "I-70 North Corridor (Stan Musial)",
-          coords: [[38.635, -90.175], [38.650, -90.200], [38.700, -90.300], [38.750, -90.450], [38.800, -90.650]],
+          coords: [
+            [38.7800, -90.5200], [38.7450, -90.4300], [38.7200, -90.3500],
+            [38.6950, -90.2700], [38.6700, -90.2200], [38.6450, -90.1900],
+            [38.6355, -90.1750], [38.6340, -90.1600]
+          ],
           type: "freeway",
           baseSpeed: 65,
           shockSpeed: 22,
@@ -215,7 +249,10 @@ const PORTFOLIO_DATA = {
         {
           id: "stl-i55",
           name: "I-55 Southbound Evacuation Route",
-          coords: [[38.618, -90.184], [38.610, -90.200], [38.560, -90.260], [38.480, -90.330], [38.380, -90.380]],
+          coords: [
+            [38.3800, -90.3850], [38.4500, -90.3450], [38.5200, -90.2850],
+            [38.5750, -90.2450], [38.6050, -90.2050], [38.6184, -90.1840]
+          ],
           type: "freeway",
           baseSpeed: 65,
           shockSpeed: 30,
@@ -225,7 +262,10 @@ const PORTFOLIO_DATA = {
         {
           id: "stl-i44",
           name: "I-44 Southwest Corridor",
-          coords: [[38.620, -90.230], [38.590, -90.330], [38.540, -90.450], [38.480, -90.600]],
+          coords: [
+            [38.4800, -90.6000], [38.5300, -90.4800], [38.5700, -90.3800],
+            [38.6000, -90.2900], [38.6200, -90.2300], [38.6220, -90.1900]
+          ],
           type: "freeway",
           baseSpeed: 60,
           shockSpeed: 34,
@@ -235,7 +275,11 @@ const PORTFOLIO_DATA = {
         {
           id: "stl-i270",
           name: "I-270 Outer Circumferential Loop",
-          coords: [[38.520, -90.380], [38.650, -90.450], [38.780, -90.350], [38.760, -90.170]],
+          coords: [
+            [38.5150, -90.3950], [38.5750, -90.4350], [38.6450, -90.4500],
+            [38.7200, -90.4350], [38.7750, -90.3850], [38.7820, -90.3000],
+            [38.7780, -90.2200], [38.7620, -90.1700], [38.7300, -90.1200]
+          ],
           type: "beltway",
           baseSpeed: 60,
           shockSpeed: 20,
@@ -261,15 +305,20 @@ const PORTFOLIO_DATA = {
         metric4: { label: "Arterial Bypass", value: "US-58 / US-460" }
       },
       chokePoints: [
-        { name: "Hampton Roads Bridge-Tunnel (HRBT I-64)", lat: 36.970, lng: -76.300, status: "congested", desc: "Primary coastal freeway bottleneck; high surge vulnerability and extreme evacuation queues." },
-        { name: "Monitor-Merrimac Bridge-Tunnel (MMBT I-664)", lat: 36.970, lng: -76.420, status: "moderate", desc: "Secondary southern bay crossing for western Chesapeake/Suffolk evacuees." },
-        { name: "US-58 Midtown & Downtown Tunnel Bypass", lat: 36.840, lng: -76.290, status: "arterial", desc: "Major arterial evacuation corridor leading west toward Suffolk and Emporia." }
+        { name: "Hampton Roads Bridge-Tunnel (HRBT I-64)", lat: 36.9700, lng: -76.3000, status: "congested", desc: "Primary coastal freeway bottleneck; high surge vulnerability and extreme evacuation queues." },
+        { name: "Monitor-Merrimac Bridge-Tunnel (MMBT I-664)", lat: 36.9600, lng: -76.4300, status: "moderate", desc: "Secondary southern bay crossing for western Chesapeake/Suffolk evacuees." },
+        { name: "US-58 Midtown & Downtown Bypass", lat: 36.7800, lng: -76.3000, status: "arterial", desc: "Major arterial evacuation corridor leading west toward Suffolk and Emporia." }
       ],
       corridors: [
         {
           id: "hr-i64",
           name: "I-64 (HRBT - Hampton Roads Bridge-Tunnel)",
-          coords: [[36.850, -76.000], [36.870, -76.180], [36.970, -76.300], [37.030, -76.350], [37.150, -76.500], [37.300, -76.700]],
+          coords: [
+            [36.8450, -75.9800], [36.8520, -76.0800], [36.8550, -76.1700],
+            [36.8850, -76.2200], [36.9300, -76.2600], [36.9700, -76.3000],
+            [36.9950, -76.3250], [37.0250, -76.3600], [37.0700, -76.4200],
+            [37.1300, -76.5100], [37.2200, -76.6300]
+          ],
           type: "freeway_spine",
           baseSpeed: 60,
           shockSpeed: 16,
@@ -279,7 +328,11 @@ const PORTFOLIO_DATA = {
         {
           id: "hr-i664",
           name: "I-664 (MMBT - Monitor-Merrimac Tunnel)",
-          coords: [[36.780, -76.350], [36.880, -76.420], [36.970, -76.420], [37.020, -76.410]],
+          coords: [
+            [36.7800, -76.3500], [36.8300, -76.4000], [36.8900, -76.4300],
+            [36.9600, -76.4300], [36.9950, -76.4150], [37.0200, -76.3900],
+            [37.0250, -76.3600]
+          ],
           type: "freeway",
           baseSpeed: 60,
           shockSpeed: 25,
@@ -289,7 +342,11 @@ const PORTFOLIO_DATA = {
         {
           id: "hr-us58",
           name: "US-58 Westbound Arterial Corridor",
-          coords: [[36.840, -75.980], [36.750, -76.250], [36.730, -76.580], [36.700, -77.000]],
+          coords: [
+            [36.8450, -75.9800], [36.8100, -76.1500], [36.7800, -76.3000],
+            [36.7450, -76.4500], [36.7350, -76.6000], [36.7200, -76.7500],
+            [36.7050, -76.9000], [36.6850, -77.0500]
+          ],
           type: "arterial",
           baseSpeed: 45,
           shockSpeed: 28,
@@ -299,7 +356,10 @@ const PORTFOLIO_DATA = {
         {
           id: "hr-us460",
           name: "US-460 Northwest Evacuation Route",
-          coords: [[36.870, -76.300], [36.750, -76.600], [36.900, -76.900], [37.100, -77.300]],
+          coords: [
+            [36.7450, -76.6000], [36.8000, -76.7500], [36.8700, -76.9200],
+            [36.9600, -77.1000], [37.0500, -77.2800], [37.1500, -77.4500]
+          ],
           type: "arterial",
           baseSpeed: 50,
           shockSpeed: 35,
@@ -325,15 +385,18 @@ const PORTFOLIO_DATA = {
         metric4: { label: "Bottleneck Speed", value: "43 mph" }
       },
       chokePoints: [
-        { name: "Cairo Mississippi River Bridge (US-60 / US-62)", lat: 37.000, lng: -89.150, status: "severed", desc: "Eastern gateway bridge vulnerable to liquefaction; total severance in M7.8 scenario." },
-        { name: "Cape Girardeau Mississippi Bridge", lat: 37.300, lng: -89.520, status: "congested", desc: "Northernmost regional lifeline bridge sustaining severe evacuation queue loads." },
-        { name: "MO-34 / US-60 Westbound Junction", lat: 37.150, lng: -90.300, status: "bottleneck", desc: "Major rural merging bottleneck under compressed 6-hour evacuation windows." }
+        { name: "Cairo Mississippi River Bridge (US-60 / US-62)", lat: 37.0000, lng: -89.1450, status: "severed", desc: "Eastern gateway bridge vulnerable to liquefaction; total severance in M7.8 scenario." },
+        { name: "Cape Girardeau Mississippi Bridge", lat: 37.3100, lng: -89.5200, status: "congested", desc: "Northernmost regional lifeline bridge sustaining severe evacuation queue loads." },
+        { name: "MO-34 / US-60 Westbound Junction", lat: 37.1200, lng: -90.4500, status: "bottleneck", desc: "Major rural merging bottleneck under compressed 6-hour evacuation windows." }
       ],
       corridors: [
         {
           id: "nm-i55",
           name: "I-55 North-South Regional Spine",
-          coords: [[37.350, -89.550], [36.900, -89.600], [36.500, -89.700], [36.100, -89.850]],
+          coords: [
+            [37.3500, -89.5500], [37.1500, -89.5800], [36.8800, -89.6000],
+            [36.6000, -89.6800], [36.3500, -89.7800], [36.0500, -89.8800]
+          ],
           type: "freeway",
           baseSpeed: 70,
           shockSpeed: 38,
@@ -343,7 +406,11 @@ const PORTFOLIO_DATA = {
         {
           id: "nm-us60",
           name: "US-60 East-West Evacuation Corridor",
-          coords: [[36.750, -90.400], [36.850, -89.900], [36.950, -89.300], [37.000, -89.150]],
+          coords: [
+            [36.7600, -90.4000], [36.7900, -90.1500], [36.8200, -89.9000],
+            [36.8800, -89.6000], [36.9300, -89.3500], [36.9800, -89.1800],
+            [37.0000, -89.1450]
+          ],
           type: "arterial",
           baseSpeed: 60,
           shockSpeed: 25,
@@ -353,12 +420,28 @@ const PORTFOLIO_DATA = {
         {
           id: "nm-mo34",
           name: "MO-34 Westbound Escape Route",
-          coords: [[37.300, -89.550], [37.250, -89.900], [37.150, -90.300]],
+          coords: [
+            [37.3100, -89.5400], [37.2800, -89.7500], [37.2400, -90.0000],
+            [37.1800, -90.2500], [37.1200, -90.4500]
+          ],
           type: "arterial",
           baseSpeed: 55,
           shockSpeed: 28,
           ttiNormal: 1.04,
           ttiShock: 2.45
+        },
+        {
+          id: "nm-us61",
+          name: "US-61 / US-62 River Crossing Corridor",
+          coords: [
+            [36.5800, -89.5500], [36.7500, -89.4000], [36.9000, -89.2500],
+            [37.0000, -89.1500], [37.1500, -89.3000], [37.3100, -89.5200]
+          ],
+          type: "arterial",
+          baseSpeed: 55,
+          shockSpeed: 30,
+          ttiNormal: 1.03,
+          ttiShock: 2.10
         }
       ]
     }
@@ -682,19 +765,16 @@ const PORTFOLIO_DATA = {
     {
       degree: "Ph.D. in Civil Engineering",
       institution: "University of Missouri-Columbia",
-      year: "2021",
       detail: "Dissertation: Modeling Transportation Impacts of Natural Disasters (Advisor: Praveen Edara)"
     },
     {
       degree: "M.S. in Urban Engineering",
       institution: "Chung-Ang University",
-      year: "2014",
       detail: "Thesis: Commuters' Dependence on Expressways in Seoul Metropolitan Area"
     },
     {
       degree: "B.S. in Urban Engineering",
       institution: "Chung-Ang University",
-      year: "2011",
       detail: "Urban & Transportation Planning Focus"
     }
   ]
