@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daeyeol (Daniel) Chang, Ph.D. | Transportation Planner & Modeler</title>
-  <meta name="description" content="Portfolio of Daeyeol (Daniel) Chang, Ph.D. - Senior Transportation Planner & Modeler at Benesch. Regional travel demand forecasting, machine learning, advanced statistics, DTA simulation, and connected vehicle big data.">
+  <title>Daeyeol (Daniel) Chang, Ph.D. | Senior Transportation Planner & Modeler</title>
+  <meta name="description" content="Portfolio of Daeyeol (Daniel) Chang, Ph.D. - Senior Transportation Planner & Modeler at Benesch. Travel demand modeling, machine learning, advanced statistics, DTA simulation, and GPS probe big data.">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-  <!-- Custom Styles (Cache busted) -->
-  <link rel="stylesheet" href="css/custom.css?v=5.0">
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/custom.css?v=7.0">
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 antialiased transition-colors duration-200 selection:bg-slate-900 selection:text-white dark:selection:bg-slate-100 dark:selection:text-slate-900">
 
@@ -148,14 +148,48 @@
               <span class="text-[10px] text-slate-500 font-mono uppercase bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">Interactive</span>
             </div>
 
-            <!-- 2x2 Connected Matrix Grid -->
+            <!-- 2x2 Connected Matrix Grid (Pre-rendered) -->
             <div id="heroMatrix" class="grid grid-cols-2 gap-0 border-2 border-slate-100 dark:border-slate-800 rounded-lg overflow-hidden mb-4">
-              <!-- Rendered by app.js -->
+              <button onclick="selectPillar('demand')" class="matrix-btn w-full h-full p-4 text-left transition-all border-b border-r border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800/50" id="pbtn-demand" data-idx="0">
+                <div class="flex items-center justify-between mb-1.5">
+                  <span class="text-[9px] font-mono font-bold uppercase tracking-widest text-slate-400">Macro Systems</span>
+                  <span class="matrix-dot w-2 h-2 rounded-full bg-slate-200 dark:bg-slate-700 transition-all"></span>
+                </div>
+                <div class="matrix-title text-[13px] font-bold text-slate-900 dark:text-slate-200 leading-snug transition-colors">Travel Demand & Forecasting</div>
+              </button>
+              <button onclick="selectPillar('ml-stats')" class="matrix-btn w-full h-full p-4 text-left transition-all border-b border-slate-100 dark:border-slate-800 bg-blue-50/80 dark:bg-blue-900/20" id="pbtn-ml-stats" data-idx="1">
+                <div class="flex items-center justify-between mb-1.5">
+                  <span class="text-[9px] font-mono font-bold uppercase tracking-widest text-slate-400">Predictive & Causal</span>
+                  <span class="matrix-dot w-2 h-2 rounded-full bg-blue-600 shadow-[0_0_8px_rgba(37,99,235,0.6)] transition-all"></span>
+                </div>
+                <div class="matrix-title text-[13px] font-bold text-blue-700 dark:text-blue-400 leading-snug transition-colors">Machine Learning & Advanced Statistics</div>
+              </button>
+              <button onclick="selectPillar('simulation')" class="matrix-btn w-full h-full p-4 text-left transition-all border-r border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800/50" id="pbtn-simulation" data-idx="2">
+                <div class="flex items-center justify-between mb-1.5">
+                  <span class="text-[9px] font-mono font-bold uppercase tracking-widest text-slate-400">Meso / Micro</span>
+                  <span class="matrix-dot w-2 h-2 rounded-full bg-slate-200 dark:bg-slate-700 transition-all"></span>
+                </div>
+                <div class="matrix-title text-[13px] font-bold text-slate-900 dark:text-slate-200 leading-snug transition-colors">Traffic Simulation & DTA</div>
+              </button>
+              <button onclick="selectPillar('probe-data')" class="matrix-btn w-full h-full p-4 text-left transition-all bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800/50" id="pbtn-probe-data" data-idx="3">
+                <div class="flex items-center justify-between mb-1.5">
+                  <span class="text-[9px] font-mono font-bold uppercase tracking-widest text-slate-400">Real-Time Big Data</span>
+                  <span class="matrix-dot w-2 h-2 rounded-full bg-slate-200 dark:bg-slate-700 transition-all"></span>
+                </div>
+                <div class="matrix-title text-[13px] font-bold text-slate-900 dark:text-slate-200 leading-snug transition-colors">GPS Probe Big Data & Resilience</div>
+              </button>
             </div>
 
-            <!-- Dynamic Detail Box -->
-            <div id="matrixDetail" class="p-4 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 mt-auto min-h-[90px]">
-              <!-- Rendered by app.js -->
+            <!-- Dynamic Detail Box (Pre-rendered) -->
+            <div id="matrixDetail" class="p-4 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 mt-auto min-h-[90px] transition-opacity duration-150">
+              <div class="flex items-start gap-2 mb-1.5">
+                 <i data-lucide="cpu" class="w-4 h-4 text-blue-600 mt-0.5"></i>
+                 <div>
+                    <div class="text-[13px] font-bold text-slate-900 dark:text-slate-100">Machine Learning & Advanced Statistics</div>
+                    <div class="text-[10px] font-mono text-blue-700 dark:text-blue-400 mt-0.5">XGBoost, Random Forest, Mixed Logit, Panel DiD, Count Models</div>
+                 </div>
+              </div>
+              <div class="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed pl-6">Discrete choice behavior modeling (200 Halton draws), causal disruption inference (DiD), crash risk modeling, and VRU injury severity prediction.</div>
             </div>
           </div>
         </div>
@@ -165,7 +199,7 @@
 
 
     <!-- =======================================================================
-         Visual Modeling & Analytics Pipeline (Connected Flowchart)
+         Visual Modeling & Analytics Pipeline (Pre-rendered)
          ======================================================================= -->
     <section id="workflow" class="space-y-6 pt-4">
       <div class="border-b border-slate-200 dark:border-slate-800 pb-2.5 flex justify-between items-baseline">
@@ -175,9 +209,122 @@
         <span class="text-xs text-slate-400 font-mono hidden sm:inline-block">End-to-End System Architecture</span>
       </div>
 
-      <!-- Arrow-connected pipeline container -->
+      <!-- Arrow-connected pipeline container (Pre-rendered) -->
       <div id="pipelineFlow" class="flex flex-col lg:flex-row items-stretch justify-between relative gap-2 lg:gap-0">
-        <!-- Rendered by app.js -->
+        
+        <!-- Step 1 -->
+        <div class="relative flex-1 p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3 z-10 shadow-sm hover:shadow-md hover:border-blue-400 dark:hover:border-blue-600 transition-all group">
+          <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2 mb-2">
+            <div class="flex items-center gap-2">
+              <span class="w-6 h-6 rounded bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 text-xs font-bold font-mono flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">01</span>
+              <span class="text-[10px] font-bold text-blue-700 dark:text-blue-400 uppercase tracking-widest">Multi-Source Feeds</span>
+            </div>
+            <i data-lucide="database" class="w-4 h-4 text-slate-400 group-hover:text-blue-500 transition-colors"></i>
+          </div>
+          <h3 class="text-sm font-bold text-slate-900 dark:text-slate-100">Big Data Ingestion</h3>
+          <div class="space-y-1 text-xs">
+            <div class="text-[9px] font-bold uppercase tracking-wider text-slate-400">Core Inputs / Engines:</div>
+            <ul class="space-y-1 text-[11px] text-slate-600 dark:text-slate-300">
+              <li class="flex items-start gap-1.5"><span class="text-blue-400 dark:text-blue-500 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span><span>Iteris ClearGuide GPS</span></li>
+              <li class="flex items-start gap-1.5"><span class="text-blue-400 dark:text-blue-500 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span><span>INRIX Probes</span></li>
+              <li class="flex items-start gap-1.5"><span class="text-blue-400 dark:text-blue-500 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span><span>Smart Card Transit</span></li>
+              <li class="flex items-start gap-1.5"><span class="text-blue-400 dark:text-blue-500 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span><span>USGS ShakeCast</span></li>
+              <li class="flex items-start gap-1.5"><span class="text-blue-400 dark:text-blue-500 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span><span>Census O-D</span></li>
+            </ul>
+          </div>
+          <div class="pt-3 mt-auto border-t border-slate-100 dark:border-slate-800">
+            <span class="text-[9px] font-bold uppercase tracking-wider text-slate-400 block mb-1">Generated Output:</span>
+            <span class="text-[10px] font-mono font-semibold text-slate-800 dark:text-slate-200 bg-slate-50 dark:bg-slate-950 px-2 py-1 rounded border border-slate-200 dark:border-slate-800 block truncate" title="Cleaned Trajectories & O-D Matrices">Cleaned Trajectories & O-D Matrices</span>
+          </div>
+        </div>
+
+        <div class="hidden lg:flex items-center justify-center -mx-4 z-0 text-slate-300 dark:text-slate-700">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="relative flex-1 p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3 z-10 shadow-sm hover:shadow-md hover:border-blue-400 dark:hover:border-blue-600 transition-all group">
+          <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2 mb-2">
+            <div class="flex items-center gap-2">
+              <span class="w-6 h-6 rounded bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 text-xs font-bold font-mono flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">02</span>
+              <span class="text-[10px] font-bold text-blue-700 dark:text-blue-400 uppercase tracking-widest">Predictive & Causal</span>
+            </div>
+            <i data-lucide="cpu" class="w-4 h-4 text-slate-400 group-hover:text-blue-500 transition-colors"></i>
+          </div>
+          <h3 class="text-sm font-bold text-slate-900 dark:text-slate-100">ML & Econometric Engines</h3>
+          <div class="space-y-1 text-xs">
+            <div class="text-[9px] font-bold uppercase tracking-wider text-slate-400">Core Inputs / Engines:</div>
+            <ul class="space-y-1 text-[11px] text-slate-600 dark:text-slate-300">
+              <li class="flex items-start gap-1.5"><span class="text-blue-400 dark:text-blue-500 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span><span>Mixed Logit (Halton Draws)</span></li>
+              <li class="flex items-start gap-1.5"><span class="text-blue-400 dark:text-blue-500 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span><span>Difference-in-Differences</span></li>
+              <li class="flex items-start gap-1.5"><span class="text-blue-400 dark:text-blue-500 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span><span>XGBoost / Random Forest</span></li>
+              <li class="flex items-start gap-1.5"><span class="text-blue-400 dark:text-blue-500 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span><span>Negative Binomial</span></li>
+            </ul>
+          </div>
+          <div class="pt-3 mt-auto border-t border-slate-100 dark:border-slate-800">
+            <span class="text-[9px] font-bold uppercase tracking-wider text-slate-400 block mb-1">Generated Output:</span>
+            <span class="text-[10px] font-mono font-semibold text-slate-800 dark:text-slate-200 bg-slate-50 dark:bg-slate-950 px-2 py-1 rounded border border-slate-200 dark:border-slate-800 block truncate" title="Behavioral Utilities & Shock Multipliers">Behavioral Utilities & Shock Multipliers</span>
+          </div>
+        </div>
+
+        <div class="hidden lg:flex items-center justify-center -mx-4 z-0 text-slate-300 dark:text-slate-700">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative flex-1 p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3 z-10 shadow-sm hover:shadow-md hover:border-blue-400 dark:hover:border-blue-600 transition-all group">
+          <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2 mb-2">
+            <div class="flex items-center gap-2">
+              <span class="w-6 h-6 rounded bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 text-xs font-bold font-mono flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">03</span>
+              <span class="text-[10px] font-bold text-blue-700 dark:text-blue-400 uppercase tracking-widest">Dynamic Assignment</span>
+            </div>
+            <i data-lucide="git-commit" class="w-4 h-4 text-slate-400 group-hover:text-blue-500 transition-colors"></i>
+          </div>
+          <h3 class="text-sm font-bold text-slate-900 dark:text-slate-100">Multi-Resolution Simulation</h3>
+          <div class="space-y-1 text-xs">
+            <div class="text-[9px] font-bold uppercase tracking-wider text-slate-400">Core Inputs / Engines:</div>
+            <ul class="space-y-1 text-[11px] text-slate-600 dark:text-slate-300">
+              <li class="flex items-start gap-1.5"><span class="text-blue-400 dark:text-blue-500 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span><span>CUBE Voyager (48k Links)</span></li>
+              <li class="flex items-start gap-1.5"><span class="text-blue-400 dark:text-blue-500 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span><span>PTV Vissim DTA</span></li>
+              <li class="flex items-start gap-1.5"><span class="text-blue-400 dark:text-blue-500 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span><span>DynusT</span></li>
+              <li class="flex items-start gap-1.5"><span class="text-blue-400 dark:text-blue-500 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span><span>Damaged Network Overlays</span></li>
+            </ul>
+          </div>
+          <div class="pt-3 mt-auto border-t border-slate-100 dark:border-slate-800">
+            <span class="text-[9px] font-bold uppercase tracking-wider text-slate-400 block mb-1">Generated Output:</span>
+            <span class="text-[10px] font-mono font-semibold text-slate-800 dark:text-slate-200 bg-slate-50 dark:bg-slate-950 px-2 py-1 rounded border border-slate-200 dark:border-slate-800 block truncate" title="Corridor Speeds, Delays & Bottlenecks">Corridor Speeds, Delays & Bottlenecks</span>
+          </div>
+        </div>
+
+        <div class="hidden lg:flex items-center justify-center -mx-4 z-0 text-slate-300 dark:text-slate-700">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="relative flex-1 p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3 z-10 shadow-sm hover:shadow-md hover:border-blue-400 dark:hover:border-blue-600 transition-all group">
+          <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2 mb-2">
+            <div class="flex items-center gap-2">
+              <span class="w-6 h-6 rounded bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 text-xs font-bold font-mono flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">04</span>
+              <span class="text-[10px] font-bold text-blue-700 dark:text-blue-400 uppercase tracking-widest">Actionable Outputs</span>
+            </div>
+            <i data-lucide="bar-chart-3" class="w-4 h-4 text-slate-400 group-hover:text-blue-500 transition-colors"></i>
+          </div>
+          <h3 class="text-sm font-bold text-slate-900 dark:text-slate-100">Decision & Policy Insights</h3>
+          <div class="space-y-1 text-xs">
+            <div class="text-[9px] font-bold uppercase tracking-wider text-slate-400">Core Inputs / Engines:</div>
+            <ul class="space-y-1 text-[11px] text-slate-600 dark:text-slate-300">
+              <li class="flex items-start gap-1.5"><span class="text-blue-400 dark:text-blue-500 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span><span>Corridor Heatmaps (QGIS)</span></li>
+              <li class="flex items-start gap-1.5"><span class="text-blue-400 dark:text-blue-500 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span><span>Dynamic Pricing Strategies</span></li>
+              <li class="flex items-start gap-1.5"><span class="text-blue-400 dark:text-blue-500 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span><span>Peak Freight Controls</span></li>
+              <li class="flex items-start gap-1.5"><span class="text-blue-400 dark:text-blue-500 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span><span>Emergency Routing Plans</span></li>
+            </ul>
+          </div>
+          <div class="pt-3 mt-auto border-t border-slate-100 dark:border-slate-800">
+            <span class="text-[9px] font-bold uppercase tracking-wider text-slate-400 block mb-1">Generated Output:</span>
+            <span class="text-[10px] font-mono font-semibold text-slate-800 dark:text-slate-200 bg-slate-50 dark:bg-slate-950 px-2 py-1 rounded border border-slate-200 dark:border-slate-800 block truncate" title="Agency-Ready Decision Frameworks">Agency-Ready Decision Frameworks</span>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -214,7 +361,7 @@
         </button>
       </div>
 
-      <!-- Active Region Header Card -->
+      <!-- Active Region Header Card (Pre-rendered for Baltimore) -->
       <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-1 shadow-sm">
         <div class="flex flex-wrap items-center justify-between gap-2">
           <h3 id="regionTitle" class="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
@@ -232,7 +379,7 @@
       <!-- Main GIS Lab Interface Grid (Map + Controls) -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
         
-        <!-- Left: Leaflet Interactive GIS Map -->
+        <!-- Left: Leaflet Interactive GIS Map Container -->
         <div class="lg:col-span-7 space-y-2">
           <div class="relative rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden bg-slate-100 dark:bg-slate-900">
             <div id="gisMap" class="gis-map-container"></div>
@@ -266,18 +413,62 @@
             </div>
 
             <div id="scenarioControls">
-              <!-- Rendered by visualizer.js -->
+              <!-- Default Baltimore Scenario Knobs Pre-rendered -->
+              <div class="space-y-3 text-xs">
+                <div>
+                  <div class="flex justify-between font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                    <span>Disruption Season & Period:</span>
+                    <span id="baltPeriodLabel" class="text-blue-600 dark:text-blue-400 font-mono">Immediate Post-Collapse</span>
+                  </div>
+                  <select id="baltPeriodSelect" onchange="updateSimulationLayers()" class="w-full p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs font-medium">
+                    <option value="immediate">Immediate Shock (March–April 2024)</option>
+                    <option value="fall">Fall Adaptation (September–November 2024)</option>
+                    <option value="winter">Winter Equilibrium (Dec 2024–Feb 2025)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <div class="flex justify-between font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                    <span>Peak Hour Window:</span>
+                    <span id="baltPeakLabel" class="text-blue-600 dark:text-blue-400 font-mono">Friday PM Peak</span>
+                  </div>
+                  <div class="grid grid-cols-2 gap-2">
+                    <button onclick="setBaltPeak('pm')" id="btnBaltPm" class="p-1.5 rounded-md text-xs font-semibold bg-blue-600 text-white">PM Peak (+126% TTI)</button>
+                    <button onclick="setBaltPeak('am')" id="btnBaltAm" class="p-1.5 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">AM Peak (+34% TTI)</button>
+                  </div>
+                </div>
+
+                <div class="space-y-1.5 pt-1 border-t border-slate-100 dark:border-slate-800">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">Operational Mitigations:</span>
+                  <label class="flex items-center gap-2 p-1.5 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 cursor-pointer">
+                    <input id="baltFreightDetour" type="checkbox" checked onchange="updateSimulationLayers()" class="rounded text-blue-600">
+                    <span class="text-[11px] text-slate-700 dark:text-slate-300">Mandatory Hazmat/Freight I-695 Detour</span>
+                  </label>
+                  <label class="flex items-center gap-2 p-1.5 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 cursor-pointer">
+                    <input id="baltRampMetering" type="checkbox" onchange="updateSimulationLayers()" class="rounded text-blue-600">
+                    <span class="text-[11px] text-slate-700 dark:text-slate-300">Dynamic Ramp Metering on MD-295</span>
+                  </label>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- Real-Time Telemetry Bar -->
+          <!-- Real-Time Telemetry Bar (Pre-rendered) -->
           <div class="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
             <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">Simulation Telemetry KPIs</span>
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-              <div id="labKpi1" class="p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800/80 text-center"></div>
-              <div id="labKpi2" class="p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800/80 text-center"></div>
-              <div id="labKpi3" class="p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800/80 text-center"></div>
-              <div id="labKpi4" class="p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800/80 text-center"></div>
+              <div id="labKpi1" class="p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800/80 text-center">
+                <span class="text-xs text-slate-400 block">Peak Corridor TTI</span><strong class="text-base text-slate-900 dark:text-slate-100 font-bold font-mono">+126%</strong>
+              </div>
+              <div id="labKpi2" class="p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800/80 text-center">
+                <span class="text-xs text-slate-400 block">Harbor Tunnel Delay</span><strong class="text-base text-slate-900 dark:text-slate-100 font-bold font-mono">+38 min</strong>
+              </div>
+              <div id="labKpi3" class="p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800/80 text-center">
+                <span class="text-xs text-slate-400 block">Friday PM Spillback</span><strong class="text-base text-slate-900 dark:text-slate-100 font-bold font-mono">8.4 miles</strong>
+              </div>
+              <div id="labKpi4" class="p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800/80 text-center">
+                <span class="text-xs text-slate-400 block">Freight Reroute Ratio</span><strong class="text-base text-slate-900 dark:text-slate-100 font-bold font-mono">92% via I-695</strong>
+              </div>
             </div>
           </div>
 
@@ -296,15 +487,23 @@
 
       </div>
 
-      <!-- Actionable Policy Guidance Box -->
+      <!-- Actionable Policy Guidance Box (Pre-rendered) -->
       <div id="labPolicyRecommendation" class="p-4 rounded-xl bg-blue-50/70 dark:bg-blue-950/30 border border-blue-200/80 dark:border-blue-900/60">
-        <!-- Rendered by visualizer.js -->
+        <div class="flex items-start gap-2 text-xs">
+          <i data-lucide="shield-alert" class="w-4 h-4 text-blue-600 mt-0.5"></i>
+          <div>
+            <strong class="text-slate-900 dark:text-slate-100 font-bold">Empirical Policy Insight (Sustainability 2025):</strong>
+            <p class="text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">
+              Network averages mask acute corridor vulnerability where the top 20% of routes experienced a <strong>+3.81 TTI surge</strong>. Implementing heavy freight detour mandates onto the northern I-695 arc reduces tunnel queue spillback by <strong>34%</strong> during Friday peak windows.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
 
     <!-- =======================================================================
-         Major Project Case Studies
+         Major Project Case Studies (Pre-rendered)
          ======================================================================= -->
     <section id="projects" class="space-y-4 pt-4">
       <div class="border-b border-slate-200 dark:border-slate-800 pb-2.5 flex justify-between items-baseline">
@@ -313,14 +512,176 @@
         </h2>
         <span class="text-xs text-slate-500">USDOT &bull; MoDOT &bull; NSF</span>
       </div>
+
       <div id="projectsList" class="space-y-5">
-        <!-- Rendered by app.js -->
+        
+        <!-- Project 1: FSK Bridge -->
+        <article class="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm hover:shadow transition-shadow">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 dark:border-slate-800 pb-3">
+            <div>
+              <span class="text-xs font-bold text-blue-700 dark:text-blue-400 uppercase tracking-widest">Morgan State SMARTER Center / USDOT</span>
+              <span class="text-[11px] text-slate-400 dark:text-slate-500 font-mono ml-2 border-l border-slate-300 dark:border-slate-700 pl-2">2024 – 2026</span>
+            </div>
+            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Sustainability 2025</span>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-base font-bold text-slate-900 dark:text-slate-100 leading-snug">Francis Scott Key Bridge Collapse: Traffic Shockwave & Resiliency</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Evaluated system-wide traffic disruptions and recovery patterns across 30 Baltimore corridors using Iteris ClearGuide GPS probe data. Applied Fixed Effects, Mixed Effects, Difference-in-Differences (DiD), and stratified econometrics.</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 py-2">
+            <div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800/80 text-center flex flex-col justify-center">
+              <div class="text-xs font-bold text-slate-900 dark:text-slate-100 mb-0.5">30 Major Arteries</div>
+              <div class="text-[9px] font-mono text-slate-500 uppercase">Corridors</div>
+            </div>
+            <div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800/80 text-center flex flex-col justify-center">
+              <div class="text-xs font-bold text-slate-900 dark:text-slate-100 mb-0.5">+126% TTI Surge</div>
+              <div class="text-[9px] font-mono text-slate-500 uppercase">PM Peak Shock</div>
+            </div>
+            <div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800/80 text-center flex flex-col justify-center">
+              <div class="text-xs font-bold text-slate-900 dark:text-slate-100 mb-0.5">Harbor Tunnel & MD-295</div>
+              <div class="text-[9px] font-mono text-slate-500 uppercase">Critical Bottlenecks</div>
+            </div>
+          </div>
+          <div class="space-y-2 pt-2">
+            <h4 class="text-[10px] font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5"><i data-lucide="zap" class="w-3.5 h-3.5 text-yellow-500"></i> Key Empirical Findings</h4>
+            <ul class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
+              <li class="flex items-start gap-2"><span class="text-blue-600 dark:text-blue-400 font-bold mt-0.5">&rarr;</span><span class="leading-relaxed">PM peak congestion increased by 0.847 TTI units (nearly 4x greater than AM peak of 0.223 units).</span></li>
+              <li class="flex items-start gap-2"><span class="text-blue-600 dark:text-blue-400 font-bold mt-0.5">&rarr;</span><span class="leading-relaxed">Friday PM peaks surged +77% in TTI initially, transitioning to mid-week recurring congestion by winter.</span></li>
+              <li class="flex items-start gap-2"><span class="text-blue-600 dark:text-blue-400 font-bold mt-0.5">&rarr;</span><span class="leading-relaxed">Demonstrated that network averages mask severe hotspots where top 20% corridors saw +3.81 TTI increases.</span></li>
+            </ul>
+          </div>
+          <div class="text-xs text-slate-500 pt-4 mt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <span class="flex items-center gap-1.5"><i data-lucide="book" class="w-3.5 h-3.5"></i> <strong>Paper:</strong> MDPI Sustainability (2025)</span>
+            <a href="https://doi.org/10.3390/su17156916" target="_blank" rel="noopener noreferrer" class="text-blue-700 dark:text-blue-400 font-bold hover:underline flex items-center gap-1">View DOI <i data-lucide="external-link" class="w-3 h-3"></i></a>
+          </div>
+        </article>
+
+        <!-- Project 2: St. Louis Earthquake -->
+        <article class="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm hover:shadow transition-shadow">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 dark:border-slate-800 pb-3">
+            <div>
+              <span class="text-xs font-bold text-blue-700 dark:text-blue-400 uppercase tracking-widest">Missouri DOT (MoDOT)</span>
+              <span class="text-[11px] text-slate-400 dark:text-slate-500 font-mono ml-2 border-l border-slate-300 dark:border-slate-700 pl-2">2022 – 2024</span>
+            </div>
+            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">ICE Municipal Engineer 2026 & TRB 2025</span>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-base font-bold text-slate-900 dark:text-slate-100 leading-snug">St. Louis Regional Earthquake Evacuation & Rescue Network</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Managed the 48,151-link, 3,003-zone regional CUBE model representing 7.9M trips for a simulated M6.7 earthquake. Integrated USGS ShakeCast bridge fragility data to simulate post-disaster route choices.</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 py-2">
+            <div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800/80 text-center flex flex-col justify-center">
+              <div class="text-xs font-bold text-slate-900 dark:text-slate-100 mb-0.5">48,151 Links / 3,003 Zones</div>
+              <div class="text-[9px] font-mono text-slate-500 uppercase">Model Scale</div>
+            </div>
+            <div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800/80 text-center flex flex-col justify-center">
+              <div class="text-xs font-bold text-slate-900 dark:text-slate-100 mb-0.5">7.9 Million Trips</div>
+              <div class="text-[9px] font-mono text-slate-500 uppercase">Demand</div>
+            </div>
+            <div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800/80 text-center flex flex-col justify-center">
+              <div class="text-xs font-bold text-slate-900 dark:text-slate-100 mb-0.5">12 Evacuation Runs</div>
+              <div class="text-[9px] font-mono text-slate-500 uppercase">Disaster Scenarios</div>
+            </div>
+          </div>
+          <div class="space-y-2 pt-2">
+            <h4 class="text-[10px] font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5"><i data-lucide="zap" class="w-3.5 h-3.5 text-yellow-500"></i> Key Empirical Findings</h4>
+            <ul class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
+              <li class="flex items-start gap-2"><span class="text-blue-600 dark:text-blue-400 font-bold mt-0.5">&rarr;</span><span class="leading-relaxed">Mapped speed ratios and Level of Service (LOS E/F) bottlenecks across eastern Missouri in QGIS.</span></li>
+              <li class="flex items-start gap-2"><span class="text-blue-600 dark:text-blue-400 font-bold mt-0.5">&rarr;</span><span class="leading-relaxed">Identified lifeline corridors requiring seismic retrofitting and contraflow management.</span></li>
+              <li class="flex items-start gap-2"><span class="text-blue-600 dark:text-blue-400 font-bold mt-0.5">&rarr;</span><span class="leading-relaxed">Facilitated multi-agency Tabletop Exercises (TTX) connecting MoDOT, SEMA, and local emergency responders.</span></li>
+            </ul>
+          </div>
+          <div class="text-xs text-slate-500 pt-4 mt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <span class="flex items-center gap-1.5"><i data-lucide="book" class="w-3.5 h-3.5"></i> <strong>Paper:</strong> ICE Municipal Engineer (2026) & TRB (2025)</span>
+            <a href="https://doi.org/10.1680/jmuen.26.00021" target="_blank" rel="noopener noreferrer" class="text-blue-700 dark:text-blue-400 font-bold hover:underline flex items-center gap-1">View DOI <i data-lucide="external-link" class="w-3 h-3"></i></a>
+          </div>
+        </article>
+
+        <!-- Project 3: New Madrid DTA -->
+        <article class="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm hover:shadow transition-shadow">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 dark:border-slate-800 pb-3">
+            <div>
+              <span class="text-xs font-bold text-blue-700 dark:text-blue-400 uppercase tracking-widest">Missouri DOT (MoDOT)</span>
+              <span class="text-[11px] text-slate-400 dark:text-slate-500 font-mono ml-2 border-l border-slate-300 dark:border-slate-700 pl-2">2021 – 2022</span>
+            </div>
+            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">8-County Network DTA</span>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-base font-bold text-slate-900 dark:text-slate-100 leading-snug">New Madrid Multi-County Regional Evacuation DTA Simulation</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Built and validated an 8-county roadway network in PTV Vissim to perform Dynamic Traffic Assignment (DTA). Synthesized 891 household survey responses with US Census data under M7.8 earthquake damage.</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 py-2">
+            <div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800/80 text-center flex flex-col justify-center">
+              <div class="text-xs font-bold text-slate-900 dark:text-slate-100 mb-0.5">8 Missouri Counties</div>
+              <div class="text-[9px] font-mono text-slate-500 uppercase">Study Area</div>
+            </div>
+            <div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800/80 text-center flex flex-col justify-center">
+              <div class="text-xs font-bold text-slate-900 dark:text-slate-100 mb-0.5">PTV Vissim DTA</div>
+              <div class="text-[9px] font-mono text-slate-500 uppercase">Platform</div>
+            </div>
+            <div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800/80 text-center flex flex-col justify-center">
+              <div class="text-xs font-bold text-slate-900 dark:text-slate-100 mb-0.5">891 Households</div>
+              <div class="text-[9px] font-mono text-slate-500 uppercase">Survey Size</div>
+            </div>
+          </div>
+          <div class="space-y-2 pt-2">
+            <h4 class="text-[10px] font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5"><i data-lucide="zap" class="w-3.5 h-3.5 text-yellow-500"></i> Key Empirical Findings</h4>
+            <ul class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
+              <li class="flex items-start gap-2"><span class="text-blue-600 dark:text-blue-400 font-bold mt-0.5">&rarr;</span><span class="leading-relaxed">Compressed 6-hour evacuation windows dropped average network speeds to 43 mph on MO 34 WB and US 60 EB.</span></li>
+              <li class="flex items-start gap-2"><span class="text-blue-600 dark:text-blue-400 font-bold mt-0.5">&rarr;</span><span class="leading-relaxed">Delivered staged departure protocols to prevent gridlock at Mississippi River crossings.</span></li>
+            </ul>
+          </div>
+          <div class="text-xs text-slate-500 pt-4 mt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <span class="flex items-center gap-1.5"><i data-lucide="book" class="w-3.5 h-3.5"></i> <strong>Report:</strong> MoDOT Technical Project Report</span>
+          </div>
+        </article>
+
+        <!-- Project 4: VR Workzone -->
+        <article class="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm hover:shadow transition-shadow">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 dark:border-slate-800 pb-3">
+            <div>
+              <span class="text-xs font-bold text-blue-700 dark:text-blue-400 uppercase tracking-widest">Missouri DOT (MoDOT)</span>
+              <span class="text-[11px] text-slate-400 dark:text-slate-500 font-mono ml-2 border-l border-slate-300 dark:border-slate-700 pl-2">2018 – 2021</span>
+            </div>
+            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">TRR 2020 & IEEE AIVR</span>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-base font-bold text-slate-900 dark:text-slate-100 leading-snug">Immersive VR Digital Twin for Highway Work Zone Safety Training</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Developed a 3D Virtual Reality simulation platform to train state DOT inspectors on temporary traffic control, signage compliance, and human flagger safety protocols based on the MUTCD.</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 py-2">
+            <div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800/80 text-center flex flex-col justify-center">
+              <div class="text-xs font-bold text-slate-900 dark:text-slate-100 mb-0.5">44% &rarr; 79% (+35%)</div>
+              <div class="text-[9px] font-mono text-slate-500 uppercase">Accuracy Gain</div>
+            </div>
+            <div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800/80 text-center flex flex-col justify-center">
+              <div class="text-xs font-bold text-slate-900 dark:text-slate-100 mb-0.5">97% Positive</div>
+              <div class="text-[9px] font-mono text-slate-500 uppercase">DOT Endorsement</div>
+            </div>
+            <div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800/80 text-center flex flex-col justify-center">
+              <div class="text-xs font-bold text-slate-900 dark:text-slate-100 mb-0.5">Unity 3D + Motive Mocap</div>
+              <div class="text-[9px] font-mono text-slate-500 uppercase">Technology</div>
+            </div>
+          </div>
+          <div class="space-y-2 pt-2">
+            <h4 class="text-[10px] font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5"><i data-lucide="zap" class="w-3.5 h-3.5 text-yellow-500"></i> Key Empirical Findings</h4>
+            <ul class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
+              <li class="flex items-start gap-2"><span class="text-blue-600 dark:text-blue-400 font-bold mt-0.5">&rarr;</span><span class="leading-relaxed">Significantly reduced field inspection training hazards and travel costs.</span></li>
+              <li class="flex items-start gap-2"><span class="text-blue-600 dark:text-blue-400 font-bold mt-0.5">&rarr;</span><span class="leading-relaxed">Boosted inspector deficiency identification score from 44% (slide quiz) to 79% in VR.</span></li>
+            </ul>
+          </div>
+          <div class="text-xs text-slate-500 pt-4 mt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <span class="flex items-center gap-1.5"><i data-lucide="book" class="w-3.5 h-3.5"></i> <strong>Paper:</strong> Transportation Research Record (2020) & IEEE AIVR (2020)</span>
+            <a href="https://doi.org/10.1177/0361198120953146" target="_blank" rel="noopener noreferrer" class="text-blue-700 dark:text-blue-400 font-bold hover:underline flex items-center gap-1">View DOI <i data-lucide="external-link" class="w-3 h-3"></i></a>
+          </div>
+        </article>
+
       </div>
     </section>
 
 
     <!-- =======================================================================
-         Open-Source Analytics Toolkits
+         Open-Source Analytics Toolkits (Pre-rendered)
          ======================================================================= -->
     <section id="toolkits" class="space-y-4 pt-4">
       <div class="border-b border-slate-200 dark:border-slate-800 pb-2.5 flex justify-between items-baseline">
@@ -330,13 +691,73 @@
         <a href="https://github.com/dy-chang" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-blue-700 dark:text-blue-400 hover:underline">GitHub Profile &rarr;</a>
       </div>
       <div id="repositoriesGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <!-- Rendered by app.js -->
+        
+        <a href="https://github.com/dy-chang/urban-transport-intelligence" target="_blank" rel="noopener noreferrer" class="p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 block space-y-3 hover:border-blue-400 dark:hover:border-blue-600 hover:shadow-md transition-all group">
+          <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2">
+            <span class="text-[10px] font-mono font-bold text-slate-400 flex items-center gap-1.5"><i data-lucide="github" class="w-3.5 h-3.5"></i> dy-chang /</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 transition-colors"></i>
+          </div>
+          <h3 class="text-sm font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">Urban Transport Intelligence</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Python and GeoPandas framework for multimodal transit route optimization, origin-destination matrix processing, and spatiotemporal mobility intelligence.</p>
+          <div class="flex flex-wrap items-center gap-1.5 pt-3">
+            <span class="text-[11px] font-bold text-blue-700 dark:text-blue-400 mr-2 border-r border-slate-200 dark:border-slate-700 pr-2">Python</span>
+            <span class="px-1.5 py-0.5 rounded-md text-[9px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">GeoPandas</span>
+            <span class="px-1.5 py-0.5 rounded-md text-[9px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Network Analytics</span>
+            <span class="px-1.5 py-0.5 rounded-md text-[9px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Transit Optimization</span>
+          </div>
+        </a>
+
+        <a href="https://github.com/dy-chang/Traffic_Incident_Analysis" target="_blank" rel="noopener noreferrer" class="p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 block space-y-3 hover:border-blue-400 dark:hover:border-blue-600 hover:shadow-md transition-all group">
+          <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2">
+            <span class="text-[10px] font-mono font-bold text-slate-400 flex items-center gap-1.5"><i data-lucide="github" class="w-3.5 h-3.5"></i> dy-chang /</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 transition-colors"></i>
+          </div>
+          <h3 class="text-sm font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">Traffic Incident Analysis</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Statistical and spatiotemporal algorithms for detecting recurrent and non-recurrent congestion bottlenecks, estimating clearance durations, and tracking shockwave propagation.</p>
+          <div class="flex flex-wrap items-center gap-1.5 pt-3">
+            <span class="text-[11px] font-bold text-blue-700 dark:text-blue-400 mr-2 border-r border-slate-200 dark:border-slate-700 pr-2">R / Python</span>
+            <span class="px-1.5 py-0.5 rounded-md text-[9px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Bottleneck Detection</span>
+            <span class="px-1.5 py-0.5 rounded-md text-[9px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Probe Data</span>
+            <span class="px-1.5 py-0.5 rounded-md text-[9px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Shockwave Analytics</span>
+          </div>
+        </a>
+
+        <a href="https://github.com/dy-chang/Crash_Data_Modeling" target="_blank" rel="noopener noreferrer" class="p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 block space-y-3 hover:border-blue-400 dark:hover:border-blue-600 hover:shadow-md transition-all group">
+          <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2">
+            <span class="text-[10px] font-mono font-bold text-slate-400 flex items-center gap-1.5"><i data-lucide="github" class="w-3.5 h-3.5"></i> dy-chang /</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 transition-colors"></i>
+          </div>
+          <h3 class="text-sm font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">Highway Crash Data Modeling</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Econometric count modeling scripts (Poisson, Negative Binomial, Random Parameters) for roadway safety evaluation and Vision Zero high-risk hotspot identification.</p>
+          <div class="flex flex-wrap items-center gap-1.5 pt-3">
+            <span class="text-[11px] font-bold text-blue-700 dark:text-blue-400 mr-2 border-r border-slate-200 dark:border-slate-700 pr-2">R / Python</span>
+            <span class="px-1.5 py-0.5 rounded-md text-[9px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Vision Zero</span>
+            <span class="px-1.5 py-0.5 rounded-md text-[9px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Econometrics</span>
+            <span class="px-1.5 py-0.5 rounded-md text-[9px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Safety Analysis</span>
+          </div>
+        </a>
+
+        <a href="https://github.com/dy-chang/Vulnerable-Road-User-Injury-Prediction" target="_blank" rel="noopener noreferrer" class="p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 block space-y-3 hover:border-blue-400 dark:hover:border-blue-600 hover:shadow-md transition-all group">
+          <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2">
+            <span class="text-[10px] font-mono font-bold text-slate-400 flex items-center gap-1.5"><i data-lucide="github" class="w-3.5 h-3.5"></i> dy-chang /</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 transition-colors"></i>
+          </div>
+          <h3 class="text-sm font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">VRU Injury Severity Prediction</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Machine learning and discrete choice modeling framework for predicting pedestrian and cyclist injury severity in roadway collisions using police crash records.</p>
+          <div class="flex flex-wrap items-center gap-1.5 pt-3">
+            <span class="text-[11px] font-bold text-blue-700 dark:text-blue-400 mr-2 border-r border-slate-200 dark:border-slate-700 pr-2">Python</span>
+            <span class="px-1.5 py-0.5 rounded-md text-[9px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Pedestrian Safety</span>
+            <span class="px-1.5 py-0.5 rounded-md text-[9px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Machine Learning</span>
+            <span class="px-1.5 py-0.5 rounded-md text-[9px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">XGBoost</span>
+          </div>
+        </a>
+
       </div>
     </section>
 
 
     <!-- =======================================================================
-         Publications Section
+         Publications Section (Pre-rendered)
          ======================================================================= -->
     <section id="publications" class="space-y-4 pt-4">
       <div class="border-b border-slate-200 dark:border-slate-800 pb-2.5 flex justify-between items-baseline">
@@ -362,13 +783,102 @@
       </div>
 
       <div id="publicationsList" class="space-y-3">
-        <!-- Rendered by app.js -->
+        
+        <!-- Paper 1 -->
+        <div class="p-4 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2 shadow-sm hover:border-blue-300 dark:hover:border-blue-800 transition-colors">
+          <h4 class="text-sm font-bold text-slate-900 dark:text-slate-100 leading-snug">
+            <a href="https://doi.org/10.1680/jmuen.26.00021" target="_blank" rel="noopener noreferrer" class="hover:text-blue-700 dark:hover:text-blue-400 transition-colors">Transportation simulation and stakeholder exercises for urban seismic resilience</a>
+          </h4>
+          <p class="text-xs text-slate-600 dark:text-slate-400">D. Chang</p>
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500 pt-2 border-t border-slate-100 dark:border-slate-800 mt-2">
+            <span class="bg-slate-50 dark:bg-slate-950 px-2 py-1 rounded border border-slate-100 dark:border-slate-800"><em class="font-medium text-slate-700 dark:text-slate-300">Proceedings of the Institution of Civil Engineers - Municipal Engineer</em> &bull; 2026 (In Press)</span>
+            <div class="flex items-center gap-2">
+              <a href="https://doi.org/10.1680/jmuen.26.00021" target="_blank" rel="noopener noreferrer" class="text-blue-700 dark:text-blue-400 font-bold hover:underline flex items-center gap-1"><i data-lucide="external-link" class="w-3 h-3"></i> DOI</a>
+              <button onclick="openBibtexModal('chang2026jmuen')" class="px-2 py-1 rounded-md text-[11px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors flex items-center gap-1"><i data-lucide="code" class="w-3 h-3"></i> BibTeX</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Paper 2 -->
+        <div class="p-4 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2 shadow-sm hover:border-blue-300 dark:hover:border-blue-800 transition-colors">
+          <h4 class="text-sm font-bold text-slate-900 dark:text-slate-100 leading-snug">
+            <a href="https://doi.org/10.3390/su17156916" target="_blank" rel="noopener noreferrer" class="hover:text-blue-700 dark:hover:text-blue-400 transition-colors">Beyond the Detour: Modeling Traffic System Shocks After the Francis Scott Key Bridge Failure</a>
+          </h4>
+          <p class="text-xs text-slate-600 dark:text-slate-400">D. Chang, N. Meimandi Nejad, M. Jeihani, M. Swami</p>
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500 pt-2 border-t border-slate-100 dark:border-slate-800 mt-2">
+            <span class="bg-slate-50 dark:bg-slate-950 px-2 py-1 rounded border border-slate-100 dark:border-slate-800"><em class="font-medium text-slate-700 dark:text-slate-300">Sustainability</em> &bull; 2025</span>
+            <div class="flex items-center gap-2">
+              <a href="https://doi.org/10.3390/su17156916" target="_blank" rel="noopener noreferrer" class="text-blue-700 dark:text-blue-400 font-bold hover:underline flex items-center gap-1"><i data-lucide="external-link" class="w-3 h-3"></i> DOI</a>
+              <button onclick="openBibtexModal('chang2025beyond')" class="px-2 py-1 rounded-md text-[11px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors flex items-center gap-1"><i data-lucide="code" class="w-3 h-3"></i> BibTeX</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Paper 3 -->
+        <div class="p-4 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2 shadow-sm hover:border-blue-300 dark:hover:border-blue-800 transition-colors">
+          <h4 class="text-sm font-bold text-slate-900 dark:text-slate-100 leading-snug">
+            Resilience in Motion: Analyzing Evacuation Decisions During Seismic Emergencies
+          </h4>
+          <p class="text-xs text-slate-600 dark:text-slate-400">D. Chang</p>
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500 pt-2 border-t border-slate-100 dark:border-slate-800 mt-2">
+            <span class="bg-slate-50 dark:bg-slate-950 px-2 py-1 rounded border border-slate-100 dark:border-slate-800"><em class="font-medium text-slate-700 dark:text-slate-300">Transportation Research Board 104th Annual Meeting (TRB)</em> &bull; 2025</span>
+            <div class="flex items-center gap-2">
+              <button onclick="openBibtexModal('chang2025trb_seismic')" class="px-2 py-1 rounded-md text-[11px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors flex items-center gap-1"><i data-lucide="code" class="w-3 h-3"></i> BibTeX</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Paper 4 -->
+        <div class="p-4 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2 shadow-sm hover:border-blue-300 dark:hover:border-blue-800 transition-colors">
+          <h4 class="text-sm font-bold text-slate-900 dark:text-slate-100 leading-snug">
+            <a href="https://doi.org/10.1016/j.trip.2021.100421" target="_blank" rel="noopener noreferrer" class="hover:text-blue-700 dark:hover:text-blue-400 transition-colors">Taking the freeway: Inferring evacuee route selection from survey data</a>
+          </h4>
+          <p class="text-xs text-slate-600 dark:text-slate-400">D. Chang, P. Edara, P. Murray-Tuite, J. Trainor, K. Triantis</p>
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500 pt-2 border-t border-slate-100 dark:border-slate-800 mt-2">
+            <span class="bg-slate-50 dark:bg-slate-950 px-2 py-1 rounded border border-slate-100 dark:border-slate-800"><em class="font-medium text-slate-700 dark:text-slate-300">Transportation Research Interdisciplinary Perspectives</em> &bull; 2021</span>
+            <div class="flex items-center gap-2">
+              <a href="https://doi.org/10.1016/j.trip.2021.100421" target="_blank" rel="noopener noreferrer" class="text-blue-700 dark:text-blue-400 font-bold hover:underline flex items-center gap-1"><i data-lucide="external-link" class="w-3 h-3"></i> DOI</a>
+              <button onclick="openBibtexModal('chang2021taking')" class="px-2 py-1 rounded-md text-[11px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors flex items-center gap-1"><i data-lucide="code" class="w-3 h-3"></i> BibTeX</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Paper 5 -->
+        <div class="p-4 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2 shadow-sm hover:border-blue-300 dark:hover:border-blue-800 transition-colors">
+          <h4 class="text-sm font-bold text-slate-900 dark:text-slate-100 leading-snug">
+            <a href="https://doi.org/10.1177/0361198120953146" target="_blank" rel="noopener noreferrer" class="hover:text-blue-700 dark:hover:text-blue-400 transition-colors">Immersive Work Zone Inspection Training using Virtual Reality</a>
+          </h4>
+          <p class="text-xs text-slate-600 dark:text-slate-400">K. Aati, D. Chang, P. Edara, C. Sun</p>
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500 pt-2 border-t border-slate-100 dark:border-slate-800 mt-2">
+            <span class="bg-slate-50 dark:bg-slate-950 px-2 py-1 rounded border border-slate-100 dark:border-slate-800"><em class="font-medium text-slate-700 dark:text-slate-300">Transportation Research Record (TRR)</em> &bull; 2020</span>
+            <div class="flex items-center gap-2">
+              <a href="https://doi.org/10.1177/0361198120953146" target="_blank" rel="noopener noreferrer" class="text-blue-700 dark:text-blue-400 font-bold hover:underline flex items-center gap-1"><i data-lucide="external-link" class="w-3 h-3"></i> DOI</a>
+              <button onclick="openBibtexModal('aati2020immersive')" class="px-2 py-1 rounded-md text-[11px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors flex items-center gap-1"><i data-lucide="code" class="w-3 h-3"></i> BibTeX</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Paper 6 -->
+        <div class="p-4 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2 shadow-sm hover:border-blue-300 dark:hover:border-blue-800 transition-colors">
+          <h4 class="text-sm font-bold text-slate-900 dark:text-slate-100 leading-snug">
+            <a href="https://doi.org/10.1680/tran.13.00008" target="_blank" rel="noopener noreferrer" class="hover:text-blue-700 dark:hover:text-blue-400 transition-colors">Commuter dependence on expressways when travelling to work</a>
+          </h4>
+          <p class="text-xs text-slate-600 dark:text-slate-400">D. Chang, K. Sohn</p>
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500 pt-2 border-t border-slate-100 dark:border-slate-800 mt-2">
+            <span class="bg-slate-50 dark:bg-slate-950 px-2 py-1 rounded border border-slate-100 dark:border-slate-800"><em class="font-medium text-slate-700 dark:text-slate-300">Proceedings of the Institution of Civil Engineers - Transport</em> &bull; 2015</span>
+            <div class="flex items-center gap-2">
+              <a href="https://doi.org/10.1680/tran.13.00008" target="_blank" rel="noopener noreferrer" class="text-blue-700 dark:text-blue-400 font-bold hover:underline flex items-center gap-1"><i data-lucide="external-link" class="w-3 h-3"></i> DOI</a>
+              <button onclick="openBibtexModal('chang2015commuter')" class="px-2 py-1 rounded-md text-[11px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors flex items-center gap-1"><i data-lucide="code" class="w-3 h-3"></i> BibTeX</button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
 
     <!-- =======================================================================
-         Experience & Education
+         Experience & Education (Pre-rendered)
          ======================================================================= -->
     <section id="experience" class="space-y-4 pt-4">
       <div class="border-b border-slate-200 dark:border-slate-800 pb-2.5">
@@ -378,17 +888,81 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Experience -->
         <div class="space-y-3">
           <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 border-b border-slate-100 dark:border-slate-800 pb-1">Career History</h3>
           <div id="experienceList" class="space-y-3">
-            <!-- Rendered by app.js -->
+            <div class="p-3 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-2 shadow-sm">
+              <div>
+                <h4 class="font-bold text-slate-900 dark:text-slate-100 text-sm">Senior Transportation Planner</h4>
+                <div class="text-blue-700 dark:text-blue-400 font-medium mt-0.5">Benesch &bull; <span class="text-slate-500 font-normal">Baltimore, MD</span></div>
+              </div>
+              <span class="font-mono text-[10px] bg-slate-50 dark:bg-slate-950 px-2 py-1 rounded border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 whitespace-nowrap">2026 – Present</span>
+            </div>
+
+            <div class="p-3 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-2 shadow-sm">
+              <div>
+                <h4 class="font-bold text-slate-900 dark:text-slate-100 text-sm">Postdoctoral Research Associate</h4>
+                <div class="text-blue-700 dark:text-blue-400 font-medium mt-0.5">Morgan State University (SMARTER Center) &bull; <span class="text-slate-500 font-normal">Baltimore, MD</span></div>
+              </div>
+              <span class="font-mono text-[10px] bg-slate-50 dark:bg-slate-950 px-2 py-1 rounded border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 whitespace-nowrap">2024 – 2026</span>
+            </div>
+
+            <div class="p-3 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-2 shadow-sm">
+              <div>
+                <h4 class="font-bold text-slate-900 dark:text-slate-100 text-sm">Postdoctoral Fellow</h4>
+                <div class="text-blue-700 dark:text-blue-400 font-medium mt-0.5">University of Missouri-Columbia &bull; <span class="text-slate-500 font-normal">Columbia, MO</span></div>
+              </div>
+              <span class="font-mono text-[10px] bg-slate-50 dark:bg-slate-950 px-2 py-1 rounded border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 whitespace-nowrap">2021 – 2024</span>
+            </div>
+
+            <div class="p-3 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-2 shadow-sm">
+              <div>
+                <h4 class="font-bold text-slate-900 dark:text-slate-100 text-sm">Graduate Research Assistant / Ph.D. Candidate</h4>
+                <div class="text-blue-700 dark:text-blue-400 font-medium mt-0.5">University of Missouri-Columbia &bull; <span class="text-slate-500 font-normal">Columbia, MO</span></div>
+              </div>
+              <span class="font-mono text-[10px] bg-slate-50 dark:bg-slate-950 px-2 py-1 rounded border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 whitespace-nowrap">2016 – 2021</span>
+            </div>
+
+            <div class="p-3 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-2 shadow-sm">
+              <div>
+                <h4 class="font-bold text-slate-900 dark:text-slate-100 text-sm">Researcher</h4>
+                <div class="text-blue-700 dark:text-blue-400 font-medium mt-0.5">The Korea Transport Institute (KOTI) &bull; <span class="text-slate-500 font-normal">Sejong, South Korea</span></div>
+              </div>
+              <span class="font-mono text-[10px] bg-slate-50 dark:bg-slate-950 px-2 py-1 rounded border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 whitespace-nowrap">2015 – 2016</span>
+            </div>
+
+            <div class="p-3 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-2 shadow-sm">
+              <div>
+                <h4 class="font-bold text-slate-900 dark:text-slate-100 text-sm">Graduate Research Assistant</h4>
+                <div class="text-blue-700 dark:text-blue-400 font-medium mt-0.5">Chung-Ang University &bull; <span class="text-slate-500 font-normal">Seoul, South Korea</span></div>
+              </div>
+              <span class="font-mono text-[10px] bg-slate-50 dark:bg-slate-950 px-2 py-1 rounded border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 whitespace-nowrap">2012 – 2015</span>
+            </div>
           </div>
         </div>
 
+        <!-- Academic Background (Without Graduation Years) -->
         <div class="space-y-3">
           <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 border-b border-slate-100 dark:border-slate-800 pb-1">Academic Background</h3>
           <div id="educationList" class="space-y-3">
-            <!-- Rendered by app.js -->
+            <div class="p-3.5 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg text-xs shadow-sm space-y-1">
+              <h4 class="font-bold text-slate-900 dark:text-slate-100 text-sm">Ph.D. in Civil Engineering</h4>
+              <div class="text-blue-700 dark:text-blue-400 font-semibold">University of Missouri-Columbia</div>
+              <div class="text-[11px] text-slate-500 bg-slate-50 dark:bg-slate-950 p-2 rounded-md border border-slate-100 dark:border-slate-800 leading-relaxed">Dissertation: Modeling Transportation Impacts of Natural Disasters (Advisor: Praveen Edara)</div>
+            </div>
+
+            <div class="p-3.5 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg text-xs shadow-sm space-y-1">
+              <h4 class="font-bold text-slate-900 dark:text-slate-100 text-sm">M.S. in Urban Engineering</h4>
+              <div class="text-blue-700 dark:text-blue-400 font-semibold">Chung-Ang University</div>
+              <div class="text-[11px] text-slate-500 bg-slate-50 dark:bg-slate-950 p-2 rounded-md border border-slate-100 dark:border-slate-800 leading-relaxed">Thesis: Commuters' Dependence on Expressways in Seoul Metropolitan Area</div>
+            </div>
+
+            <div class="p-3.5 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg text-xs shadow-sm space-y-1">
+              <h4 class="font-bold text-slate-900 dark:text-slate-100 text-sm">B.S. in Urban Engineering</h4>
+              <div class="text-blue-700 dark:text-blue-400 font-semibold">Chung-Ang University</div>
+              <div class="text-[11px] text-slate-500 bg-slate-50 dark:bg-slate-950 p-2 rounded-md border border-slate-100 dark:border-slate-800 leading-relaxed">Urban & Transportation Planning Focus</div>
+            </div>
           </div>
         </div>
       </div>
@@ -435,9 +1009,9 @@
   </div>
 
 
-  <!-- Application Scripts (Cache busted v6.0) -->
-  <script src="js/data.js?v=6.0"></script>
-  <script src="js/visualizer.js?v=6.0"></script>
-  <script src="js/app.js?v=6.0"></script>
+  <!-- Application Scripts (Cache busted v7.0) -->
+  <script src="js/data.js?v=7.0"></script>
+  <script src="js/visualizer.js?v=7.0"></script>
+  <script src="js/app.js?v=7.0"></script>
 </body>
 </html>
