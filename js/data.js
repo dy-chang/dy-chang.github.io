@@ -81,6 +81,289 @@ const PORTFOLIO_DATA = {
     }
   ],
 
+  /* =========================================================================
+     4 Real Project Study Areas & GIS Geometries
+     ========================================================================= */
+  studyRegions: {
+    baltimore: {
+      id: "baltimore",
+      name: "Baltimore Metro, MD",
+      tagline: "Francis Scott Key Bridge Collapse & ClearGuide GPS Probe Analytics",
+      client: "Morgan State SMARTER Center / USDOT",
+      period: "2024 – 2026",
+      center: [39.260, -76.590],
+      zoom: 12,
+      description: "Evaluating regional network shockwaves and corridor recovery across 30 Baltimore arterial/freeway corridors following the I-695 Key Bridge collapse using high-frequency Iteris ClearGuide GPS probes.",
+      kpis: {
+        metric1: { label: "Peak TTI Surge", value: "+126%" },
+        metric2: { label: "Corridors Analyzed", value: "30 Routes" },
+        metric3: { label: "Causal DiD Shock", value: "+0.847 TTI" },
+        metric4: { label: "Friday Spillback", value: "+77%" }
+      },
+      chokePoints: [
+        { name: "FSK Key Bridge (I-695 Outer Loop)", lat: 39.218, lng: -76.525, status: "collapsed", desc: "Main span severed March 26, 2024; 31,000 daily vehicles diverted to tunnels & beltway." },
+        { name: "I-895 Baltimore Harbor Tunnel", lat: 39.262, lng: -76.582, status: "bottleneck", desc: "Severe bottle-necking; Hazardous cargo prohibited; peak delays exceeded +140%." },
+        { name: "I-95 Fort McHenry Tunnel", lat: 39.268, lng: -76.580, status: "congested", desc: "Primary detour spine; 8 lanes handling diverted interstate freight and commuter traffic." },
+        { name: "MD-295 Baltimore-Washington Pkwy", lat: 39.270, lng: -76.625, status: "arterial_spill", desc: "Arterial spillover route experiencing severe Friday afternoon queue propagation." }
+      ],
+      corridors: [
+        {
+          id: "balt-keybridge",
+          name: "I-695 Key Bridge Segment",
+          coords: [[39.235, -76.550], [39.227, -76.540], [39.218, -76.525], [39.213, -76.517], [39.200, -76.505]],
+          type: "bridge_severed",
+          baseSpeed: 55,
+          shockSpeed: 0,
+          ttiNormal: 1.05,
+          ttiShock: 9.99
+        },
+        {
+          id: "balt-i895",
+          name: "I-895 Harbor Tunnel Thruway",
+          coords: [[39.230, -76.615], [39.245, -76.595], [39.262, -76.582], [39.280, -76.565], [39.300, -76.545]],
+          type: "tunnel_bottleneck",
+          baseSpeed: 50,
+          shockSpeed: 18,
+          ttiNormal: 1.20,
+          ttiShock: 3.10
+        },
+        {
+          id: "balt-i95",
+          name: "I-95 Fort McHenry Tunnel",
+          coords: [[39.240, -76.625], [39.255, -76.605], [39.268, -76.580], [39.285, -76.550], [39.310, -76.525]],
+          type: "interstate_spine",
+          baseSpeed: 55,
+          shockSpeed: 24,
+          ttiNormal: 1.15,
+          ttiShock: 2.65
+        },
+        {
+          id: "balt-md295",
+          name: "MD-295 Baltimore-Washington Pkwy",
+          coords: [[39.220, -76.645], [39.240, -76.635], [39.270, -76.625], [39.285, -76.620]],
+          type: "arterial",
+          baseSpeed: 45,
+          shockSpeed: 19,
+          ttiNormal: 1.25,
+          ttiShock: 2.45
+        },
+        {
+          id: "balt-i695west",
+          name: "I-695 West / North Beltway Arc",
+          coords: [[39.230, -76.680], [39.275, -76.720], [39.330, -76.735], [39.400, -76.620], [39.370, -76.500]],
+          type: "beltway_bypass",
+          baseSpeed: 60,
+          shockSpeed: 38,
+          ttiNormal: 1.10,
+          ttiShock: 1.85
+        },
+        {
+          id: "balt-us40",
+          name: "US-40 Pulaski Highway",
+          coords: [[39.295, -76.620], [39.310, -76.570], [39.325, -76.510], [39.340, -76.450]],
+          type: "arterial",
+          baseSpeed: 40,
+          shockSpeed: 22,
+          ttiNormal: 1.18,
+          ttiShock: 1.95
+        }
+      ]
+    },
+
+    st_louis: {
+      id: "st_louis",
+      name: "St. Louis Metro, MO",
+      tagline: "Regional Earthquake M6.7 Evacuation & USGS ShakeCast Bridge Fragility",
+      client: "Missouri DOT (MoDOT)",
+      period: "2022 – 2024",
+      center: [38.630, -90.250],
+      zoom: 11,
+      description: "Macro travel demand modeling (48,151 links / 3,003 zones in CUBE Voyager) for 7.9M trips under simulated M6.7 earthquake scenario. Linked with USGS ShakeCast bridge fragility to evaluate post-disaster route choices and contraflow.",
+      kpis: {
+        metric1: { label: "Model Scale", value: "48,151 Links" },
+        metric2: { label: "Traffic Zones", value: "3,003 TAZs" },
+        metric3: { label: "Simulated Trips", value: "7.9 Million" },
+        metric4: { label: "Evacuation Scenarios", value: "12 Disaster Runs" }
+      },
+      chokePoints: [
+        { name: "Poplar Street Bridge (I-64 / I-55)", lat: 38.618, lng: -90.184, status: "fragility_high", desc: "USGS ShakeCast Collapse Probability: 0.68; Primary Mississippi River crossing failure point." },
+        { name: "Stan Musial Veterans Bridge (I-70)", lat: 38.635, lng: -90.175, status: "fragility_moderate", desc: "USGS ShakeCast Damage Probability: 0.32; Key reinforced lifeline corridor for northern rescue teams." },
+        { name: "I-270 Chain of Rocks Bridge", lat: 38.760, lng: -90.170, status: "fragility_high", desc: "USGS ShakeCast Damage Probability: 0.81; Critical outer loop crossing severance." },
+        { name: "I-64 / US-40 Daniel Boone Spine", lat: 38.640, lng: -90.450, status: "contraflow_active", desc: "Designated westbound primary evacuation spine under dynamic contraflow operation." }
+      ],
+      corridors: [
+        {
+          id: "stl-i64",
+          name: "I-64 / US-40 Westbound Lifeline",
+          coords: [[38.618, -90.184], [38.627, -90.240], [38.632, -90.350], [38.640, -90.450], [38.660, -90.580]],
+          type: "evac_spine",
+          baseSpeed: 60,
+          shockSpeed: 28,
+          ttiNormal: 1.10,
+          ttiShock: 2.70
+        },
+        {
+          id: "stl-i70",
+          name: "I-70 North Corridor (Stan Musial)",
+          coords: [[38.635, -90.175], [38.650, -90.200], [38.700, -90.300], [38.750, -90.450], [38.800, -90.650]],
+          type: "freeway",
+          baseSpeed: 65,
+          shockSpeed: 22,
+          ttiNormal: 1.08,
+          ttiShock: 3.15
+        },
+        {
+          id: "stl-i55",
+          name: "I-55 Southbound Evacuation Route",
+          coords: [[38.618, -90.184], [38.610, -90.200], [38.560, -90.260], [38.480, -90.330], [38.380, -90.380]],
+          type: "freeway",
+          baseSpeed: 65,
+          shockSpeed: 30,
+          ttiNormal: 1.06,
+          ttiShock: 2.40
+        },
+        {
+          id: "stl-i44",
+          name: "I-44 Southwest Corridor",
+          coords: [[38.620, -90.230], [38.590, -90.330], [38.540, -90.450], [38.480, -90.600]],
+          type: "freeway",
+          baseSpeed: 60,
+          shockSpeed: 34,
+          ttiNormal: 1.08,
+          ttiShock: 2.10
+        },
+        {
+          id: "stl-i270",
+          name: "I-270 Outer Circumferential Loop",
+          coords: [[38.520, -90.380], [38.650, -90.450], [38.780, -90.350], [38.760, -90.170]],
+          type: "beltway",
+          baseSpeed: 60,
+          shockSpeed: 20,
+          ttiNormal: 1.15,
+          ttiShock: 3.40
+        }
+      ]
+    },
+
+    hampton_roads: {
+      id: "hampton_roads",
+      name: "Hampton Roads / Virginia Beach, VA",
+      tagline: "Coastal Hurricane Evacuation & Mixed Logit Route Choice",
+      client: "USDOT / TRIP Journal Publication",
+      period: "2019 – 2021",
+      center: [36.880, -76.320],
+      zoom: 10,
+      description: "Discrete choice econometrics (Random Parameter Mixed Logit with 200 Halton draws) estimating coastal evacuee route choices (Freeway vs. Arterial) under storm lead times, housing types, and official route compliance.",
+      kpis: {
+        metric1: { label: "Freeway Probability", value: "94.2%" },
+        metric2: { label: "Halton Draws", value: "200 Draws" },
+        metric3: { label: "Primary Route", value: "I-64 HRBT" },
+        metric4: { label: "Arterial Bypass", value: "US-58 / US-460" }
+      },
+      chokePoints: [
+        { name: "Hampton Roads Bridge-Tunnel (HRBT I-64)", lat: 36.970, lng: -76.300, status: "congested", desc: "Primary coastal freeway bottleneck; high surge vulnerability and extreme evacuation queues." },
+        { name: "Monitor-Merrimac Bridge-Tunnel (MMBT I-664)", lat: 36.970, lng: -76.420, status: "moderate", desc: "Secondary southern bay crossing for western Chesapeake/Suffolk evacuees." },
+        { name: "US-58 Midtown & Downtown Tunnel Bypass", lat: 36.840, lng: -76.290, status: "arterial", desc: "Major arterial evacuation corridor leading west toward Suffolk and Emporia." }
+      ],
+      corridors: [
+        {
+          id: "hr-i64",
+          name: "I-64 (HRBT - Hampton Roads Bridge-Tunnel)",
+          coords: [[36.850, -76.000], [36.870, -76.180], [36.970, -76.300], [37.030, -76.350], [37.150, -76.500], [37.300, -76.700]],
+          type: "freeway_spine",
+          baseSpeed: 60,
+          shockSpeed: 16,
+          ttiNormal: 1.12,
+          ttiShock: 4.10
+        },
+        {
+          id: "hr-i664",
+          name: "I-664 (MMBT - Monitor-Merrimac Tunnel)",
+          coords: [[36.780, -76.350], [36.880, -76.420], [36.970, -76.420], [37.020, -76.410]],
+          type: "freeway",
+          baseSpeed: 60,
+          shockSpeed: 25,
+          ttiNormal: 1.05,
+          ttiShock: 2.80
+        },
+        {
+          id: "hr-us58",
+          name: "US-58 Westbound Arterial Corridor",
+          coords: [[36.840, -75.980], [36.750, -76.250], [36.730, -76.580], [36.700, -77.000]],
+          type: "arterial",
+          baseSpeed: 45,
+          shockSpeed: 28,
+          ttiNormal: 1.10,
+          ttiShock: 1.95
+        },
+        {
+          id: "hr-us460",
+          name: "US-460 Northwest Evacuation Route",
+          coords: [[36.870, -76.300], [36.750, -76.600], [36.900, -76.900], [37.100, -77.300]],
+          type: "arterial",
+          baseSpeed: 50,
+          shockSpeed: 35,
+          ttiNormal: 1.08,
+          ttiShock: 1.70
+        }
+      ]
+    },
+
+    new_madrid: {
+      id: "new_madrid",
+      name: "New Madrid Region, SE Missouri",
+      tagline: "8-County Regional Evacuation Dynamic Traffic Assignment (DTA)",
+      client: "Missouri DOT (MoDOT)",
+      period: "2021 – 2022",
+      center: [36.850, -89.750],
+      zoom: 9,
+      description: "Micro/Meso DTA simulation in PTV Vissim synthesizing 891 household survey responses across an 8-county Missouri network to model sequential departure staging under New Madrid Seismic Zone fault ruptures.",
+      kpis: {
+        metric1: { label: "Network Scope", value: "8 Counties" },
+        metric2: { label: "Survey Sample", value: "891 Households" },
+        metric3: { label: "DTA Platform", value: "PTV Vissim" },
+        metric4: { label: "Bottleneck Speed", value: "43 mph" }
+      },
+      chokePoints: [
+        { name: "Cairo Mississippi River Bridge (US-60 / US-62)", lat: 37.000, lng: -89.150, status: "severed", desc: "Eastern gateway bridge vulnerable to liquefaction; total severance in M7.8 scenario." },
+        { name: "Cape Girardeau Mississippi Bridge", lat: 37.300, lng: -89.520, status: "congested", desc: "Northernmost regional lifeline bridge sustaining severe evacuation queue loads." },
+        { name: "MO-34 / US-60 Westbound Junction", lat: 37.150, lng: -90.300, status: "bottleneck", desc: "Major rural merging bottleneck under compressed 6-hour evacuation windows." }
+      ],
+      corridors: [
+        {
+          id: "nm-i55",
+          name: "I-55 North-South Regional Spine",
+          coords: [[37.350, -89.550], [36.900, -89.600], [36.500, -89.700], [36.100, -89.850]],
+          type: "freeway",
+          baseSpeed: 70,
+          shockSpeed: 38,
+          ttiNormal: 1.02,
+          ttiShock: 2.20
+        },
+        {
+          id: "nm-us60",
+          name: "US-60 East-West Evacuation Corridor",
+          coords: [[36.750, -90.400], [36.850, -89.900], [36.950, -89.300], [37.000, -89.150]],
+          type: "arterial",
+          baseSpeed: 60,
+          shockSpeed: 25,
+          ttiNormal: 1.05,
+          ttiShock: 2.85
+        },
+        {
+          id: "nm-mo34",
+          name: "MO-34 Westbound Escape Route",
+          coords: [[37.300, -89.550], [37.250, -89.900], [37.150, -90.300]],
+          type: "arterial",
+          baseSpeed: 55,
+          shockSpeed: 28,
+          ttiNormal: 1.04,
+          ttiShock: 2.45
+        }
+      ]
+    }
+  },
+
   projects: [
     {
       id: "fsk-bridge",
