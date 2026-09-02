@@ -1,24 +1,38 @@
 /**
- * Clean Application Controller with Visual Pipeline Flow & Interactive Matrix
+ * Clean Application Controller with Robust Error Boundaries
  * Dr. Daeyeol (Daniel) Chang Portfolio
  */
 
-document.addEventListener("DOMContentLoaded", () => {
-  initTheme();
-  renderMatrix();
-  renderPipeline();
-  renderProjects();
-  renderRepositories();
-  renderPublications();
-  renderExperience();
-  renderEducation();
-  setupSmoothScroll();
-  setupPublicationFilters();
-  setupBibtexModal();
+function safeExec(fn, name) {
+  try {
+    fn();
+  } catch (err) {
+    console.error(`[App Error in ${name}]:`, err);
+  }
+}
+
+function initApp() {
+  safeExec(initTheme, "initTheme");
+  safeExec(renderMatrix, "renderMatrix");
+  safeExec(renderPipeline, "renderPipeline");
+  safeExec(renderProjects, "renderProjects");
+  safeExec(renderRepositories, "renderRepositories");
+  safeExec(renderPublications, "renderPublications");
+  safeExec(renderExperience, "renderExperience");
+  safeExec(renderEducation, "renderEducation");
+  safeExec(setupSmoothScroll, "setupSmoothScroll");
+  safeExec(setupPublicationFilters, "setupPublicationFilters");
+  safeExec(setupBibtexModal, "setupBibtexModal");
   setTimeout(() => {
-      if(window.lucide) lucide.createIcons();
+    if (window.lucide) lucide.createIcons();
   }, 100);
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initApp);
+} else {
+  initApp();
+}
 
 /* Theme Toggle */
 function initTheme() {
@@ -38,7 +52,9 @@ function initTheme() {
       const isDark = document.documentElement.classList.contains("dark");
       localStorage.setItem("theme", isDark ? "dark" : "light");
       if (window.refreshChartsTheme) window.refreshChartsTheme();
-      setTimeout(() => lucide.createIcons(), 50);
+      setTimeout(() => {
+        if (window.lucide) lucide.createIcons();
+      }, 50);
     });
   }
 }
@@ -81,37 +97,38 @@ function setupSmoothScroll() {
 function renderMatrix() {
   const container = document.getElementById("heroMatrix");
   const detailContainer = document.getElementById("matrixDetail");
-  if (!container) return;
+  if (!container || !PORTFOLIO_DATA || !PORTFOLIO_DATA.profile) return;
 
   container.innerHTML = PORTFOLIO_DATA.profile.pillars.map((p, idx) => {
-      let borderClasses = "";
-      if (idx === 0) borderClasses = "border-b border-r border-slate-100 dark:border-slate-800"; // Top-Left
-      if (idx === 1) borderClasses = "border-b border-slate-100 dark:border-slate-800"; // Top-Right
-      if (idx === 2) borderClasses = "border-r border-slate-100 dark:border-slate-800"; // Bottom-Left
-      if (idx === 3) borderClasses = ""; // Bottom-Right
+    let borderClasses = "";
+    if (idx === 0) borderClasses = "border-b border-r border-slate-100 dark:border-slate-800";
+    if (idx === 1) borderClasses = "border-b border-slate-100 dark:border-slate-800";
+    if (idx === 2) borderClasses = "border-r border-slate-100 dark:border-slate-800";
+    if (idx === 3) borderClasses = "";
 
-      const isActive = idx === 1;
-      const activeBg = isActive ? "bg-blue-50/80 dark:bg-blue-900/20" : "bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800/50";
-      const activeText = isActive ? "text-blue-700 dark:text-blue-400" : "text-slate-900 dark:text-slate-200";
+    const isActive = idx === 1;
+    const activeBg = isActive ? "bg-blue-50/80 dark:bg-blue-900/20" : "bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800/50";
+    const activeText = isActive ? "text-blue-700 dark:text-blue-400" : "text-slate-900 dark:text-slate-200";
 
-      return `
-        <button onclick="selectPillar('${p.id}')" class="matrix-btn w-full h-full p-4 text-left transition-all ${borderClasses} ${activeBg}" id="pbtn-${p.id}" data-idx="${idx}">
-          <div class="flex items-center justify-between mb-1.5">
-            <span class="text-[9px] font-mono font-bold uppercase tracking-widest text-slate-400">${p.badge}</span>
-            <span class="matrix-dot w-2 h-2 rounded-full ${isActive ? 'bg-blue-600 shadow-[0_0_8px_rgba(37,99,235,0.6)]' : 'bg-slate-200 dark:bg-slate-700'} transition-all"></span>
-          </div>
-          <div class="matrix-title text-[13px] font-bold ${activeText} leading-snug transition-colors">${p.title}</div>
-        </button>
-      `;
+    return `
+      <button onclick="selectPillar('${p.id}')" class="matrix-btn w-full h-full p-4 text-left transition-all ${borderClasses} ${activeBg}" id="pbtn-${p.id}" data-idx="${idx}">
+        <div class="flex items-center justify-between mb-1.5">
+          <span class="text-[9px] font-mono font-bold uppercase tracking-widest text-slate-400">${p.badge}</span>
+          <span class="matrix-dot w-2 h-2 rounded-full ${isActive ? 'bg-blue-600 shadow-[0_0_8px_rgba(37,99,235,0.6)]' : 'bg-slate-200 dark:bg-slate-700'} transition-all"></span>
+        </div>
+        <div class="matrix-title text-[13px] font-bold ${activeText} leading-snug transition-colors">${p.title}</div>
+      </button>
+    `;
   }).join("");
 
-  if (detailContainer) {
+  if (detailContainer && PORTFOLIO_DATA.profile.pillars[1]) {
     const active = PORTFOLIO_DATA.profile.pillars[1]; 
     updateDetailBox(detailContainer, active);
   }
 }
 
 window.selectPillar = function(id) {
+  if (!PORTFOLIO_DATA || !PORTFOLIO_DATA.profile) return;
   const pillar = PORTFOLIO_DATA.profile.pillars.find(p => p.id === id);
   if (!pillar) return;
 
@@ -120,12 +137,16 @@ window.selectPillar = function(id) {
     btn.classList.add("bg-white", "dark:bg-slate-900");
     
     const dot = btn.querySelector('.matrix-dot');
-    dot.classList.remove('bg-blue-600', 'shadow-[0_0_8px_rgba(37,99,235,0.6)]');
-    dot.classList.add('bg-slate-200', 'dark:bg-slate-700');
+    if (dot) {
+      dot.classList.remove('bg-blue-600', 'shadow-[0_0_8px_rgba(37,99,235,0.6)]');
+      dot.classList.add('bg-slate-200', 'dark:bg-slate-700');
+    }
 
     const title = btn.querySelector('.matrix-title');
-    title.classList.remove('text-blue-700', 'dark:text-blue-400');
-    title.classList.add('text-slate-900', 'dark:text-slate-200');
+    if (title) {
+      title.classList.remove('text-blue-700', 'dark:text-blue-400');
+      title.classList.add('text-slate-900', 'dark:text-slate-200');
+    }
   });
 
   const activeBtn = document.getElementById(`pbtn-${id}`);
@@ -134,12 +155,16 @@ window.selectPillar = function(id) {
     activeBtn.classList.add("bg-blue-50/80", "dark:bg-blue-900/20");
 
     const dot = activeBtn.querySelector('.matrix-dot');
-    dot.classList.remove('bg-slate-200', 'dark:bg-slate-700');
-    dot.classList.add('bg-blue-600', 'shadow-[0_0_8px_rgba(37,99,235,0.6)]');
+    if (dot) {
+      dot.classList.remove('bg-slate-200', 'dark:bg-slate-700');
+      dot.classList.add('bg-blue-600', 'shadow-[0_0_8px_rgba(37,99,235,0.6)]');
+    }
 
     const title = activeBtn.querySelector('.matrix-title');
-    title.classList.remove('text-slate-900', 'dark:text-slate-200');
-    title.classList.add('text-blue-700', 'dark:text-blue-400');
+    if (title) {
+      title.classList.remove('text-slate-900', 'dark:text-slate-200');
+      title.classList.add('text-blue-700', 'dark:text-blue-400');
+    }
   }
 
   const detailContainer = document.getElementById("matrixDetail");
@@ -153,24 +178,24 @@ window.selectPillar = function(id) {
 };
 
 function updateDetailBox(container, pillar) {
-    container.innerHTML = `
-      <div class="flex items-start gap-2 mb-1.5">
-         <i data-lucide="cpu" class="w-4 h-4 text-blue-600 mt-0.5"></i>
-         <div>
-            <div class="text-[13px] font-bold text-slate-900 dark:text-slate-100">${pillar.title}</div>
-            <div class="text-[10px] font-mono text-blue-700 dark:text-blue-400 mt-0.5">${pillar.tools}</div>
-         </div>
-      </div>
-      <div class="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed pl-6">${pillar.detail}</div>
-    `;
-    lucide.createIcons();
+  if (!container || !pillar) return;
+  container.innerHTML = `
+    <div class="flex items-start gap-2 mb-1.5">
+       <i data-lucide="cpu" class="w-4 h-4 text-blue-600 mt-0.5"></i>
+       <div>
+          <div class="text-[13px] font-bold text-slate-900 dark:text-slate-100">${pillar.title}</div>
+          <div class="text-[10px] font-mono text-blue-700 dark:text-blue-400 mt-0.5">${pillar.tools}</div>
+       </div>
+    </div>
+    <div class="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed pl-6">${pillar.detail}</div>
+  `;
+  if (window.lucide) lucide.createIcons();
 }
-
 
 /* Render Connected Visual Pipeline with Arrows */
 function renderPipeline() {
   const container = document.getElementById("pipelineFlow");
-  if (!container) return;
+  if (!container || !PORTFOLIO_DATA || !PORTFOLIO_DATA.pipeline) return;
 
   let html = "";
   const stages = PORTFOLIO_DATA.pipeline;
@@ -204,13 +229,11 @@ function renderPipeline() {
 
     if (idx < stages.length - 1) {
       html += `
-        <!-- Desktop Horizontal Arrow -->
         <div class="hidden lg:flex items-center justify-center -mx-4 z-0 text-slate-300 dark:text-slate-700">
           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
           </svg>
         </div>
-        <!-- Mobile Vertical Arrow -->
         <div class="flex lg:hidden items-center justify-center text-slate-300 dark:text-slate-700 py-1">
            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
@@ -226,9 +249,9 @@ function renderPipeline() {
 /* Render Major Projects */
 function renderProjects() {
   const container = document.getElementById("projectsList");
-  if (!container) return;
+  if (!container || !PORTFOLIO_DATA || !PORTFOLIO_DATA.projects) return;
 
-  container.innerHTML = PORTFOLIO_DATA.projects.map((proj, idx) => `
+  container.innerHTML = PORTFOLIO_DATA.projects.map((proj) => `
     <article class="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm hover:shadow transition-shadow">
       <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 dark:border-slate-800 pb-3">
         <div>
@@ -243,7 +266,6 @@ function renderProjects() {
         <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">${proj.summary}</p>
       </div>
 
-      <!-- Quick Metric Chips -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 py-2">
         ${proj.metrics.map(m => `
           <div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800/80 text-center flex flex-col justify-center">
@@ -253,7 +275,6 @@ function renderProjects() {
         `).join("")}
       </div>
 
-      <!-- Key Quantitative Takeaways -->
       <div class="space-y-2 pt-2">
         <h4 class="text-[10px] font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5"><i data-lucide="zap" class="w-3.5 h-3.5 text-yellow-500"></i> Key Empirical Findings</h4>
         <ul class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
@@ -274,7 +295,7 @@ function renderProjects() {
 /* Render Open Source Repositories */
 function renderRepositories() {
   const container = document.getElementById("repositoriesGrid");
-  if (!container) return;
+  if (!container || !PORTFOLIO_DATA || !PORTFOLIO_DATA.repositories) return;
 
   container.innerHTML = PORTFOLIO_DATA.repositories.map(repo => `
     <a href="${repo.url}" target="_blank" rel="noopener noreferrer" class="p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 block space-y-3 hover:border-blue-400 dark:hover:border-blue-600 hover:shadow-md transition-all group">
@@ -295,7 +316,7 @@ function renderRepositories() {
 /* Render Experience & Education */
 function renderExperience() {
   const container = document.getElementById("experienceList");
-  if (!container) return;
+  if (!container || !PORTFOLIO_DATA || !PORTFOLIO_DATA.experience) return;
 
   container.innerHTML = PORTFOLIO_DATA.experience.map(exp => `
     <div class="p-3 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-2 shadow-sm">
@@ -310,7 +331,7 @@ function renderExperience() {
 
 function renderEducation() {
   const container = document.getElementById("educationList");
-  if (!container) return;
+  if (!container || !PORTFOLIO_DATA || !PORTFOLIO_DATA.education) return;
 
   container.innerHTML = PORTFOLIO_DATA.education.map(edu => `
     <div class="p-3.5 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg text-xs shadow-sm space-y-1">
@@ -327,7 +348,7 @@ let currentSearch = "";
 
 function renderPublications() {
   const container = document.getElementById("publicationsList");
-  if (!container) return;
+  if (!container || !PORTFOLIO_DATA || !PORTFOLIO_DATA.publications) return;
 
   const filtered = PORTFOLIO_DATA.publications.filter(pub => {
     const catMatch = currentCategory === "all" || pub.category === currentCategory;
@@ -357,7 +378,7 @@ function renderPublications() {
     </div>
   `).join("");
 
-  setTimeout(() => lucide.createIcons(), 50);
+  if (window.lucide) lucide.createIcons();
 }
 
 function setupPublicationFilters() {
@@ -389,13 +410,13 @@ function setupBibtexModal() {
 
   if (close && modal) {
     close.addEventListener("click", () => {
-        modal.classList.remove("opacity-100");
-        setTimeout(() => modal.classList.add("hidden"), 200);
+      modal.classList.remove("opacity-100");
+      setTimeout(() => modal.classList.add("hidden"), 200);
     });
     modal.addEventListener("click", (e) => {
       if (e.target === modal) {
-          modal.classList.remove("opacity-100");
-          setTimeout(() => modal.classList.add("hidden"), 200);
+        modal.classList.remove("opacity-100");
+        setTimeout(() => modal.classList.add("hidden"), 200);
       }
     });
   }
@@ -406,14 +427,14 @@ function setupBibtexModal() {
       navigator.clipboard.writeText(text).then(() => {
         const originalText = copy.innerHTML;
         copy.innerHTML = `<i data-lucide="check" class="w-3.5 h-3.5"></i> Copied!`;
-        lucide.createIcons();
+        if (window.lucide) lucide.createIcons();
         copy.classList.replace("bg-blue-600", "bg-green-600");
         copy.classList.replace("hover:bg-blue-700", "hover:bg-green-700");
         setTimeout(() => {
-            copy.innerHTML = originalText;
-            lucide.createIcons();
-            copy.classList.replace("bg-green-600", "bg-blue-600");
-            copy.classList.replace("hover:bg-green-700", "hover:bg-blue-700");
+          copy.innerHTML = originalText;
+          if (window.lucide) lucide.createIcons();
+          copy.classList.replace("bg-green-600", "bg-blue-600");
+          copy.classList.replace("hover:bg-green-700", "hover:bg-blue-700");
         }, 2000);
       });
     });
@@ -421,6 +442,7 @@ function setupBibtexModal() {
 }
 
 window.openBibtexModal = function(id) {
+  if (!PORTFOLIO_DATA || !PORTFOLIO_DATA.publications) return;
   const pub = PORTFOLIO_DATA.publications.find(p => p.id === id);
   if (!pub) return;
 

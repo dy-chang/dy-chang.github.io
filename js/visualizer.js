@@ -10,10 +10,19 @@ let markerLayerGroup = null;
 let labChartInstance = null;
 let activeRegionId = "baltimore";
 
-document.addEventListener("DOMContentLoaded", () => {
-  initGisLab();
-  initLogitMiniCalculator();
-});
+function initGisLabSafe() {
+  try {
+    initGisLab();
+  } catch (err) {
+    console.error("[GIS Lab Error]:", err);
+  }
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initGisLabSafe);
+} else {
+  initGisLabSafe();
+}
 
 /* =========================================================================
    GIS Map & Simulation Lab Initialization
@@ -22,24 +31,36 @@ function initGisLab() {
   const mapContainer = document.getElementById("gisMap");
   if (!mapContainer) return;
 
+  if (typeof L === "undefined") {
+    console.warn("Leaflet library not ready yet, retrying in 300ms...");
+    setTimeout(initGisLabSafe, 300);
+    return;
+  }
+
+  if (!PORTFOLIO_DATA || !PORTFOLIO_DATA.studyRegions) {
+    console.warn("PORTFOLIO_DATA studyRegions not ready yet...");
+    return;
+  }
+
   const defaultRegion = PORTFOLIO_DATA.studyRegions[activeRegionId];
+  if (!defaultRegion) return;
 
   // Initialize Leaflet Map
-  mapInstance = L.map("gisMap", {
-    center: defaultRegion.center,
-    zoom: defaultRegion.zoom,
-    zoomControl: false,
-    attributionControl: false
-  });
+  if (!mapInstance) {
+    mapInstance = L.map("gisMap", {
+      center: defaultRegion.center,
+      zoom: defaultRegion.zoom,
+      zoomControl: false,
+      attributionControl: false
+    });
 
-  L.control.zoom({ position: "bottomright" }).addTo(mapInstance);
+    L.control.zoom({ position: "bottomright" }).addTo(mapInstance);
 
-  // Layers
-  corridorLayerGroup = L.layerGroup().addTo(mapInstance);
-  markerLayerGroup = L.layerGroup().addTo(mapInstance);
+    corridorLayerGroup = L.layerGroup().addTo(mapInstance);
+    markerLayerGroup = L.layerGroup().addTo(mapInstance);
 
-  // Set Tile Layer (Dark/Light mode aware)
-  updateMapTiles();
+    updateMapTiles();
+  }
 
   // Load Initial Region
   loadStudyRegion(activeRegionId);
@@ -59,7 +80,7 @@ function initGisLab() {
 
 /* Update Map Tiles based on theme */
 function updateMapTiles() {
-  if (!mapInstance) return;
+  if (!mapInstance || typeof L === "undefined") return;
   const isDark = document.documentElement.classList.contains("dark");
   
   if (currentTileLayer) {
@@ -86,13 +107,16 @@ function updateRegionTabsUI(activeTab) {
 
 /* Load Selected Study Region */
 function loadStudyRegion(regionId) {
+  if (!PORTFOLIO_DATA || !PORTFOLIO_DATA.studyRegions) return;
   const region = PORTFOLIO_DATA.studyRegions[regionId];
   if (!region || !mapInstance) return;
 
-  // Fly to region coordinates
-  mapInstance.flyTo(region.center, region.zoom, { duration: 1.2 });
+  try {
+    mapInstance.flyTo(region.center, region.zoom, { duration: 1.2 });
+  } catch (e) {
+    mapInstance.setView(region.center, region.zoom);
+  }
 
-  // Update Region Header & Description
   const titleEl = document.getElementById("regionTitle");
   const descEl = document.getElementById("regionDesc");
   const metaBadgeEl = document.getElementById("regionMetaBadge");
@@ -101,15 +125,8 @@ function loadStudyRegion(regionId) {
   if (descEl) descEl.innerText = region.description;
   if (metaBadgeEl) metaBadgeEl.innerText = `${region.client} (${region.period})`;
 
-  // Render Custom Scenario Controls
   renderScenarioControls(regionId);
-
-  // Render Corridors & Choke Points
   updateSimulationLayers();
-
-  // Render Telemetry & Chart
-  updateLabTelemetry();
-  renderLabChart();
 }
 
 /* =========================================================================
@@ -127,7 +144,7 @@ function renderScenarioControls(regionId) {
         <div>
           <div class="flex justify-between font-semibold text-slate-700 dark:text-slate-300 mb-1">
             <span>Disruption Season & Period:</span>
-            <span id="baltPeriodLabel" class="text-blue-600 dark:text-blue-400 font-mono">Immediate Post-Collapse (Spring '24)</span>
+            <span id="baltPeriodLabel" class="text-blue-600 dark:text-blue-400 font-mono">Immediate Post-Collapse</span>
           </div>
           <select id="baltPeriodSelect" onchange="updateSimulationLayers()" class="w-full p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs font-medium">
             <option value="immediate">Immediate Shock (March–April 2024)</option>
@@ -179,7 +196,7 @@ function renderScenarioControls(regionId) {
         <div>
           <div class="flex justify-between font-semibold text-slate-700 dark:text-slate-300 mb-1">
             <span>Departure Window:</span>
-            <span id="stlWindowLabel" class="text-blue-600 dark:text-blue-400 font-mono">6-Hour Compressed Evacuation</span>
+            <span id="stlWindowLabel" class="text-blue-600 dark:text-blue-400 font-mono">6-Hour Compressed</span>
           </div>
           <div class="grid grid-cols-2 gap-2">
             <button onclick="setStlWindow('6h')" id="btnStl6h" class="p-1.5 rounded-md text-xs font-semibold bg-blue-600 text-white">6-Hour Window</button>
@@ -201,7 +218,7 @@ function renderScenarioControls(regionId) {
       <div class="space-y-3 text-xs">
         <div>
           <div class="flex justify-between font-semibold text-slate-700 dark:text-slate-300 mb-1">
-            <span>Normal Travel Time to Inland Safe Zone:</span>
+            <span>Normal Travel Time to Safe Zone:</span>
             <span id="hrTravelTimeVal" class="text-blue-600 dark:text-blue-400 font-mono">4.5 hrs</span>
           </div>
           <input id="hrTravelTime" type="range" min="1.0" max="12.0" step="0.5" value="4.5" oninput="updateSimulationLayers()" class="w-full accent-blue-600">
@@ -244,7 +261,7 @@ function renderScenarioControls(regionId) {
         <div>
           <div class="flex justify-between font-semibold text-slate-700 dark:text-slate-300 mb-1">
             <span>DTA Departure Window:</span>
-            <span id="nmWindowLabel" class="text-blue-600 dark:text-blue-400 font-mono">6-Hour Compressed Surge</span>
+            <span id="nmWindowLabel" class="text-blue-600 dark:text-blue-400 font-mono">6-Hour Compressed</span>
           </div>
           <div class="grid grid-cols-2 gap-2">
             <button onclick="setNmWindow('6h')" id="btnNm6h" class="p-1.5 rounded-md text-xs font-semibold bg-blue-600 text-white">6-Hour Window (43 mph)</button>
@@ -260,7 +277,7 @@ function renderScenarioControls(regionId) {
           </label>
           <label class="flex items-center gap-2 p-1.5 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 cursor-pointer">
             <input id="nmMo34Staged" type="checkbox" checked onchange="updateSimulationLayers()" class="rounded text-blue-600">
-            <span class="text-[11px] text-slate-700 dark:text-slate-300">MO-34 / US-60 Staged Merging Protocol</span>
+            <span class="text-[11px] text-slate-700 dark:text-slate-300">MO-34 / US-60 Staged Protocol</span>
           </label>
         </div>
       </div>
@@ -328,120 +345,124 @@ window.setNmWindow = function(win) {
    Update Simulation Map Layers (Polylines & Markers)
    ========================================================================= */
 function updateSimulationLayers() {
-  if (!corridorLayerGroup || !markerLayerGroup) return;
+  if (!corridorLayerGroup || !markerLayerGroup || typeof L === "undefined") return;
 
   corridorLayerGroup.clearLayers();
   markerLayerGroup.clearLayers();
 
+  if (!PORTFOLIO_DATA || !PORTFOLIO_DATA.studyRegions) return;
   const region = PORTFOLIO_DATA.studyRegions[activeRegionId];
   if (!region) return;
 
   // 1. Render Corridors
-  region.corridors.forEach(corridor => {
-    let color = "#10b981"; // LOS A/B Green
-    let weight = 5;
-    let dashArray = null;
-    let opacity = 0.85;
+  if (region.corridors) {
+    region.corridors.forEach(corridor => {
+      let color = "#10b981"; // LOS A/B Green
+      let weight = 5;
+      let dashArray = null;
+      let opacity = 0.85;
 
-    if (activeRegionId === "baltimore") {
-      if (corridor.type === "bridge_severed") {
-        color = "#0f172a";
-        dashArray = "6, 6";
-        weight = 4;
-        opacity = 0.9;
-      } else if (corridor.id === "balt-i895") {
-        color = baltPeakState === "pm" ? "#dc2626" : "#f59e0b"; // Red vs Amber
-        weight = 6;
-      } else if (corridor.id === "balt-i95") {
-        color = baltPeakState === "pm" ? "#ef4444" : "#10b981";
-        weight = 6;
-      } else if (corridor.id === "balt-md295") {
-        const hasMetering = document.getElementById("baltRampMetering")?.checked;
-        color = hasMetering ? "#f59e0b" : "#dc2626";
-      } else {
-        color = "#2563eb";
-      }
-    } else if (activeRegionId === "st_louis") {
-      const eqLevel = parseInt(document.getElementById("stlEqSlider")?.value || "2");
-      const hasContraflow = document.getElementById("stlContraflow")?.checked;
-
-      if (eqLevel === 0) {
-        color = "#10b981"; // Normal
-      } else if (eqLevel === 1) {
-        color = corridor.id === "stl-i64" ? "#f59e0b" : "#10b981";
-      } else { // M6.7 Severe
-        if (corridor.id === "stl-i64") {
-          color = hasContraflow ? "#2563eb" : "#dc2626";
-        } else if (corridor.id === "stl-i270" || corridor.id === "stl-i70") {
-          color = "#dc2626";
+      if (activeRegionId === "baltimore") {
+        if (corridor.type === "bridge_severed") {
+          color = "#0f172a";
+          dashArray = "6, 6";
+          weight = 4;
+          opacity = 0.9;
+        } else if (corridor.id === "balt-i895") {
+          color = baltPeakState === "pm" ? "#dc2626" : "#f59e0b";
+          weight = 6;
+        } else if (corridor.id === "balt-i95") {
+          color = baltPeakState === "pm" ? "#ef4444" : "#10b981";
+          weight = 6;
+        } else if (corridor.id === "balt-md295") {
+          const hasMetering = document.getElementById("baltRampMetering")?.checked;
+          color = hasMetering ? "#f59e0b" : "#dc2626";
         } else {
-          color = "#f59e0b";
+          color = "#2563eb";
+        }
+      } else if (activeRegionId === "st_louis") {
+        const eqLevel = parseInt(document.getElementById("stlEqSlider")?.value || "2");
+        const hasContraflow = document.getElementById("stlContraflow")?.checked;
+
+        if (eqLevel === 0) {
+          color = "#10b981";
+        } else if (eqLevel === 1) {
+          color = corridor.id === "stl-i64" ? "#f59e0b" : "#10b981";
+        } else {
+          if (corridor.id === "stl-i64") {
+            color = hasContraflow ? "#2563eb" : "#dc2626";
+          } else if (corridor.id === "stl-i270" || corridor.id === "stl-i70") {
+            color = "#dc2626";
+          } else {
+            color = "#f59e0b";
+          }
+        }
+      } else if (activeRegionId === "hampton_roads") {
+        const travelTime = parseFloat(document.getElementById("hrTravelTime")?.value || "4.5");
+        if (corridor.id === "hr-i64") {
+          color = travelTime > 6.0 ? "#dc2626" : "#2563eb";
+          weight = 6;
+        } else {
+          color = "#10b981";
+        }
+      } else if (activeRegionId === "new_madrid") {
+        const is6h = nmWindowState === "6h";
+        const isSevered = document.getElementById("nmCairoSevered")?.checked;
+
+        if (corridor.id === "nm-us60") {
+          color = is6h ? "#dc2626" : "#f59e0b";
+        } else if (corridor.id === "nm-mo34") {
+          color = isSevered ? "#ef4444" : "#10b981";
+        } else {
+          color = "#2563eb";
         }
       }
-    } else if (activeRegionId === "hampton_roads") {
-      const travelTime = parseFloat(document.getElementById("hrTravelTime")?.value || "4.5");
-      if (corridor.id === "hr-i64") {
-        color = travelTime > 6.0 ? "#dc2626" : "#2563eb";
-        weight = 6;
-      } else {
-        color = "#10b981";
-      }
-    } else if (activeRegionId === "new_madrid") {
-      const is6h = nmWindowState === "6h";
-      const isSevered = document.getElementById("nmCairoSevered")?.checked;
 
-      if (corridor.id === "nm-us60") {
-        color = is6h ? "#dc2626" : "#f59e0b";
-      } else if (corridor.id === "nm-mo34") {
-        color = isSevered ? "#ef4444" : "#10b981";
-      } else {
-        color = "#2563eb";
-      }
-    }
+      const polyline = L.polyline(corridor.coords, {
+        color: color,
+        weight: weight,
+        opacity: opacity,
+        dashArray: dashArray,
+        lineCap: "round"
+      }).addTo(corridorLayerGroup);
 
-    const polyline = L.polyline(corridor.coords, {
-      color: color,
-      weight: weight,
-      opacity: opacity,
-      dashArray: dashArray,
-      lineCap: "round"
-    }).addTo(corridorLayerGroup);
-
-    polyline.bindPopup(`
-      <div class="p-2 space-y-1 text-xs">
-        <strong class="text-slate-900 block font-bold">${corridor.name}</strong>
-        <div class="text-[11px] text-slate-600">Base Speed: <strong>${corridor.baseSpeed} mph</strong></div>
-        <div class="text-[11px] text-slate-600">Disruption Speed: <strong>${corridor.shockSpeed} mph</strong></div>
-        <div class="text-[10px] font-mono text-blue-600 font-semibold mt-1">Normal TTI: ${corridor.ttiNormal} &rarr; Shock: ${corridor.ttiShock}</div>
-      </div>
-    `);
-  });
+      polyline.bindPopup(`
+        <div class="p-2 space-y-1 text-xs">
+          <strong class="text-slate-900 block font-bold">${corridor.name}</strong>
+          <div class="text-[11px] text-slate-600">Base Speed: <strong>${corridor.baseSpeed} mph</strong></div>
+          <div class="text-[11px] text-slate-600">Disruption Speed: <strong>${corridor.shockSpeed} mph</strong></div>
+          <div class="text-[10px] font-mono text-blue-600 font-semibold mt-1">Normal TTI: ${corridor.ttiNormal} &rarr; Shock: ${corridor.ttiShock}</div>
+        </div>
+      `);
+    });
+  }
 
   // 2. Render Choke Points / Bridges
-  region.chokePoints.forEach(pt => {
-    const isDark = document.documentElement.classList.contains("dark");
-    const markerBg = pt.status === "collapsed" || pt.status === "severed" ? "#0f172a" : (pt.status === "fragility_high" || pt.status === "bottleneck" ? "#dc2626" : "#2563eb");
+  if (region.chokePoints) {
+    region.chokePoints.forEach(pt => {
+      const markerBg = pt.status === "collapsed" || pt.status === "severed" ? "#0f172a" : (pt.status === "fragility_high" || pt.status === "bottleneck" ? "#dc2626" : "#2563eb");
 
-    const customIcon = L.divIcon({
-      className: "custom-gis-marker",
-      html: `
-        <div style="background-color: ${markerBg}; width: 22px; height: 22px; border-radius: 50%; border: 2.5px solid #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; color: white; font-size: 10px; font-weight: bold;">
-          ${pt.status === "collapsed" || pt.status === "severed" ? '✕' : '!'}
+      const customIcon = L.divIcon({
+        className: "custom-gis-marker",
+        html: `
+          <div style="background-color: ${markerBg}; width: 22px; height: 22px; border-radius: 50%; border: 2.5px solid #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; color: white; font-size: 10px; font-weight: bold;">
+            ${pt.status === "collapsed" || pt.status === "severed" ? '✕' : '!'}
+          </div>
+        `,
+        iconSize: [22, 22],
+        iconAnchor: [11, 11]
+      });
+
+      const marker = L.marker([pt.lat, pt.lng], { icon: customIcon }).addTo(markerLayerGroup);
+      marker.bindPopup(`
+        <div class="p-2 space-y-1 text-xs">
+          <span class="text-[10px] uppercase tracking-wider font-bold text-blue-600 block">${pt.status.replace("_", " ")}</span>
+          <strong class="text-slate-900 block text-[13px] font-bold">${pt.name}</strong>
+          <p class="text-[11px] text-slate-600 leading-relaxed">${pt.desc}</p>
         </div>
-      `,
-      iconSize: [22, 22],
-      iconAnchor: [11, 11]
+      `);
     });
-
-    const marker = L.marker([pt.lat, pt.lng], { icon: customIcon }).addTo(markerLayerGroup);
-    marker.bindPopup(`
-      <div class="p-2 space-y-1 text-xs">
-        <span class="text-[10px] uppercase tracking-wider font-bold text-blue-600 block">${pt.status.replace("_", " ")}</span>
-        <strong class="text-slate-900 block text-[13px] font-bold">${pt.name}</strong>
-        <p class="text-[11px] text-slate-600 leading-relaxed">${pt.desc}</p>
-      </div>
-    `);
-  });
+  }
 
   updateLabTelemetry();
   renderLabChart();
@@ -462,7 +483,6 @@ function updateLabTelemetry() {
   if (activeRegionId === "baltimore") {
     const isPm = baltPeakState === "pm";
     const hasDetour = document.getElementById("baltFreightDetour")?.checked;
-    const hasMetering = document.getElementById("baltRampMetering")?.checked;
 
     kpi1.innerHTML = `<span class="text-xs text-slate-400 block">Peak Corridor TTI</span><strong class="text-base text-slate-900 dark:text-slate-100 font-bold font-mono">${isPm ? '+126%' : '+34%'}</strong>`;
     kpi2.innerHTML = `<span class="text-xs text-slate-400 block">Harbor Tunnel Delay</span><strong class="text-base text-slate-900 dark:text-slate-100 font-bold font-mono">${isPm ? '+38 min' : '+12 min'}</strong>`;
@@ -577,10 +597,12 @@ function updateLabTelemetry() {
    ========================================================================= */
 function renderLabChart() {
   const ctx = document.getElementById("labChart");
-  if (!ctx) return;
+  if (!ctx || typeof Chart === "undefined") return;
 
   if (labChartInstance) {
-    labChartInstance.destroy();
+    try {
+      labChartInstance.destroy();
+    } catch (e) {}
   }
 
   const isDark = document.documentElement.classList.contains("dark");
@@ -713,12 +735,11 @@ function renderLabChart() {
     };
   }
 
-  labChartInstance = new Chart(ctx, chartConfig);
-}
-
-/* Fallback/Stand-alone Mini Calculator */
-function initLogitMiniCalculator() {
-  // Handled inside scenario controls
+  try {
+    labChartInstance = new Chart(ctx, chartConfig);
+  } catch (err) {
+    console.error("[Lab Chart Error]:", err);
+  }
 }
 
 window.refreshChartsTheme = function() {
